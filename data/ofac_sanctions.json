@@ -1,0 +1,18 @@
+{
+    "source": "US_Treasury_OFAC_Simulation",
+    "timestamp": "Real-time",
+    "sanctioned_countries": [
+        "Russia",
+        "Iran",
+        "North Korea",
+        "Syria",
+        "Cuba",
+        "Belarus",
+        "Myanmar"
+    ],
+    "sanctioned_cities": [
+        "Sevastopol",
+        "Donetsk",
+        "Luhansk"
+    ]
+}

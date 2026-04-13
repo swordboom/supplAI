@@ -1,0 +1,4357 @@
+Source_Country,Destination_Country,Tariff_Rate_Pct
+China,China,0.0
+China,India,10.3
+China,USA,20.1
+China,Germany,4.9
+China,Netherlands,11.6
+China,France,10.8
+China,Italy,13.6
+China,Spain,3.1
+China,Japan,0.0
+China,South Korea,0.0
+China,Taiwan,0.0
+China,Singapore,8.6
+China,Thailand,2.3
+China,Vietnam,4.6
+China,Indonesia,10.4
+China,Malaysia,9.1
+China,Philippines,4.9
+China,Australia,9.7
+China,Sri Lanka,12.5
+China,UAE,2.1
+China,Saudi Arabia,12.5
+China,Nigeria,11.1
+China,Egypt,6.4
+China,South Africa,4.0
+China,Turkey,14.4
+China,Iran,6.4
+China,Kenya,3.2
+China,Belgium,3.3
+China,Sweden,13.0
+China,Denmark,9.8
+China,Norway,12.5
+China,Switzerland,11.5
+China,Poland,9.0
+China,Czech Republic,14.7
+China,Hungary,6.9
+China,Romania,9.2
+China,Austria,12.8
+China,Portugal,10.0
+China,Greece,13.2
+China,UK,9.5
+China,Canada,11.2
+China,Mexico,2.6
+China,Brazil,5.0
+China,Argentina,5.8
+China,Chile,3.0
+China,Colombia,5.0
+China,Qatar,3.3
+China,Kuwait,5.6
+China,Israel,10.3
+China,Oman,6.7
+China,Pakistan,6.8
+China,Bangladesh,4.7
+China,Myanmar,5.5
+China,Morocco,14.2
+China,Ethiopia,10.4
+China,Ghana,9.9
+China,Tanzania,4.2
+China,Russia,11.5
+China,Kazakhstan,4.1
+China,Azerbaijan,6.9
+China,New Zealand,14.9
+China,Finland,10.3
+China,Slovakia,9.2
+China,Bulgaria,10.9
+China,Serbia,13.0
+China,Latvia,12.1
+India,China,5.0
+India,India,0.0
+India,USA,2.4
+India,Germany,6.1
+India,Netherlands,5.5
+India,France,4.7
+India,Italy,14.3
+India,Spain,13.4
+India,Japan,6.1
+India,South Korea,10.5
+India,Taiwan,7.1
+India,Singapore,13.9
+India,Thailand,8.0
+India,Vietnam,5.4
+India,Indonesia,5.2
+India,Malaysia,9.3
+India,Philippines,5.4
+India,Australia,9.6
+India,Sri Lanka,1.8
+India,UAE,4.9
+India,Saudi Arabia,15.0
+India,Nigeria,8.6
+India,Egypt,3.2
+India,South Africa,2.6
+India,Turkey,3.4
+India,Iran,10.2
+India,Kenya,12.3
+India,Belgium,7.5
+India,Sweden,2.8
+India,Denmark,7.0
+India,Norway,14.9
+India,Switzerland,8.9
+India,Poland,14.6
+India,Czech Republic,13.2
+India,Hungary,2.1
+India,Romania,11.4
+India,Austria,10.9
+India,Portugal,9.0
+India,Greece,5.5
+India,UK,10.3
+India,Canada,3.5
+India,Mexico,7.7
+India,Brazil,7.9
+India,Argentina,14.4
+India,Chile,13.4
+India,Colombia,5.4
+India,Qatar,8.5
+India,Kuwait,4.3
+India,Israel,13.9
+India,Oman,13.3
+India,Pakistan,0.0
+India,Bangladesh,0.0
+India,Myanmar,9.9
+India,Morocco,4.0
+India,Ethiopia,11.9
+India,Ghana,9.0
+India,Tanzania,12.1
+India,Russia,8.9
+India,Kazakhstan,2.0
+India,Azerbaijan,6.2
+India,New Zealand,2.3
+India,Finland,14.1
+India,Slovakia,13.4
+India,Bulgaria,12.8
+India,Serbia,6.0
+India,Latvia,2.8
+USA,China,37.9
+USA,India,3.1
+USA,USA,0.0
+USA,Germany,8.3
+USA,Netherlands,2.9
+USA,France,11.9
+USA,Italy,12.0
+USA,Spain,3.7
+USA,Japan,8.2
+USA,South Korea,9.1
+USA,Taiwan,5.4
+USA,Singapore,13.3
+USA,Thailand,7.5
+USA,Vietnam,4.8
+USA,Indonesia,9.0
+USA,Malaysia,11.5
+USA,Philippines,4.6
+USA,Australia,6.1
+USA,Sri Lanka,14.9
+USA,UAE,10.4
+USA,Saudi Arabia,7.7
+USA,Nigeria,8.7
+USA,Egypt,3.6
+USA,South Africa,4.9
+USA,Turkey,6.4
+USA,Iran,9.6
+USA,Kenya,5.0
+USA,Belgium,4.9
+USA,Sweden,2.9
+USA,Denmark,10.2
+USA,Norway,5.0
+USA,Switzerland,13.8
+USA,Poland,13.2
+USA,Czech Republic,2.9
+USA,Hungary,5.1
+USA,Romania,10.7
+USA,Austria,4.8
+USA,Portugal,3.7
+USA,Greece,14.2
+USA,UK,9.4
+USA,Canada,0.0
+USA,Mexico,12.2
+USA,Brazil,12.5
+USA,Argentina,4.5
+USA,Chile,3.3
+USA,Colombia,7.6
+USA,Qatar,7.5
+USA,Kuwait,8.1
+USA,Israel,11.5
+USA,Oman,10.8
+USA,Pakistan,14.8
+USA,Bangladesh,3.3
+USA,Myanmar,7.2
+USA,Morocco,6.4
+USA,Ethiopia,13.2
+USA,Ghana,5.2
+USA,Tanzania,4.5
+USA,Russia,7.8
+USA,Kazakhstan,7.5
+USA,Azerbaijan,5.6
+USA,New Zealand,5.2
+USA,Finland,14.0
+USA,Slovakia,7.8
+USA,Bulgaria,13.2
+USA,Serbia,9.2
+USA,Latvia,2.7
+Germany,China,15.0
+Germany,India,12.9
+Germany,USA,14.6
+Germany,Germany,0.0
+Germany,Netherlands,2.7
+Germany,France,0.0
+Germany,Italy,0.0
+Germany,Spain,0.0
+Germany,Japan,7.2
+Germany,South Korea,2.8
+Germany,Taiwan,6.9
+Germany,Singapore,14.8
+Germany,Thailand,5.4
+Germany,Vietnam,12.2
+Germany,Indonesia,7.9
+Germany,Malaysia,7.5
+Germany,Philippines,14.4
+Germany,Australia,14.9
+Germany,Sri Lanka,9.2
+Germany,UAE,11.3
+Germany,Saudi Arabia,4.0
+Germany,Nigeria,5.9
+Germany,Egypt,14.6
+Germany,South Africa,9.5
+Germany,Turkey,9.0
+Germany,Iran,11.7
+Germany,Kenya,2.7
+Germany,Belgium,0.0
+Germany,Sweden,0.0
+Germany,Denmark,1.3
+Germany,Norway,1.2
+Germany,Switzerland,0.0
+Germany,Poland,0.0
+Germany,Czech Republic,0.0
+Germany,Hungary,0.0
+Germany,Romania,0.0
+Germany,Austria,1.5
+Germany,Portugal,0.0
+Germany,Greece,0.0
+Germany,UK,0.0
+Germany,Canada,9.6
+Germany,Mexico,8.8
+Germany,Brazil,14.2
+Germany,Argentina,4.7
+Germany,Chile,11.3
+Germany,Colombia,5.1
+Germany,Qatar,7.1
+Germany,Kuwait,10.7
+Germany,Israel,5.9
+Germany,Oman,6.1
+Germany,Pakistan,11.8
+Germany,Bangladesh,2.9
+Germany,Myanmar,8.0
+Germany,Morocco,15.0
+Germany,Ethiopia,14.9
+Germany,Ghana,3.0
+Germany,Tanzania,4.8
+Germany,Russia,0.0
+Germany,Kazakhstan,14.1
+Germany,Azerbaijan,13.5
+Germany,New Zealand,13.4
+Germany,Finland,0.0
+Germany,Slovakia,0.0
+Germany,Bulgaria,2.4
+Germany,Serbia,0.0
+Germany,Latvia,2.3
+Netherlands,China,2.1
+Netherlands,India,12.6
+Netherlands,USA,5.9
+Netherlands,Germany,0.0
+Netherlands,Netherlands,0.0
+Netherlands,France,1.3
+Netherlands,Italy,0.0
+Netherlands,Spain,0.0
+Netherlands,Japan,9.2
+Netherlands,South Korea,5.5
+Netherlands,Taiwan,9.9
+Netherlands,Singapore,11.3
+Netherlands,Thailand,4.6
+Netherlands,Vietnam,10.2
+Netherlands,Indonesia,5.4
+Netherlands,Malaysia,8.4
+Netherlands,Philippines,13.8
+Netherlands,Australia,13.0
+Netherlands,Sri Lanka,3.2
+Netherlands,UAE,7.5
+Netherlands,Saudi Arabia,5.6
+Netherlands,Nigeria,2.0
+Netherlands,Egypt,12.0
+Netherlands,South Africa,10.3
+Netherlands,Turkey,5.4
+Netherlands,Iran,11.6
+Netherlands,Kenya,9.2
+Netherlands,Belgium,0.0
+Netherlands,Sweden,0.0
+Netherlands,Denmark,0.0
+Netherlands,Norway,2.8
+Netherlands,Switzerland,0.0
+Netherlands,Poland,2.2
+Netherlands,Czech Republic,0.0
+Netherlands,Hungary,0.0
+Netherlands,Romania,0.0
+Netherlands,Austria,2.6
+Netherlands,Portugal,2.8
+Netherlands,Greece,0.0
+Netherlands,UK,0.0
+Netherlands,Canada,3.3
+Netherlands,Mexico,12.1
+Netherlands,Brazil,13.5
+Netherlands,Argentina,7.3
+Netherlands,Chile,10.1
+Netherlands,Colombia,4.0
+Netherlands,Qatar,14.1
+Netherlands,Kuwait,13.2
+Netherlands,Israel,14.7
+Netherlands,Oman,12.5
+Netherlands,Pakistan,13.5
+Netherlands,Bangladesh,2.3
+Netherlands,Myanmar,11.6
+Netherlands,Morocco,6.3
+Netherlands,Ethiopia,14.1
+Netherlands,Ghana,12.4
+Netherlands,Tanzania,13.2
+Netherlands,Russia,1.5
+Netherlands,Kazakhstan,12.2
+Netherlands,Azerbaijan,3.4
+Netherlands,New Zealand,13.3
+Netherlands,Finland,1.4
+Netherlands,Slovakia,1.9
+Netherlands,Bulgaria,0.0
+Netherlands,Serbia,0.0
+Netherlands,Latvia,0.0
+France,China,2.3
+France,India,4.5
+France,USA,6.3
+France,Germany,2.9
+France,Netherlands,0.0
+France,France,0.0
+France,Italy,0.0
+France,Spain,0.0
+France,Japan,14.8
+France,South Korea,9.0
+France,Taiwan,14.2
+France,Singapore,3.5
+France,Thailand,14.6
+France,Vietnam,4.3
+France,Indonesia,14.5
+France,Malaysia,5.5
+France,Philippines,3.4
+France,Australia,7.6
+France,Sri Lanka,11.5
+France,UAE,6.1
+France,Saudi Arabia,9.9
+France,Nigeria,8.6
+France,Egypt,7.0
+France,South Africa,9.5
+France,Turkey,5.3
+France,Iran,11.2
+France,Kenya,2.0
+France,Belgium,2.1
+France,Sweden,0.0
+France,Denmark,0.0
+France,Norway,0.0
+France,Switzerland,0.0
+France,Poland,0.0
+France,Czech Republic,0.0
+France,Hungary,0.0
+France,Romania,0.0
+France,Austria,2.4
+France,Portugal,0.0
+France,Greece,0.0
+France,UK,0.0
+France,Canada,7.2
+France,Mexico,5.8
+France,Brazil,3.7
+France,Argentina,7.5
+France,Chile,14.2
+France,Colombia,10.8
+France,Qatar,13.7
+France,Kuwait,10.0
+France,Israel,5.9
+France,Oman,9.1
+France,Pakistan,2.0
+France,Bangladesh,5.7
+France,Myanmar,7.6
+France,Morocco,9.5
+France,Ethiopia,10.5
+France,Ghana,8.0
+France,Tanzania,7.7
+France,Russia,0.0
+France,Kazakhstan,8.2
+France,Azerbaijan,13.7
+France,New Zealand,12.3
+France,Finland,0.0
+France,Slovakia,0.0
+France,Bulgaria,0.0
+France,Serbia,0.0
+France,Latvia,0.0
+Italy,China,12.6
+Italy,India,11.8
+Italy,USA,10.7
+Italy,Germany,0.0
+Italy,Netherlands,0.0
+Italy,France,0.0
+Italy,Italy,0.0
+Italy,Spain,0.0
+Italy,Japan,8.2
+Italy,South Korea,13.0
+Italy,Taiwan,2.9
+Italy,Singapore,7.4
+Italy,Thailand,10.2
+Italy,Vietnam,4.5
+Italy,Indonesia,11.1
+Italy,Malaysia,8.4
+Italy,Philippines,5.2
+Italy,Australia,10.5
+Italy,Sri Lanka,2.1
+Italy,UAE,11.8
+Italy,Saudi Arabia,12.0
+Italy,Nigeria,3.4
+Italy,Egypt,7.5
+Italy,South Africa,4.3
+Italy,Turkey,14.5
+Italy,Iran,8.7
+Italy,Kenya,2.7
+Italy,Belgium,0.0
+Italy,Sweden,1.9
+Italy,Denmark,2.3
+Italy,Norway,2.2
+Italy,Switzerland,2.8
+Italy,Poland,0.0
+Italy,Czech Republic,0.0
+Italy,Hungary,0.0
+Italy,Romania,2.1
+Italy,Austria,2.5
+Italy,Portugal,0.0
+Italy,Greece,0.0
+Italy,UK,0.0
+Italy,Canada,10.3
+Italy,Mexico,12.0
+Italy,Brazil,8.8
+Italy,Argentina,10.1
+Italy,Chile,5.6
+Italy,Colombia,3.0
+Italy,Qatar,5.7
+Italy,Kuwait,5.5
+Italy,Israel,6.2
+Italy,Oman,9.0
+Italy,Pakistan,3.8
+Italy,Bangladesh,5.0
+Italy,Myanmar,11.0
+Italy,Morocco,11.2
+Italy,Ethiopia,2.8
+Italy,Ghana,7.3
+Italy,Tanzania,9.1
+Italy,Russia,0.0
+Italy,Kazakhstan,4.7
+Italy,Azerbaijan,7.5
+Italy,New Zealand,13.8
+Italy,Finland,0.0
+Italy,Slovakia,0.0
+Italy,Bulgaria,2.5
+Italy,Serbia,0.0
+Italy,Latvia,0.0
+Spain,China,6.6
+Spain,India,11.8
+Spain,USA,13.1
+Spain,Germany,1.8
+Spain,Netherlands,0.0
+Spain,France,0.0
+Spain,Italy,0.0
+Spain,Spain,0.0
+Spain,Japan,4.9
+Spain,South Korea,4.9
+Spain,Taiwan,7.7
+Spain,Singapore,2.4
+Spain,Thailand,6.4
+Spain,Vietnam,10.8
+Spain,Indonesia,7.3
+Spain,Malaysia,4.1
+Spain,Philippines,8.1
+Spain,Australia,3.7
+Spain,Sri Lanka,10.1
+Spain,UAE,2.4
+Spain,Saudi Arabia,7.1
+Spain,Nigeria,9.3
+Spain,Egypt,2.4
+Spain,South Africa,10.4
+Spain,Turkey,3.8
+Spain,Iran,8.0
+Spain,Kenya,2.7
+Spain,Belgium,0.0
+Spain,Sweden,0.0
+Spain,Denmark,0.0
+Spain,Norway,0.0
+Spain,Switzerland,0.0
+Spain,Poland,0.0
+Spain,Czech Republic,1.5
+Spain,Hungary,0.0
+Spain,Romania,0.0
+Spain,Austria,0.0
+Spain,Portugal,1.7
+Spain,Greece,0.0
+Spain,UK,0.0
+Spain,Canada,10.5
+Spain,Mexico,11.8
+Spain,Brazil,14.3
+Spain,Argentina,4.6
+Spain,Chile,2.3
+Spain,Colombia,4.0
+Spain,Qatar,3.6
+Spain,Kuwait,10.7
+Spain,Israel,9.3
+Spain,Oman,4.8
+Spain,Pakistan,11.1
+Spain,Bangladesh,12.0
+Spain,Myanmar,4.2
+Spain,Morocco,9.9
+Spain,Ethiopia,11.7
+Spain,Ghana,3.5
+Spain,Tanzania,12.7
+Spain,Russia,1.2
+Spain,Kazakhstan,2.3
+Spain,Azerbaijan,6.1
+Spain,New Zealand,10.8
+Spain,Finland,1.8
+Spain,Slovakia,0.0
+Spain,Bulgaria,0.0
+Spain,Serbia,0.0
+Spain,Latvia,0.0
+Japan,China,0.0
+Japan,India,12.0
+Japan,USA,13.1
+Japan,Germany,9.8
+Japan,Netherlands,3.6
+Japan,France,14.8
+Japan,Italy,12.2
+Japan,Spain,6.5
+Japan,Japan,0.0
+Japan,South Korea,0.0
+Japan,Taiwan,0.0
+Japan,Singapore,8.6
+Japan,Thailand,6.4
+Japan,Vietnam,13.0
+Japan,Indonesia,12.7
+Japan,Malaysia,3.4
+Japan,Philippines,14.5
+Japan,Australia,10.3
+Japan,Sri Lanka,12.8
+Japan,UAE,11.2
+Japan,Saudi Arabia,7.7
+Japan,Nigeria,11.5
+Japan,Egypt,14.6
+Japan,South Africa,5.5
+Japan,Turkey,12.5
+Japan,Iran,9.0
+Japan,Kenya,8.3
+Japan,Belgium,7.7
+Japan,Sweden,11.5
+Japan,Denmark,5.5
+Japan,Norway,13.1
+Japan,Switzerland,12.8
+Japan,Poland,3.1
+Japan,Czech Republic,13.5
+Japan,Hungary,5.2
+Japan,Romania,8.0
+Japan,Austria,9.9
+Japan,Portugal,6.9
+Japan,Greece,2.4
+Japan,UK,13.1
+Japan,Canada,4.4
+Japan,Mexico,4.8
+Japan,Brazil,12.4
+Japan,Argentina,6.4
+Japan,Chile,13.4
+Japan,Colombia,11.1
+Japan,Qatar,5.6
+Japan,Kuwait,2.1
+Japan,Israel,14.3
+Japan,Oman,3.1
+Japan,Pakistan,11.4
+Japan,Bangladesh,8.4
+Japan,Myanmar,11.9
+Japan,Morocco,11.0
+Japan,Ethiopia,10.4
+Japan,Ghana,8.4
+Japan,Tanzania,12.3
+Japan,Russia,3.2
+Japan,Kazakhstan,4.9
+Japan,Azerbaijan,11.0
+Japan,New Zealand,6.0
+Japan,Finland,9.6
+Japan,Slovakia,8.2
+Japan,Bulgaria,8.9
+Japan,Serbia,7.5
+Japan,Latvia,11.7
+South Korea,China,0.0
+South Korea,India,11.1
+South Korea,USA,5.5
+South Korea,Germany,5.3
+South Korea,Netherlands,3.6
+South Korea,France,4.5
+South Korea,Italy,3.6
+South Korea,Spain,9.0
+South Korea,Japan,0.0
+South Korea,South Korea,0.0
+South Korea,Taiwan,0.0
+South Korea,Singapore,4.8
+South Korea,Thailand,8.3
+South Korea,Vietnam,11.4
+South Korea,Indonesia,14.7
+South Korea,Malaysia,8.8
+South Korea,Philippines,5.7
+South Korea,Australia,3.3
+South Korea,Sri Lanka,4.5
+South Korea,UAE,5.0
+South Korea,Saudi Arabia,4.3
+South Korea,Nigeria,2.2
+South Korea,Egypt,8.9
+South Korea,South Africa,5.6
+South Korea,Turkey,14.7
+South Korea,Iran,9.2
+South Korea,Kenya,11.1
+South Korea,Belgium,3.6
+South Korea,Sweden,13.3
+South Korea,Denmark,8.4
+South Korea,Norway,13.3
+South Korea,Switzerland,9.5
+South Korea,Poland,8.1
+South Korea,Czech Republic,7.7
+South Korea,Hungary,4.4
+South Korea,Romania,2.7
+South Korea,Austria,14.2
+South Korea,Portugal,8.2
+South Korea,Greece,12.7
+South Korea,UK,7.2
+South Korea,Canada,3.0
+South Korea,Mexico,10.2
+South Korea,Brazil,2.7
+South Korea,Argentina,3.9
+South Korea,Chile,9.3
+South Korea,Colombia,5.9
+South Korea,Qatar,14.9
+South Korea,Kuwait,3.5
+South Korea,Israel,11.9
+South Korea,Oman,9.9
+South Korea,Pakistan,12.3
+South Korea,Bangladesh,4.9
+South Korea,Myanmar,8.8
+South Korea,Morocco,7.9
+South Korea,Ethiopia,7.8
+South Korea,Ghana,13.2
+South Korea,Tanzania,14.9
+South Korea,Russia,6.0
+South Korea,Kazakhstan,10.1
+South Korea,Azerbaijan,9.9
+South Korea,New Zealand,11.6
+South Korea,Finland,14.3
+South Korea,Slovakia,4.7
+South Korea,Bulgaria,4.7
+South Korea,Serbia,10.6
+South Korea,Latvia,4.0
+Taiwan,China,0.0
+Taiwan,India,3.0
+Taiwan,USA,2.0
+Taiwan,Germany,7.9
+Taiwan,Netherlands,9.7
+Taiwan,France,5.8
+Taiwan,Italy,5.0
+Taiwan,Spain,11.2
+Taiwan,Japan,0.0
+Taiwan,South Korea,0.0
+Taiwan,Taiwan,0.0
+Taiwan,Singapore,10.9
+Taiwan,Thailand,14.0
+Taiwan,Vietnam,12.2
+Taiwan,Indonesia,10.1
+Taiwan,Malaysia,10.6
+Taiwan,Philippines,14.1
+Taiwan,Australia,7.5
+Taiwan,Sri Lanka,9.1
+Taiwan,UAE,10.4
+Taiwan,Saudi Arabia,13.8
+Taiwan,Nigeria,12.7
+Taiwan,Egypt,2.9
+Taiwan,South Africa,4.2
+Taiwan,Turkey,6.0
+Taiwan,Iran,11.7
+Taiwan,Kenya,9.4
+Taiwan,Belgium,5.8
+Taiwan,Sweden,3.6
+Taiwan,Denmark,11.0
+Taiwan,Norway,11.1
+Taiwan,Switzerland,14.3
+Taiwan,Poland,8.5
+Taiwan,Czech Republic,8.4
+Taiwan,Hungary,3.0
+Taiwan,Romania,2.5
+Taiwan,Austria,7.6
+Taiwan,Portugal,6.2
+Taiwan,Greece,5.3
+Taiwan,UK,3.2
+Taiwan,Canada,14.5
+Taiwan,Mexico,12.9
+Taiwan,Brazil,9.5
+Taiwan,Argentina,14.4
+Taiwan,Chile,15.0
+Taiwan,Colombia,10.7
+Taiwan,Qatar,5.5
+Taiwan,Kuwait,2.5
+Taiwan,Israel,11.8
+Taiwan,Oman,8.1
+Taiwan,Pakistan,10.5
+Taiwan,Bangladesh,13.9
+Taiwan,Myanmar,4.4
+Taiwan,Morocco,9.6
+Taiwan,Ethiopia,10.3
+Taiwan,Ghana,8.4
+Taiwan,Tanzania,3.2
+Taiwan,Russia,6.5
+Taiwan,Kazakhstan,6.3
+Taiwan,Azerbaijan,10.7
+Taiwan,New Zealand,13.2
+Taiwan,Finland,6.3
+Taiwan,Slovakia,11.0
+Taiwan,Bulgaria,5.7
+Taiwan,Serbia,14.3
+Taiwan,Latvia,12.6
+Singapore,China,9.2
+Singapore,India,7.9
+Singapore,USA,6.1
+Singapore,Germany,6.2
+Singapore,Netherlands,14.6
+Singapore,France,7.3
+Singapore,Italy,8.7
+Singapore,Spain,14.8
+Singapore,Japan,10.5
+Singapore,South Korea,9.1
+Singapore,Taiwan,7.4
+Singapore,Singapore,0.0
+Singapore,Thailand,0.0
+Singapore,Vietnam,0.0
+Singapore,Indonesia,0.0
+Singapore,Malaysia,0.0
+Singapore,Philippines,0.0
+Singapore,Australia,4.6
+Singapore,Sri Lanka,9.1
+Singapore,UAE,14.1
+Singapore,Saudi Arabia,7.7
+Singapore,Nigeria,11.1
+Singapore,Egypt,3.6
+Singapore,South Africa,14.7
+Singapore,Turkey,9.9
+Singapore,Iran,5.1
+Singapore,Kenya,4.1
+Singapore,Belgium,9.2
+Singapore,Sweden,9.2
+Singapore,Denmark,3.2
+Singapore,Norway,14.9
+Singapore,Switzerland,13.9
+Singapore,Poland,8.0
+Singapore,Czech Republic,3.5
+Singapore,Hungary,12.8
+Singapore,Romania,8.5
+Singapore,Austria,11.3
+Singapore,Portugal,8.6
+Singapore,Greece,5.6
+Singapore,UK,12.9
+Singapore,Canada,14.7
+Singapore,Mexico,5.2
+Singapore,Brazil,9.2
+Singapore,Argentina,7.0
+Singapore,Chile,14.0
+Singapore,Colombia,8.6
+Singapore,Qatar,13.4
+Singapore,Kuwait,13.2
+Singapore,Israel,5.6
+Singapore,Oman,12.3
+Singapore,Pakistan,7.4
+Singapore,Bangladesh,14.1
+Singapore,Myanmar,0.0
+Singapore,Morocco,12.7
+Singapore,Ethiopia,5.7
+Singapore,Ghana,5.9
+Singapore,Tanzania,9.6
+Singapore,Russia,15.0
+Singapore,Kazakhstan,8.4
+Singapore,Azerbaijan,3.9
+Singapore,New Zealand,9.0
+Singapore,Finland,6.5
+Singapore,Slovakia,9.2
+Singapore,Bulgaria,9.1
+Singapore,Serbia,7.9
+Singapore,Latvia,6.2
+Thailand,China,4.5
+Thailand,India,11.1
+Thailand,USA,9.4
+Thailand,Germany,5.0
+Thailand,Netherlands,12.1
+Thailand,France,2.6
+Thailand,Italy,11.7
+Thailand,Spain,11.2
+Thailand,Japan,12.5
+Thailand,South Korea,7.0
+Thailand,Taiwan,10.6
+Thailand,Singapore,3.0
+Thailand,Thailand,0.0
+Thailand,Vietnam,0.0
+Thailand,Indonesia,0.0
+Thailand,Malaysia,0.0
+Thailand,Philippines,0.0
+Thailand,Australia,13.3
+Thailand,Sri Lanka,13.4
+Thailand,UAE,7.7
+Thailand,Saudi Arabia,8.8
+Thailand,Nigeria,7.9
+Thailand,Egypt,11.4
+Thailand,South Africa,7.3
+Thailand,Turkey,10.5
+Thailand,Iran,4.0
+Thailand,Kenya,8.1
+Thailand,Belgium,14.6
+Thailand,Sweden,6.4
+Thailand,Denmark,11.0
+Thailand,Norway,10.4
+Thailand,Switzerland,13.1
+Thailand,Poland,13.1
+Thailand,Czech Republic,13.2
+Thailand,Hungary,6.9
+Thailand,Romania,6.1
+Thailand,Austria,11.3
+Thailand,Portugal,11.9
+Thailand,Greece,13.3
+Thailand,UK,2.5
+Thailand,Canada,2.9
+Thailand,Mexico,10.2
+Thailand,Brazil,14.0
+Thailand,Argentina,15.0
+Thailand,Chile,11.7
+Thailand,Colombia,7.6
+Thailand,Qatar,3.3
+Thailand,Kuwait,10.2
+Thailand,Israel,13.3
+Thailand,Oman,7.8
+Thailand,Pakistan,11.0
+Thailand,Bangladesh,13.7
+Thailand,Myanmar,0.0
+Thailand,Morocco,12.3
+Thailand,Ethiopia,5.8
+Thailand,Ghana,6.9
+Thailand,Tanzania,3.9
+Thailand,Russia,8.9
+Thailand,Kazakhstan,9.4
+Thailand,Azerbaijan,12.3
+Thailand,New Zealand,4.2
+Thailand,Finland,3.0
+Thailand,Slovakia,13.3
+Thailand,Bulgaria,10.1
+Thailand,Serbia,5.1
+Thailand,Latvia,13.9
+Vietnam,China,3.9
+Vietnam,India,8.0
+Vietnam,USA,5.3
+Vietnam,Germany,5.3
+Vietnam,Netherlands,2.1
+Vietnam,France,12.5
+Vietnam,Italy,13.7
+Vietnam,Spain,10.8
+Vietnam,Japan,4.1
+Vietnam,South Korea,7.7
+Vietnam,Taiwan,6.5
+Vietnam,Singapore,0.0
+Vietnam,Thailand,0.0
+Vietnam,Vietnam,0.0
+Vietnam,Indonesia,0.0
+Vietnam,Malaysia,0.0
+Vietnam,Philippines,1.4
+Vietnam,Australia,7.0
+Vietnam,Sri Lanka,8.3
+Vietnam,UAE,5.1
+Vietnam,Saudi Arabia,9.4
+Vietnam,Nigeria,9.5
+Vietnam,Egypt,14.9
+Vietnam,South Africa,5.8
+Vietnam,Turkey,14.7
+Vietnam,Iran,10.6
+Vietnam,Kenya,5.6
+Vietnam,Belgium,9.4
+Vietnam,Sweden,10.9
+Vietnam,Denmark,11.7
+Vietnam,Norway,2.6
+Vietnam,Switzerland,9.9
+Vietnam,Poland,8.5
+Vietnam,Czech Republic,13.8
+Vietnam,Hungary,5.7
+Vietnam,Romania,12.4
+Vietnam,Austria,9.9
+Vietnam,Portugal,6.6
+Vietnam,Greece,10.3
+Vietnam,UK,10.1
+Vietnam,Canada,10.8
+Vietnam,Mexico,11.4
+Vietnam,Brazil,10.6
+Vietnam,Argentina,12.9
+Vietnam,Chile,10.2
+Vietnam,Colombia,13.7
+Vietnam,Qatar,10.4
+Vietnam,Kuwait,6.0
+Vietnam,Israel,7.7
+Vietnam,Oman,9.5
+Vietnam,Pakistan,11.5
+Vietnam,Bangladesh,3.2
+Vietnam,Myanmar,0.0
+Vietnam,Morocco,11.7
+Vietnam,Ethiopia,4.3
+Vietnam,Ghana,3.7
+Vietnam,Tanzania,9.0
+Vietnam,Russia,14.6
+Vietnam,Kazakhstan,8.9
+Vietnam,Azerbaijan,13.9
+Vietnam,New Zealand,12.8
+Vietnam,Finland,5.3
+Vietnam,Slovakia,12.7
+Vietnam,Bulgaria,8.3
+Vietnam,Serbia,12.5
+Vietnam,Latvia,11.7
+Indonesia,China,6.4
+Indonesia,India,3.5
+Indonesia,USA,14.5
+Indonesia,Germany,3.8
+Indonesia,Netherlands,14.6
+Indonesia,France,13.2
+Indonesia,Italy,11.4
+Indonesia,Spain,14.7
+Indonesia,Japan,14.6
+Indonesia,South Korea,12.5
+Indonesia,Taiwan,6.8
+Indonesia,Singapore,0.0
+Indonesia,Thailand,0.0
+Indonesia,Vietnam,0.0
+Indonesia,Indonesia,0.0
+Indonesia,Malaysia,0.0
+Indonesia,Philippines,0.0
+Indonesia,Australia,10.7
+Indonesia,Sri Lanka,9.6
+Indonesia,UAE,12.7
+Indonesia,Saudi Arabia,14.2
+Indonesia,Nigeria,3.4
+Indonesia,Egypt,5.0
+Indonesia,South Africa,2.3
+Indonesia,Turkey,13.5
+Indonesia,Iran,9.3
+Indonesia,Kenya,13.9
+Indonesia,Belgium,4.9
+Indonesia,Sweden,2.8
+Indonesia,Denmark,12.7
+Indonesia,Norway,13.8
+Indonesia,Switzerland,5.9
+Indonesia,Poland,7.3
+Indonesia,Czech Republic,3.8
+Indonesia,Hungary,14.3
+Indonesia,Romania,6.0
+Indonesia,Austria,8.4
+Indonesia,Portugal,3.3
+Indonesia,Greece,13.5
+Indonesia,UK,3.8
+Indonesia,Canada,7.9
+Indonesia,Mexico,10.7
+Indonesia,Brazil,11.7
+Indonesia,Argentina,14.3
+Indonesia,Chile,7.4
+Indonesia,Colombia,11.6
+Indonesia,Qatar,4.0
+Indonesia,Kuwait,7.4
+Indonesia,Israel,3.3
+Indonesia,Oman,8.4
+Indonesia,Pakistan,7.3
+Indonesia,Bangladesh,14.4
+Indonesia,Myanmar,0.0
+Indonesia,Morocco,6.8
+Indonesia,Ethiopia,7.8
+Indonesia,Ghana,14.4
+Indonesia,Tanzania,13.1
+Indonesia,Russia,3.3
+Indonesia,Kazakhstan,10.9
+Indonesia,Azerbaijan,9.1
+Indonesia,New Zealand,14.7
+Indonesia,Finland,6.7
+Indonesia,Slovakia,7.2
+Indonesia,Bulgaria,4.5
+Indonesia,Serbia,3.6
+Indonesia,Latvia,13.0
+Malaysia,China,7.9
+Malaysia,India,10.6
+Malaysia,USA,10.3
+Malaysia,Germany,9.8
+Malaysia,Netherlands,2.3
+Malaysia,France,12.2
+Malaysia,Italy,5.2
+Malaysia,Spain,3.6
+Malaysia,Japan,9.3
+Malaysia,South Korea,2.9
+Malaysia,Taiwan,11.9
+Malaysia,Singapore,0.0
+Malaysia,Thailand,0.0
+Malaysia,Vietnam,1.7
+Malaysia,Indonesia,0.0
+Malaysia,Malaysia,0.0
+Malaysia,Philippines,1.0
+Malaysia,Australia,13.2
+Malaysia,Sri Lanka,3.9
+Malaysia,UAE,3.7
+Malaysia,Saudi Arabia,5.3
+Malaysia,Nigeria,4.3
+Malaysia,Egypt,10.6
+Malaysia,South Africa,2.3
+Malaysia,Turkey,2.2
+Malaysia,Iran,12.3
+Malaysia,Kenya,5.1
+Malaysia,Belgium,6.2
+Malaysia,Sweden,4.3
+Malaysia,Denmark,2.7
+Malaysia,Norway,11.6
+Malaysia,Switzerland,8.8
+Malaysia,Poland,11.7
+Malaysia,Czech Republic,8.2
+Malaysia,Hungary,12.1
+Malaysia,Romania,8.7
+Malaysia,Austria,3.4
+Malaysia,Portugal,8.5
+Malaysia,Greece,14.3
+Malaysia,UK,2.6
+Malaysia,Canada,12.2
+Malaysia,Mexico,13.3
+Malaysia,Brazil,8.8
+Malaysia,Argentina,8.0
+Malaysia,Chile,14.5
+Malaysia,Colombia,2.8
+Malaysia,Qatar,8.2
+Malaysia,Kuwait,7.2
+Malaysia,Israel,10.9
+Malaysia,Oman,8.4
+Malaysia,Pakistan,13.8
+Malaysia,Bangladesh,3.0
+Malaysia,Myanmar,0.0
+Malaysia,Morocco,9.9
+Malaysia,Ethiopia,2.9
+Malaysia,Ghana,5.6
+Malaysia,Tanzania,10.2
+Malaysia,Russia,9.1
+Malaysia,Kazakhstan,6.2
+Malaysia,Azerbaijan,14.9
+Malaysia,New Zealand,8.9
+Malaysia,Finland,7.9
+Malaysia,Slovakia,9.9
+Malaysia,Bulgaria,3.3
+Malaysia,Serbia,11.1
+Malaysia,Latvia,13.1
+Philippines,China,10.5
+Philippines,India,12.0
+Philippines,USA,11.4
+Philippines,Germany,4.8
+Philippines,Netherlands,7.9
+Philippines,France,5.0
+Philippines,Italy,6.4
+Philippines,Spain,7.9
+Philippines,Japan,7.4
+Philippines,South Korea,3.2
+Philippines,Taiwan,7.5
+Philippines,Singapore,0.0
+Philippines,Thailand,0.0
+Philippines,Vietnam,0.0
+Philippines,Indonesia,1.1
+Philippines,Malaysia,1.2
+Philippines,Philippines,0.0
+Philippines,Australia,3.3
+Philippines,Sri Lanka,11.6
+Philippines,UAE,12.6
+Philippines,Saudi Arabia,9.2
+Philippines,Nigeria,9.6
+Philippines,Egypt,9.3
+Philippines,South Africa,6.3
+Philippines,Turkey,3.6
+Philippines,Iran,6.6
+Philippines,Kenya,10.6
+Philippines,Belgium,11.8
+Philippines,Sweden,13.3
+Philippines,Denmark,11.4
+Philippines,Norway,14.6
+Philippines,Switzerland,9.8
+Philippines,Poland,6.6
+Philippines,Czech Republic,9.5
+Philippines,Hungary,4.8
+Philippines,Romania,10.5
+Philippines,Austria,4.9
+Philippines,Portugal,3.4
+Philippines,Greece,13.0
+Philippines,UK,6.8
+Philippines,Canada,11.9
+Philippines,Mexico,9.5
+Philippines,Brazil,12.5
+Philippines,Argentina,13.0
+Philippines,Chile,14.7
+Philippines,Colombia,12.6
+Philippines,Qatar,10.0
+Philippines,Kuwait,10.4
+Philippines,Israel,2.3
+Philippines,Oman,14.1
+Philippines,Pakistan,12.8
+Philippines,Bangladesh,5.5
+Philippines,Myanmar,0.0
+Philippines,Morocco,11.1
+Philippines,Ethiopia,6.0
+Philippines,Ghana,6.4
+Philippines,Tanzania,2.1
+Philippines,Russia,13.3
+Philippines,Kazakhstan,9.4
+Philippines,Azerbaijan,7.2
+Philippines,New Zealand,3.8
+Philippines,Finland,10.2
+Philippines,Slovakia,2.4
+Philippines,Bulgaria,11.7
+Philippines,Serbia,4.8
+Philippines,Latvia,7.5
+Australia,China,6.4
+Australia,India,6.8
+Australia,USA,11.4
+Australia,Germany,12.1
+Australia,Netherlands,9.4
+Australia,France,3.1
+Australia,Italy,2.7
+Australia,Spain,4.0
+Australia,Japan,10.0
+Australia,South Korea,10.8
+Australia,Taiwan,5.5
+Australia,Singapore,10.6
+Australia,Thailand,8.3
+Australia,Vietnam,7.7
+Australia,Indonesia,5.6
+Australia,Malaysia,11.8
+Australia,Philippines,3.5
+Australia,Australia,0.0
+Australia,Sri Lanka,7.6
+Australia,UAE,5.7
+Australia,Saudi Arabia,10.8
+Australia,Nigeria,8.3
+Australia,Egypt,10.7
+Australia,South Africa,2.6
+Australia,Turkey,7.1
+Australia,Iran,9.8
+Australia,Kenya,2.1
+Australia,Belgium,5.9
+Australia,Sweden,4.7
+Australia,Denmark,3.8
+Australia,Norway,5.3
+Australia,Switzerland,6.3
+Australia,Poland,2.1
+Australia,Czech Republic,11.7
+Australia,Hungary,4.3
+Australia,Romania,6.9
+Australia,Austria,11.1
+Australia,Portugal,8.5
+Australia,Greece,12.8
+Australia,UK,12.5
+Australia,Canada,2.9
+Australia,Mexico,13.2
+Australia,Brazil,2.5
+Australia,Argentina,2.2
+Australia,Chile,14.0
+Australia,Colombia,13.2
+Australia,Qatar,9.5
+Australia,Kuwait,9.5
+Australia,Israel,11.2
+Australia,Oman,7.4
+Australia,Pakistan,3.5
+Australia,Bangladesh,2.3
+Australia,Myanmar,6.2
+Australia,Morocco,12.4
+Australia,Ethiopia,10.0
+Australia,Ghana,12.8
+Australia,Tanzania,14.0
+Australia,Russia,3.1
+Australia,Kazakhstan,13.0
+Australia,Azerbaijan,5.2
+Australia,New Zealand,0.0
+Australia,Finland,8.8
+Australia,Slovakia,7.1
+Australia,Bulgaria,6.0
+Australia,Serbia,6.4
+Australia,Latvia,6.3
+Sri Lanka,China,4.2
+Sri Lanka,India,0.0
+Sri Lanka,USA,3.5
+Sri Lanka,Germany,8.6
+Sri Lanka,Netherlands,13.8
+Sri Lanka,France,6.5
+Sri Lanka,Italy,11.5
+Sri Lanka,Spain,12.6
+Sri Lanka,Japan,12.6
+Sri Lanka,South Korea,5.1
+Sri Lanka,Taiwan,3.9
+Sri Lanka,Singapore,4.6
+Sri Lanka,Thailand,9.8
+Sri Lanka,Vietnam,11.9
+Sri Lanka,Indonesia,10.5
+Sri Lanka,Malaysia,4.3
+Sri Lanka,Philippines,12.0
+Sri Lanka,Australia,8.4
+Sri Lanka,Sri Lanka,0.0
+Sri Lanka,UAE,11.8
+Sri Lanka,Saudi Arabia,11.9
+Sri Lanka,Nigeria,7.8
+Sri Lanka,Egypt,14.0
+Sri Lanka,South Africa,9.3
+Sri Lanka,Turkey,10.3
+Sri Lanka,Iran,10.1
+Sri Lanka,Kenya,13.2
+Sri Lanka,Belgium,10.2
+Sri Lanka,Sweden,4.0
+Sri Lanka,Denmark,2.9
+Sri Lanka,Norway,7.7
+Sri Lanka,Switzerland,5.9
+Sri Lanka,Poland,5.6
+Sri Lanka,Czech Republic,2.7
+Sri Lanka,Hungary,8.6
+Sri Lanka,Romania,6.0
+Sri Lanka,Austria,7.9
+Sri Lanka,Portugal,2.7
+Sri Lanka,Greece,12.8
+Sri Lanka,UK,3.0
+Sri Lanka,Canada,13.2
+Sri Lanka,Mexico,13.1
+Sri Lanka,Brazil,10.0
+Sri Lanka,Argentina,8.6
+Sri Lanka,Chile,8.0
+Sri Lanka,Colombia,9.2
+Sri Lanka,Qatar,12.3
+Sri Lanka,Kuwait,13.6
+Sri Lanka,Israel,7.8
+Sri Lanka,Oman,12.5
+Sri Lanka,Pakistan,0.0
+Sri Lanka,Bangladesh,0.0
+Sri Lanka,Myanmar,8.2
+Sri Lanka,Morocco,4.0
+Sri Lanka,Ethiopia,2.8
+Sri Lanka,Ghana,3.3
+Sri Lanka,Tanzania,13.7
+Sri Lanka,Russia,6.5
+Sri Lanka,Kazakhstan,11.3
+Sri Lanka,Azerbaijan,8.6
+Sri Lanka,New Zealand,4.2
+Sri Lanka,Finland,5.2
+Sri Lanka,Slovakia,7.7
+Sri Lanka,Bulgaria,7.7
+Sri Lanka,Serbia,8.8
+Sri Lanka,Latvia,4.1
+UAE,China,6.8
+UAE,India,5.7
+UAE,USA,7.3
+UAE,Germany,6.4
+UAE,Netherlands,9.8
+UAE,France,12.3
+UAE,Italy,10.4
+UAE,Spain,2.9
+UAE,Japan,3.2
+UAE,South Korea,10.8
+UAE,Taiwan,5.7
+UAE,Singapore,11.4
+UAE,Thailand,10.5
+UAE,Vietnam,13.8
+UAE,Indonesia,13.4
+UAE,Malaysia,6.3
+UAE,Philippines,9.6
+UAE,Australia,3.8
+UAE,Sri Lanka,6.5
+UAE,UAE,0.0
+UAE,Saudi Arabia,2.4
+UAE,Nigeria,7.1
+UAE,Egypt,9.7
+UAE,South Africa,14.2
+UAE,Turkey,0.0
+UAE,Iran,0.0
+UAE,Kenya,12.3
+UAE,Belgium,12.6
+UAE,Sweden,10.7
+UAE,Denmark,12.8
+UAE,Norway,11.6
+UAE,Switzerland,10.9
+UAE,Poland,8.8
+UAE,Czech Republic,10.4
+UAE,Hungary,7.5
+UAE,Romania,6.7
+UAE,Austria,6.7
+UAE,Portugal,4.3
+UAE,Greece,4.8
+UAE,UK,14.3
+UAE,Canada,8.3
+UAE,Mexico,4.9
+UAE,Brazil,3.8
+UAE,Argentina,3.0
+UAE,Chile,13.0
+UAE,Colombia,3.3
+UAE,Qatar,0.0
+UAE,Kuwait,2.8
+UAE,Israel,0.0
+UAE,Oman,0.0
+UAE,Pakistan,12.0
+UAE,Bangladesh,3.7
+UAE,Myanmar,6.9
+UAE,Morocco,4.1
+UAE,Ethiopia,12.8
+UAE,Ghana,12.0
+UAE,Tanzania,12.5
+UAE,Russia,4.2
+UAE,Kazakhstan,7.7
+UAE,Azerbaijan,7.3
+UAE,New Zealand,10.8
+UAE,Finland,5.1
+UAE,Slovakia,7.8
+UAE,Bulgaria,5.7
+UAE,Serbia,11.7
+UAE,Latvia,7.8
+Saudi Arabia,China,8.9
+Saudi Arabia,India,6.0
+Saudi Arabia,USA,12.5
+Saudi Arabia,Germany,8.1
+Saudi Arabia,Netherlands,12.9
+Saudi Arabia,France,6.8
+Saudi Arabia,Italy,14.3
+Saudi Arabia,Spain,14.8
+Saudi Arabia,Japan,8.0
+Saudi Arabia,South Korea,5.7
+Saudi Arabia,Taiwan,7.0
+Saudi Arabia,Singapore,8.9
+Saudi Arabia,Thailand,14.6
+Saudi Arabia,Vietnam,12.6
+Saudi Arabia,Indonesia,12.4
+Saudi Arabia,Malaysia,3.8
+Saudi Arabia,Philippines,5.3
+Saudi Arabia,Australia,10.3
+Saudi Arabia,Sri Lanka,13.4
+Saudi Arabia,UAE,0.0
+Saudi Arabia,Saudi Arabia,0.0
+Saudi Arabia,Nigeria,3.3
+Saudi Arabia,Egypt,13.0
+Saudi Arabia,South Africa,13.1
+Saudi Arabia,Turkey,0.0
+Saudi Arabia,Iran,0.0
+Saudi Arabia,Kenya,5.5
+Saudi Arabia,Belgium,13.8
+Saudi Arabia,Sweden,3.9
+Saudi Arabia,Denmark,7.7
+Saudi Arabia,Norway,14.3
+Saudi Arabia,Switzerland,4.9
+Saudi Arabia,Poland,7.9
+Saudi Arabia,Czech Republic,6.5
+Saudi Arabia,Hungary,2.3
+Saudi Arabia,Romania,2.7
+Saudi Arabia,Austria,8.5
+Saudi Arabia,Portugal,5.1
+Saudi Arabia,Greece,14.9
+Saudi Arabia,UK,6.9
+Saudi Arabia,Canada,2.4
+Saudi Arabia,Mexico,14.1
+Saudi Arabia,Brazil,12.9
+Saudi Arabia,Argentina,10.4
+Saudi Arabia,Chile,12.3
+Saudi Arabia,Colombia,3.8
+Saudi Arabia,Qatar,0.0
+Saudi Arabia,Kuwait,2.4
+Saudi Arabia,Israel,0.0
+Saudi Arabia,Oman,0.0
+Saudi Arabia,Pakistan,7.8
+Saudi Arabia,Bangladesh,2.1
+Saudi Arabia,Myanmar,3.0
+Saudi Arabia,Morocco,5.3
+Saudi Arabia,Ethiopia,12.9
+Saudi Arabia,Ghana,9.1
+Saudi Arabia,Tanzania,11.5
+Saudi Arabia,Russia,8.9
+Saudi Arabia,Kazakhstan,3.4
+Saudi Arabia,Azerbaijan,5.7
+Saudi Arabia,New Zealand,5.9
+Saudi Arabia,Finland,2.6
+Saudi Arabia,Slovakia,7.5
+Saudi Arabia,Bulgaria,12.3
+Saudi Arabia,Serbia,7.9
+Saudi Arabia,Latvia,3.4
+Nigeria,China,13.8
+Nigeria,India,9.8
+Nigeria,USA,2.2
+Nigeria,Germany,8.7
+Nigeria,Netherlands,5.1
+Nigeria,France,3.9
+Nigeria,Italy,7.6
+Nigeria,Spain,10.0
+Nigeria,Japan,5.1
+Nigeria,South Korea,7.4
+Nigeria,Taiwan,10.6
+Nigeria,Singapore,3.1
+Nigeria,Thailand,14.7
+Nigeria,Vietnam,2.9
+Nigeria,Indonesia,8.8
+Nigeria,Malaysia,8.6
+Nigeria,Philippines,14.8
+Nigeria,Australia,9.2
+Nigeria,Sri Lanka,7.1
+Nigeria,UAE,8.1
+Nigeria,Saudi Arabia,10.3
+Nigeria,Nigeria,0.0
+Nigeria,Egypt,1.5
+Nigeria,South Africa,0.0
+Nigeria,Turkey,12.3
+Nigeria,Iran,6.5
+Nigeria,Kenya,0.0
+Nigeria,Belgium,10.2
+Nigeria,Sweden,12.0
+Nigeria,Denmark,11.6
+Nigeria,Norway,6.3
+Nigeria,Switzerland,2.6
+Nigeria,Poland,9.1
+Nigeria,Czech Republic,12.6
+Nigeria,Hungary,4.3
+Nigeria,Romania,12.1
+Nigeria,Austria,8.0
+Nigeria,Portugal,11.0
+Nigeria,Greece,10.2
+Nigeria,UK,12.5
+Nigeria,Canada,2.8
+Nigeria,Mexico,12.1
+Nigeria,Brazil,7.9
+Nigeria,Argentina,5.8
+Nigeria,Chile,2.6
+Nigeria,Colombia,4.6
+Nigeria,Qatar,2.5
+Nigeria,Kuwait,14.1
+Nigeria,Israel,8.7
+Nigeria,Oman,14.9
+Nigeria,Pakistan,9.1
+Nigeria,Bangladesh,5.3
+Nigeria,Myanmar,11.8
+Nigeria,Morocco,0.0
+Nigeria,Ethiopia,0.0
+Nigeria,Ghana,0.0
+Nigeria,Tanzania,1.7
+Nigeria,Russia,3.6
+Nigeria,Kazakhstan,6.8
+Nigeria,Azerbaijan,13.6
+Nigeria,New Zealand,11.7
+Nigeria,Finland,13.6
+Nigeria,Slovakia,7.0
+Nigeria,Bulgaria,14.7
+Nigeria,Serbia,8.5
+Nigeria,Latvia,8.5
+Egypt,China,14.0
+Egypt,India,8.8
+Egypt,USA,12.4
+Egypt,Germany,11.5
+Egypt,Netherlands,3.0
+Egypt,France,9.8
+Egypt,Italy,12.7
+Egypt,Spain,9.1
+Egypt,Japan,6.2
+Egypt,South Korea,3.0
+Egypt,Taiwan,10.6
+Egypt,Singapore,6.0
+Egypt,Thailand,9.8
+Egypt,Vietnam,7.5
+Egypt,Indonesia,11.0
+Egypt,Malaysia,6.6
+Egypt,Philippines,2.6
+Egypt,Australia,13.3
+Egypt,Sri Lanka,6.6
+Egypt,UAE,15.0
+Egypt,Saudi Arabia,5.6
+Egypt,Nigeria,2.9
+Egypt,Egypt,0.0
+Egypt,South Africa,0.0
+Egypt,Turkey,10.3
+Egypt,Iran,6.7
+Egypt,Kenya,2.4
+Egypt,Belgium,14.4
+Egypt,Sweden,3.9
+Egypt,Denmark,9.9
+Egypt,Norway,12.2
+Egypt,Switzerland,2.5
+Egypt,Poland,2.9
+Egypt,Czech Republic,12.1
+Egypt,Hungary,6.8
+Egypt,Romania,7.0
+Egypt,Austria,9.4
+Egypt,Portugal,9.9
+Egypt,Greece,10.8
+Egypt,UK,14.3
+Egypt,Canada,6.8
+Egypt,Mexico,11.9
+Egypt,Brazil,9.5
+Egypt,Argentina,8.9
+Egypt,Chile,7.2
+Egypt,Colombia,10.4
+Egypt,Qatar,5.2
+Egypt,Kuwait,3.5
+Egypt,Israel,11.6
+Egypt,Oman,8.5
+Egypt,Pakistan,7.0
+Egypt,Bangladesh,9.3
+Egypt,Myanmar,5.4
+Egypt,Morocco,0.0
+Egypt,Ethiopia,0.0
+Egypt,Ghana,1.6
+Egypt,Tanzania,2.0
+Egypt,Russia,3.6
+Egypt,Kazakhstan,13.1
+Egypt,Azerbaijan,7.9
+Egypt,New Zealand,13.7
+Egypt,Finland,7.8
+Egypt,Slovakia,3.1
+Egypt,Bulgaria,10.9
+Egypt,Serbia,13.0
+Egypt,Latvia,6.2
+South Africa,China,6.5
+South Africa,India,2.8
+South Africa,USA,9.0
+South Africa,Germany,13.6
+South Africa,Netherlands,13.1
+South Africa,France,11.3
+South Africa,Italy,14.1
+South Africa,Spain,10.3
+South Africa,Japan,12.3
+South Africa,South Korea,8.6
+South Africa,Taiwan,3.6
+South Africa,Singapore,4.6
+South Africa,Thailand,3.8
+South Africa,Vietnam,12.3
+South Africa,Indonesia,2.3
+South Africa,Malaysia,9.2
+South Africa,Philippines,6.8
+South Africa,Australia,12.4
+South Africa,Sri Lanka,9.2
+South Africa,UAE,10.0
+South Africa,Saudi Arabia,3.1
+South Africa,Nigeria,0.0
+South Africa,Egypt,2.4
+South Africa,South Africa,0.0
+South Africa,Turkey,8.8
+South Africa,Iran,12.0
+South Africa,Kenya,1.1
+South Africa,Belgium,14.6
+South Africa,Sweden,10.4
+South Africa,Denmark,7.8
+South Africa,Norway,10.8
+South Africa,Switzerland,6.5
+South Africa,Poland,13.4
+South Africa,Czech Republic,12.1
+South Africa,Hungary,10.3
+South Africa,Romania,4.4
+South Africa,Austria,14.6
+South Africa,Portugal,7.6
+South Africa,Greece,13.8
+South Africa,UK,2.7
+South Africa,Canada,3.6
+South Africa,Mexico,4.0
+South Africa,Brazil,4.1
+South Africa,Argentina,6.2
+South Africa,Chile,11.2
+South Africa,Colombia,6.5
+South Africa,Qatar,14.2
+South Africa,Kuwait,13.6
+South Africa,Israel,13.0
+South Africa,Oman,5.3
+South Africa,Pakistan,10.3
+South Africa,Bangladesh,9.2
+South Africa,Myanmar,3.6
+South Africa,Morocco,0.0
+South Africa,Ethiopia,0.0
+South Africa,Ghana,0.0
+South Africa,Tanzania,0.0
+South Africa,Russia,14.2
+South Africa,Kazakhstan,4.0
+South Africa,Azerbaijan,10.6
+South Africa,New Zealand,11.4
+South Africa,Finland,9.9
+South Africa,Slovakia,13.0
+South Africa,Bulgaria,9.3
+South Africa,Serbia,12.7
+South Africa,Latvia,2.4
+Turkey,China,2.6
+Turkey,India,10.3
+Turkey,USA,9.5
+Turkey,Germany,10.5
+Turkey,Netherlands,12.0
+Turkey,France,7.4
+Turkey,Italy,10.3
+Turkey,Spain,8.5
+Turkey,Japan,10.2
+Turkey,South Korea,5.8
+Turkey,Taiwan,14.4
+Turkey,Singapore,8.3
+Turkey,Thailand,12.5
+Turkey,Vietnam,10.9
+Turkey,Indonesia,5.9
+Turkey,Malaysia,2.9
+Turkey,Philippines,2.8
+Turkey,Australia,7.7
+Turkey,Sri Lanka,8.3
+Turkey,UAE,0.0
+Turkey,Saudi Arabia,0.0
+Turkey,Nigeria,6.1
+Turkey,Egypt,11.3
+Turkey,South Africa,11.5
+Turkey,Turkey,0.0
+Turkey,Iran,3.0
+Turkey,Kenya,3.7
+Turkey,Belgium,6.8
+Turkey,Sweden,9.3
+Turkey,Denmark,6.1
+Turkey,Norway,8.1
+Turkey,Switzerland,5.5
+Turkey,Poland,5.2
+Turkey,Czech Republic,3.3
+Turkey,Hungary,5.8
+Turkey,Romania,7.0
+Turkey,Austria,10.0
+Turkey,Portugal,5.2
+Turkey,Greece,13.2
+Turkey,UK,4.1
+Turkey,Canada,6.3
+Turkey,Mexico,9.5
+Turkey,Brazil,6.1
+Turkey,Argentina,11.9
+Turkey,Chile,8.5
+Turkey,Colombia,8.7
+Turkey,Qatar,0.0
+Turkey,Kuwait,0.0
+Turkey,Israel,0.0
+Turkey,Oman,2.0
+Turkey,Pakistan,14.6
+Turkey,Bangladesh,4.8
+Turkey,Myanmar,6.6
+Turkey,Morocco,2.7
+Turkey,Ethiopia,8.4
+Turkey,Ghana,13.5
+Turkey,Tanzania,10.5
+Turkey,Russia,8.1
+Turkey,Kazakhstan,9.0
+Turkey,Azerbaijan,13.0
+Turkey,New Zealand,7.6
+Turkey,Finland,13.5
+Turkey,Slovakia,11.5
+Turkey,Bulgaria,11.9
+Turkey,Serbia,6.8
+Turkey,Latvia,7.2
+Iran,China,9.4
+Iran,India,4.5
+Iran,USA,9.2
+Iran,Germany,3.0
+Iran,Netherlands,8.6
+Iran,France,11.9
+Iran,Italy,5.6
+Iran,Spain,14.9
+Iran,Japan,10.8
+Iran,South Korea,3.5
+Iran,Taiwan,14.7
+Iran,Singapore,7.1
+Iran,Thailand,12.3
+Iran,Vietnam,6.4
+Iran,Indonesia,14.2
+Iran,Malaysia,11.8
+Iran,Philippines,4.6
+Iran,Australia,8.6
+Iran,Sri Lanka,8.5
+Iran,UAE,0.0
+Iran,Saudi Arabia,0.0
+Iran,Nigeria,6.3
+Iran,Egypt,8.2
+Iran,South Africa,7.9
+Iran,Turkey,0.0
+Iran,Iran,0.0
+Iran,Kenya,8.7
+Iran,Belgium,6.3
+Iran,Sweden,10.0
+Iran,Denmark,4.1
+Iran,Norway,14.9
+Iran,Switzerland,11.6
+Iran,Poland,5.9
+Iran,Czech Republic,6.4
+Iran,Hungary,12.8
+Iran,Romania,8.9
+Iran,Austria,11.2
+Iran,Portugal,5.9
+Iran,Greece,12.6
+Iran,UK,6.8
+Iran,Canada,10.8
+Iran,Mexico,14.7
+Iran,Brazil,9.6
+Iran,Argentina,12.4
+Iran,Chile,11.4
+Iran,Colombia,10.9
+Iran,Qatar,0.0
+Iran,Kuwait,0.0
+Iran,Israel,2.6
+Iran,Oman,0.0
+Iran,Pakistan,9.5
+Iran,Bangladesh,11.4
+Iran,Myanmar,9.6
+Iran,Morocco,4.2
+Iran,Ethiopia,10.2
+Iran,Ghana,10.1
+Iran,Tanzania,12.9
+Iran,Russia,3.9
+Iran,Kazakhstan,10.8
+Iran,Azerbaijan,2.4
+Iran,New Zealand,14.3
+Iran,Finland,3.4
+Iran,Slovakia,2.2
+Iran,Bulgaria,6.1
+Iran,Serbia,4.0
+Iran,Latvia,11.0
+Kenya,China,7.3
+Kenya,India,12.1
+Kenya,USA,14.0
+Kenya,Germany,13.3
+Kenya,Netherlands,11.6
+Kenya,France,2.8
+Kenya,Italy,3.8
+Kenya,Spain,4.7
+Kenya,Japan,6.2
+Kenya,South Korea,10.6
+Kenya,Taiwan,8.8
+Kenya,Singapore,6.1
+Kenya,Thailand,4.3
+Kenya,Vietnam,13.9
+Kenya,Indonesia,6.5
+Kenya,Malaysia,6.6
+Kenya,Philippines,12.0
+Kenya,Australia,11.4
+Kenya,Sri Lanka,10.4
+Kenya,UAE,11.0
+Kenya,Saudi Arabia,9.9
+Kenya,Nigeria,0.0
+Kenya,Egypt,0.0
+Kenya,South Africa,0.0
+Kenya,Turkey,4.9
+Kenya,Iran,14.6
+Kenya,Kenya,0.0
+Kenya,Belgium,5.9
+Kenya,Sweden,5.8
+Kenya,Denmark,4.7
+Kenya,Norway,11.2
+Kenya,Switzerland,6.1
+Kenya,Poland,6.5
+Kenya,Czech Republic,14.1
+Kenya,Hungary,12.3
+Kenya,Romania,5.6
+Kenya,Austria,3.6
+Kenya,Portugal,10.8
+Kenya,Greece,6.9
+Kenya,UK,14.7
+Kenya,Canada,12.6
+Kenya,Mexico,14.4
+Kenya,Brazil,12.5
+Kenya,Argentina,5.8
+Kenya,Chile,5.7
+Kenya,Colombia,11.3
+Kenya,Qatar,6.5
+Kenya,Kuwait,7.8
+Kenya,Israel,5.3
+Kenya,Oman,8.2
+Kenya,Pakistan,4.6
+Kenya,Bangladesh,9.0
+Kenya,Myanmar,14.1
+Kenya,Morocco,0.0
+Kenya,Ethiopia,0.0
+Kenya,Ghana,0.0
+Kenya,Tanzania,0.0
+Kenya,Russia,5.2
+Kenya,Kazakhstan,10.7
+Kenya,Azerbaijan,8.9
+Kenya,New Zealand,10.3
+Kenya,Finland,2.7
+Kenya,Slovakia,7.4
+Kenya,Bulgaria,11.3
+Kenya,Serbia,3.3
+Kenya,Latvia,12.0
+Belgium,China,2.1
+Belgium,India,9.2
+Belgium,USA,14.1
+Belgium,Germany,0.0
+Belgium,Netherlands,2.8
+Belgium,France,0.0
+Belgium,Italy,0.0
+Belgium,Spain,1.6
+Belgium,Japan,10.4
+Belgium,South Korea,13.8
+Belgium,Taiwan,3.2
+Belgium,Singapore,9.5
+Belgium,Thailand,9.0
+Belgium,Vietnam,11.4
+Belgium,Indonesia,14.2
+Belgium,Malaysia,13.9
+Belgium,Philippines,4.3
+Belgium,Australia,13.5
+Belgium,Sri Lanka,4.3
+Belgium,UAE,14.0
+Belgium,Saudi Arabia,15.0
+Belgium,Nigeria,7.2
+Belgium,Egypt,8.4
+Belgium,South Africa,14.2
+Belgium,Turkey,14.5
+Belgium,Iran,14.0
+Belgium,Kenya,13.4
+Belgium,Belgium,0.0
+Belgium,Sweden,0.0
+Belgium,Denmark,0.0
+Belgium,Norway,0.0
+Belgium,Switzerland,1.6
+Belgium,Poland,2.1
+Belgium,Czech Republic,0.0
+Belgium,Hungary,2.7
+Belgium,Romania,0.0
+Belgium,Austria,0.0
+Belgium,Portugal,0.0
+Belgium,Greece,0.0
+Belgium,UK,0.0
+Belgium,Canada,5.3
+Belgium,Mexico,4.4
+Belgium,Brazil,11.6
+Belgium,Argentina,12.3
+Belgium,Chile,9.4
+Belgium,Colombia,11.8
+Belgium,Qatar,4.3
+Belgium,Kuwait,13.1
+Belgium,Israel,13.7
+Belgium,Oman,12.8
+Belgium,Pakistan,8.7
+Belgium,Bangladesh,3.1
+Belgium,Myanmar,10.7
+Belgium,Morocco,4.4
+Belgium,Ethiopia,3.8
+Belgium,Ghana,6.2
+Belgium,Tanzania,5.2
+Belgium,Russia,0.0
+Belgium,Kazakhstan,5.1
+Belgium,Azerbaijan,11.8
+Belgium,New Zealand,14.4
+Belgium,Finland,0.0
+Belgium,Slovakia,0.0
+Belgium,Bulgaria,0.0
+Belgium,Serbia,0.0
+Belgium,Latvia,0.0
+Sweden,China,2.8
+Sweden,India,3.5
+Sweden,USA,6.0
+Sweden,Germany,0.0
+Sweden,Netherlands,0.0
+Sweden,France,2.4
+Sweden,Italy,0.0
+Sweden,Spain,0.0
+Sweden,Japan,13.9
+Sweden,South Korea,5.8
+Sweden,Taiwan,10.0
+Sweden,Singapore,4.8
+Sweden,Thailand,3.7
+Sweden,Vietnam,4.0
+Sweden,Indonesia,11.7
+Sweden,Malaysia,9.9
+Sweden,Philippines,7.4
+Sweden,Australia,9.1
+Sweden,Sri Lanka,8.1
+Sweden,UAE,9.0
+Sweden,Saudi Arabia,10.6
+Sweden,Nigeria,4.8
+Sweden,Egypt,5.2
+Sweden,South Africa,11.8
+Sweden,Turkey,13.4
+Sweden,Iran,3.1
+Sweden,Kenya,7.8
+Sweden,Belgium,0.0
+Sweden,Sweden,0.0
+Sweden,Denmark,0.0
+Sweden,Norway,0.0
+Sweden,Switzerland,0.0
+Sweden,Poland,0.0
+Sweden,Czech Republic,0.0
+Sweden,Hungary,0.0
+Sweden,Romania,0.0
+Sweden,Austria,0.0
+Sweden,Portugal,0.0
+Sweden,Greece,0.0
+Sweden,UK,0.0
+Sweden,Canada,9.6
+Sweden,Mexico,3.2
+Sweden,Brazil,8.6
+Sweden,Argentina,12.5
+Sweden,Chile,7.9
+Sweden,Colombia,8.7
+Sweden,Qatar,7.9
+Sweden,Kuwait,2.8
+Sweden,Israel,8.0
+Sweden,Oman,12.5
+Sweden,Pakistan,11.4
+Sweden,Bangladesh,7.1
+Sweden,Myanmar,12.6
+Sweden,Morocco,11.7
+Sweden,Ethiopia,9.5
+Sweden,Ghana,2.6
+Sweden,Tanzania,6.5
+Sweden,Russia,0.0
+Sweden,Kazakhstan,14.9
+Sweden,Azerbaijan,14.1
+Sweden,New Zealand,2.9
+Sweden,Finland,1.1
+Sweden,Slovakia,0.0
+Sweden,Bulgaria,0.0
+Sweden,Serbia,0.0
+Sweden,Latvia,2.3
+Denmark,China,7.5
+Denmark,India,14.9
+Denmark,USA,7.0
+Denmark,Germany,2.8
+Denmark,Netherlands,0.0
+Denmark,France,0.0
+Denmark,Italy,0.0
+Denmark,Spain,0.0
+Denmark,Japan,10.5
+Denmark,South Korea,6.5
+Denmark,Taiwan,4.3
+Denmark,Singapore,9.0
+Denmark,Thailand,8.9
+Denmark,Vietnam,11.5
+Denmark,Indonesia,4.9
+Denmark,Malaysia,2.0
+Denmark,Philippines,2.3
+Denmark,Australia,5.9
+Denmark,Sri Lanka,10.8
+Denmark,UAE,9.1
+Denmark,Saudi Arabia,8.9
+Denmark,Nigeria,12.7
+Denmark,Egypt,5.2
+Denmark,South Africa,6.5
+Denmark,Turkey,5.6
+Denmark,Iran,14.2
+Denmark,Kenya,11.4
+Denmark,Belgium,0.0
+Denmark,Sweden,1.8
+Denmark,Denmark,0.0
+Denmark,Norway,0.0
+Denmark,Switzerland,1.0
+Denmark,Poland,0.0
+Denmark,Czech Republic,0.0
+Denmark,Hungary,0.0
+Denmark,Romania,0.0
+Denmark,Austria,0.0
+Denmark,Portugal,0.0
+Denmark,Greece,0.0
+Denmark,UK,0.0
+Denmark,Canada,5.0
+Denmark,Mexico,4.8
+Denmark,Brazil,13.2
+Denmark,Argentina,2.7
+Denmark,Chile,8.6
+Denmark,Colombia,5.8
+Denmark,Qatar,12.6
+Denmark,Kuwait,11.5
+Denmark,Israel,6.1
+Denmark,Oman,9.8
+Denmark,Pakistan,10.7
+Denmark,Bangladesh,6.2
+Denmark,Myanmar,5.9
+Denmark,Morocco,3.9
+Denmark,Ethiopia,10.6
+Denmark,Ghana,4.9
+Denmark,Tanzania,5.9
+Denmark,Russia,0.0
+Denmark,Kazakhstan,14.3
+Denmark,Azerbaijan,13.4
+Denmark,New Zealand,13.9
+Denmark,Finland,0.0
+Denmark,Slovakia,0.0
+Denmark,Bulgaria,0.0
+Denmark,Serbia,2.9
+Denmark,Latvia,0.0
+Norway,China,12.2
+Norway,India,6.1
+Norway,USA,7.4
+Norway,Germany,0.0
+Norway,Netherlands,0.0
+Norway,France,0.0
+Norway,Italy,0.0
+Norway,Spain,1.6
+Norway,Japan,11.2
+Norway,South Korea,12.5
+Norway,Taiwan,13.9
+Norway,Singapore,9.3
+Norway,Thailand,14.6
+Norway,Vietnam,9.2
+Norway,Indonesia,3.7
+Norway,Malaysia,5.2
+Norway,Philippines,4.6
+Norway,Australia,10.4
+Norway,Sri Lanka,14.0
+Norway,UAE,13.0
+Norway,Saudi Arabia,3.2
+Norway,Nigeria,11.4
+Norway,Egypt,4.5
+Norway,South Africa,5.5
+Norway,Turkey,10.8
+Norway,Iran,9.8
+Norway,Kenya,13.4
+Norway,Belgium,0.0
+Norway,Sweden,0.0
+Norway,Denmark,0.0
+Norway,Norway,0.0
+Norway,Switzerland,0.0
+Norway,Poland,0.0
+Norway,Czech Republic,1.7
+Norway,Hungary,1.0
+Norway,Romania,2.9
+Norway,Austria,0.0
+Norway,Portugal,2.0
+Norway,Greece,0.0
+Norway,UK,0.0
+Norway,Canada,4.7
+Norway,Mexico,13.9
+Norway,Brazil,9.2
+Norway,Argentina,12.1
+Norway,Chile,6.9
+Norway,Colombia,8.9
+Norway,Qatar,6.7
+Norway,Kuwait,5.4
+Norway,Israel,8.7
+Norway,Oman,8.5
+Norway,Pakistan,3.3
+Norway,Bangladesh,14.8
+Norway,Myanmar,8.1
+Norway,Morocco,12.9
+Norway,Ethiopia,13.9
+Norway,Ghana,6.8
+Norway,Tanzania,7.4
+Norway,Russia,0.0
+Norway,Kazakhstan,4.9
+Norway,Azerbaijan,3.9
+Norway,New Zealand,5.4
+Norway,Finland,2.2
+Norway,Slovakia,0.0
+Norway,Bulgaria,0.0
+Norway,Serbia,0.0
+Norway,Latvia,0.0
+Switzerland,China,12.8
+Switzerland,India,8.5
+Switzerland,USA,10.5
+Switzerland,Germany,0.0
+Switzerland,Netherlands,0.0
+Switzerland,France,2.9
+Switzerland,Italy,0.0
+Switzerland,Spain,0.0
+Switzerland,Japan,4.2
+Switzerland,South Korea,12.3
+Switzerland,Taiwan,4.2
+Switzerland,Singapore,11.4
+Switzerland,Thailand,8.3
+Switzerland,Vietnam,13.9
+Switzerland,Indonesia,9.0
+Switzerland,Malaysia,10.3
+Switzerland,Philippines,2.8
+Switzerland,Australia,2.4
+Switzerland,Sri Lanka,13.0
+Switzerland,UAE,14.3
+Switzerland,Saudi Arabia,10.7
+Switzerland,Nigeria,11.9
+Switzerland,Egypt,7.4
+Switzerland,South Africa,13.0
+Switzerland,Turkey,5.0
+Switzerland,Iran,11.2
+Switzerland,Kenya,2.1
+Switzerland,Belgium,0.0
+Switzerland,Sweden,0.0
+Switzerland,Denmark,0.0
+Switzerland,Norway,0.0
+Switzerland,Switzerland,0.0
+Switzerland,Poland,0.0
+Switzerland,Czech Republic,0.0
+Switzerland,Hungary,0.0
+Switzerland,Romania,0.0
+Switzerland,Austria,0.0
+Switzerland,Portugal,0.0
+Switzerland,Greece,0.0
+Switzerland,UK,0.0
+Switzerland,Canada,14.7
+Switzerland,Mexico,2.2
+Switzerland,Brazil,12.6
+Switzerland,Argentina,10.8
+Switzerland,Chile,12.5
+Switzerland,Colombia,13.8
+Switzerland,Qatar,3.4
+Switzerland,Kuwait,3.3
+Switzerland,Israel,3.9
+Switzerland,Oman,4.5
+Switzerland,Pakistan,8.8
+Switzerland,Bangladesh,12.6
+Switzerland,Myanmar,5.5
+Switzerland,Morocco,7.2
+Switzerland,Ethiopia,6.8
+Switzerland,Ghana,7.3
+Switzerland,Tanzania,9.3
+Switzerland,Russia,1.5
+Switzerland,Kazakhstan,10.9
+Switzerland,Azerbaijan,13.0
+Switzerland,New Zealand,10.5
+Switzerland,Finland,2.5
+Switzerland,Slovakia,0.0
+Switzerland,Bulgaria,0.0
+Switzerland,Serbia,0.0
+Switzerland,Latvia,0.0
+Poland,China,2.1
+Poland,India,4.2
+Poland,USA,8.5
+Poland,Germany,0.0
+Poland,Netherlands,0.0
+Poland,France,0.0
+Poland,Italy,1.2
+Poland,Spain,0.0
+Poland,Japan,2.6
+Poland,South Korea,4.7
+Poland,Taiwan,13.3
+Poland,Singapore,13.5
+Poland,Thailand,8.2
+Poland,Vietnam,2.6
+Poland,Indonesia,3.0
+Poland,Malaysia,14.0
+Poland,Philippines,13.7
+Poland,Australia,9.3
+Poland,Sri Lanka,2.4
+Poland,UAE,14.1
+Poland,Saudi Arabia,6.1
+Poland,Nigeria,14.5
+Poland,Egypt,9.6
+Poland,South Africa,11.8
+Poland,Turkey,11.3
+Poland,Iran,7.2
+Poland,Kenya,3.0
+Poland,Belgium,0.0
+Poland,Sweden,0.0
+Poland,Denmark,1.8
+Poland,Norway,1.7
+Poland,Switzerland,0.0
+Poland,Poland,0.0
+Poland,Czech Republic,0.0
+Poland,Hungary,2.4
+Poland,Romania,0.0
+Poland,Austria,1.1
+Poland,Portugal,0.0
+Poland,Greece,1.7
+Poland,UK,0.0
+Poland,Canada,14.4
+Poland,Mexico,7.2
+Poland,Brazil,12.1
+Poland,Argentina,2.4
+Poland,Chile,5.6
+Poland,Colombia,14.9
+Poland,Qatar,8.4
+Poland,Kuwait,6.6
+Poland,Israel,14.2
+Poland,Oman,7.6
+Poland,Pakistan,10.8
+Poland,Bangladesh,10.6
+Poland,Myanmar,3.1
+Poland,Morocco,10.0
+Poland,Ethiopia,12.4
+Poland,Ghana,11.3
+Poland,Tanzania,3.1
+Poland,Russia,0.0
+Poland,Kazakhstan,11.3
+Poland,Azerbaijan,10.2
+Poland,New Zealand,11.6
+Poland,Finland,0.0
+Poland,Slovakia,0.0
+Poland,Bulgaria,0.0
+Poland,Serbia,0.0
+Poland,Latvia,0.0
+Czech Republic,China,5.5
+Czech Republic,India,3.7
+Czech Republic,USA,4.4
+Czech Republic,Germany,0.0
+Czech Republic,Netherlands,0.0
+Czech Republic,France,0.0
+Czech Republic,Italy,0.0
+Czech Republic,Spain,0.0
+Czech Republic,Japan,3.2
+Czech Republic,South Korea,9.8
+Czech Republic,Taiwan,6.2
+Czech Republic,Singapore,7.0
+Czech Republic,Thailand,5.8
+Czech Republic,Vietnam,7.0
+Czech Republic,Indonesia,3.1
+Czech Republic,Malaysia,13.7
+Czech Republic,Philippines,13.8
+Czech Republic,Australia,14.7
+Czech Republic,Sri Lanka,9.4
+Czech Republic,UAE,4.2
+Czech Republic,Saudi Arabia,6.9
+Czech Republic,Nigeria,3.8
+Czech Republic,Egypt,5.9
+Czech Republic,South Africa,8.4
+Czech Republic,Turkey,2.8
+Czech Republic,Iran,7.7
+Czech Republic,Kenya,7.5
+Czech Republic,Belgium,0.0
+Czech Republic,Sweden,0.0
+Czech Republic,Denmark,0.0
+Czech Republic,Norway,0.0
+Czech Republic,Switzerland,0.0
+Czech Republic,Poland,0.0
+Czech Republic,Czech Republic,0.0
+Czech Republic,Hungary,0.0
+Czech Republic,Romania,0.0
+Czech Republic,Austria,0.0
+Czech Republic,Portugal,1.7
+Czech Republic,Greece,0.0
+Czech Republic,UK,1.7
+Czech Republic,Canada,6.4
+Czech Republic,Mexico,12.6
+Czech Republic,Brazil,13.2
+Czech Republic,Argentina,14.7
+Czech Republic,Chile,3.8
+Czech Republic,Colombia,6.2
+Czech Republic,Qatar,14.3
+Czech Republic,Kuwait,4.6
+Czech Republic,Israel,6.1
+Czech Republic,Oman,14.5
+Czech Republic,Pakistan,14.6
+Czech Republic,Bangladesh,5.8
+Czech Republic,Myanmar,11.0
+Czech Republic,Morocco,8.4
+Czech Republic,Ethiopia,9.5
+Czech Republic,Ghana,5.2
+Czech Republic,Tanzania,6.9
+Czech Republic,Russia,1.8
+Czech Republic,Kazakhstan,3.5
+Czech Republic,Azerbaijan,9.3
+Czech Republic,New Zealand,9.7
+Czech Republic,Finland,0.0
+Czech Republic,Slovakia,0.0
+Czech Republic,Bulgaria,0.0
+Czech Republic,Serbia,1.9
+Czech Republic,Latvia,0.0
+Hungary,China,7.7
+Hungary,India,5.8
+Hungary,USA,11.0
+Hungary,Germany,2.6
+Hungary,Netherlands,0.0
+Hungary,France,0.0
+Hungary,Italy,0.0
+Hungary,Spain,0.0
+Hungary,Japan,10.6
+Hungary,South Korea,11.3
+Hungary,Taiwan,12.3
+Hungary,Singapore,3.0
+Hungary,Thailand,14.9
+Hungary,Vietnam,8.2
+Hungary,Indonesia,7.2
+Hungary,Malaysia,8.6
+Hungary,Philippines,14.0
+Hungary,Australia,11.0
+Hungary,Sri Lanka,9.1
+Hungary,UAE,12.3
+Hungary,Saudi Arabia,6.7
+Hungary,Nigeria,13.6
+Hungary,Egypt,9.0
+Hungary,South Africa,10.3
+Hungary,Turkey,3.1
+Hungary,Iran,12.0
+Hungary,Kenya,10.5
+Hungary,Belgium,0.0
+Hungary,Sweden,0.0
+Hungary,Denmark,0.0
+Hungary,Norway,2.4
+Hungary,Switzerland,0.0
+Hungary,Poland,0.0
+Hungary,Czech Republic,1.9
+Hungary,Hungary,0.0
+Hungary,Romania,0.0
+Hungary,Austria,0.0
+Hungary,Portugal,0.0
+Hungary,Greece,0.0
+Hungary,UK,0.0
+Hungary,Canada,9.5
+Hungary,Mexico,7.8
+Hungary,Brazil,7.1
+Hungary,Argentina,12.0
+Hungary,Chile,9.7
+Hungary,Colombia,8.5
+Hungary,Qatar,6.5
+Hungary,Kuwait,2.3
+Hungary,Israel,3.4
+Hungary,Oman,7.4
+Hungary,Pakistan,14.5
+Hungary,Bangladesh,3.5
+Hungary,Myanmar,14.2
+Hungary,Morocco,3.8
+Hungary,Ethiopia,6.1
+Hungary,Ghana,7.9
+Hungary,Tanzania,4.7
+Hungary,Russia,0.0
+Hungary,Kazakhstan,8.2
+Hungary,Azerbaijan,7.7
+Hungary,New Zealand,11.1
+Hungary,Finland,0.0
+Hungary,Slovakia,0.0
+Hungary,Bulgaria,1.2
+Hungary,Serbia,2.3
+Hungary,Latvia,0.0
+Romania,China,4.1
+Romania,India,14.8
+Romania,USA,5.2
+Romania,Germany,0.0
+Romania,Netherlands,0.0
+Romania,France,0.0
+Romania,Italy,1.5
+Romania,Spain,0.0
+Romania,Japan,4.4
+Romania,South Korea,10.3
+Romania,Taiwan,7.6
+Romania,Singapore,2.4
+Romania,Thailand,10.0
+Romania,Vietnam,4.6
+Romania,Indonesia,9.7
+Romania,Malaysia,7.1
+Romania,Philippines,11.2
+Romania,Australia,4.7
+Romania,Sri Lanka,11.8
+Romania,UAE,12.5
+Romania,Saudi Arabia,2.8
+Romania,Nigeria,3.3
+Romania,Egypt,13.3
+Romania,South Africa,4.4
+Romania,Turkey,6.2
+Romania,Iran,7.9
+Romania,Kenya,5.4
+Romania,Belgium,2.1
+Romania,Sweden,0.0
+Romania,Denmark,0.0
+Romania,Norway,0.0
+Romania,Switzerland,0.0
+Romania,Poland,0.0
+Romania,Czech Republic,2.2
+Romania,Hungary,2.4
+Romania,Romania,0.0
+Romania,Austria,0.0
+Romania,Portugal,0.0
+Romania,Greece,0.0
+Romania,UK,0.0
+Romania,Canada,3.5
+Romania,Mexico,6.0
+Romania,Brazil,4.4
+Romania,Argentina,11.0
+Romania,Chile,8.6
+Romania,Colombia,7.4
+Romania,Qatar,3.8
+Romania,Kuwait,7.0
+Romania,Israel,4.4
+Romania,Oman,10.3
+Romania,Pakistan,11.0
+Romania,Bangladesh,10.4
+Romania,Myanmar,15.0
+Romania,Morocco,9.2
+Romania,Ethiopia,8.4
+Romania,Ghana,3.8
+Romania,Tanzania,6.1
+Romania,Russia,0.0
+Romania,Kazakhstan,2.7
+Romania,Azerbaijan,6.7
+Romania,New Zealand,2.1
+Romania,Finland,0.0
+Romania,Slovakia,2.9
+Romania,Bulgaria,0.0
+Romania,Serbia,0.0
+Romania,Latvia,0.0
+Austria,China,7.4
+Austria,India,12.9
+Austria,USA,8.4
+Austria,Germany,0.0
+Austria,Netherlands,0.0
+Austria,France,0.0
+Austria,Italy,0.0
+Austria,Spain,0.0
+Austria,Japan,9.0
+Austria,South Korea,4.2
+Austria,Taiwan,7.9
+Austria,Singapore,11.7
+Austria,Thailand,12.0
+Austria,Vietnam,9.1
+Austria,Indonesia,3.5
+Austria,Malaysia,3.5
+Austria,Philippines,12.1
+Austria,Australia,12.7
+Austria,Sri Lanka,6.8
+Austria,UAE,12.7
+Austria,Saudi Arabia,2.5
+Austria,Nigeria,11.3
+Austria,Egypt,9.1
+Austria,South Africa,14.9
+Austria,Turkey,3.3
+Austria,Iran,12.8
+Austria,Kenya,11.8
+Austria,Belgium,0.0
+Austria,Sweden,1.9
+Austria,Denmark,0.0
+Austria,Norway,1.9
+Austria,Switzerland,2.6
+Austria,Poland,0.0
+Austria,Czech Republic,2.2
+Austria,Hungary,0.0
+Austria,Romania,0.0
+Austria,Austria,0.0
+Austria,Portugal,0.0
+Austria,Greece,0.0
+Austria,UK,0.0
+Austria,Canada,4.7
+Austria,Mexico,4.7
+Austria,Brazil,2.8
+Austria,Argentina,6.6
+Austria,Chile,5.7
+Austria,Colombia,9.0
+Austria,Qatar,6.2
+Austria,Kuwait,11.2
+Austria,Israel,5.8
+Austria,Oman,5.5
+Austria,Pakistan,13.2
+Austria,Bangladesh,14.8
+Austria,Myanmar,10.8
+Austria,Morocco,3.2
+Austria,Ethiopia,14.5
+Austria,Ghana,12.2
+Austria,Tanzania,13.9
+Austria,Russia,2.7
+Austria,Kazakhstan,3.6
+Austria,Azerbaijan,13.3
+Austria,New Zealand,5.2
+Austria,Finland,0.0
+Austria,Slovakia,2.5
+Austria,Bulgaria,0.0
+Austria,Serbia,0.0
+Austria,Latvia,0.0
+Portugal,China,5.5
+Portugal,India,7.4
+Portugal,USA,7.9
+Portugal,Germany,0.0
+Portugal,Netherlands,1.2
+Portugal,France,0.0
+Portugal,Italy,0.0
+Portugal,Spain,1.7
+Portugal,Japan,14.4
+Portugal,South Korea,6.3
+Portugal,Taiwan,2.0
+Portugal,Singapore,12.1
+Portugal,Thailand,11.5
+Portugal,Vietnam,11.5
+Portugal,Indonesia,8.0
+Portugal,Malaysia,10.6
+Portugal,Philippines,6.7
+Portugal,Australia,2.8
+Portugal,Sri Lanka,8.9
+Portugal,UAE,4.8
+Portugal,Saudi Arabia,7.6
+Portugal,Nigeria,4.8
+Portugal,Egypt,5.5
+Portugal,South Africa,12.8
+Portugal,Turkey,6.4
+Portugal,Iran,9.5
+Portugal,Kenya,9.4
+Portugal,Belgium,0.0
+Portugal,Sweden,0.0
+Portugal,Denmark,0.0
+Portugal,Norway,0.0
+Portugal,Switzerland,0.0
+Portugal,Poland,0.0
+Portugal,Czech Republic,0.0
+Portugal,Hungary,0.0
+Portugal,Romania,1.9
+Portugal,Austria,0.0
+Portugal,Portugal,0.0
+Portugal,Greece,1.4
+Portugal,UK,0.0
+Portugal,Canada,3.7
+Portugal,Mexico,10.4
+Portugal,Brazil,4.1
+Portugal,Argentina,14.1
+Portugal,Chile,5.6
+Portugal,Colombia,10.5
+Portugal,Qatar,5.3
+Portugal,Kuwait,6.8
+Portugal,Israel,13.7
+Portugal,Oman,4.2
+Portugal,Pakistan,7.2
+Portugal,Bangladesh,6.0
+Portugal,Myanmar,11.1
+Portugal,Morocco,5.0
+Portugal,Ethiopia,10.5
+Portugal,Ghana,11.1
+Portugal,Tanzania,2.0
+Portugal,Russia,0.0
+Portugal,Kazakhstan,3.7
+Portugal,Azerbaijan,4.9
+Portugal,New Zealand,10.8
+Portugal,Finland,0.0
+Portugal,Slovakia,0.0
+Portugal,Bulgaria,3.0
+Portugal,Serbia,0.0
+Portugal,Latvia,0.0
+Greece,China,2.9
+Greece,India,7.0
+Greece,USA,11.5
+Greece,Germany,0.0
+Greece,Netherlands,0.0
+Greece,France,1.3
+Greece,Italy,0.0
+Greece,Spain,0.0
+Greece,Japan,3.7
+Greece,South Korea,14.9
+Greece,Taiwan,3.9
+Greece,Singapore,8.9
+Greece,Thailand,2.1
+Greece,Vietnam,10.5
+Greece,Indonesia,7.7
+Greece,Malaysia,11.4
+Greece,Philippines,10.2
+Greece,Australia,4.0
+Greece,Sri Lanka,7.4
+Greece,UAE,10.9
+Greece,Saudi Arabia,13.2
+Greece,Nigeria,3.1
+Greece,Egypt,3.3
+Greece,South Africa,11.8
+Greece,Turkey,9.7
+Greece,Iran,7.0
+Greece,Kenya,14.5
+Greece,Belgium,0.0
+Greece,Sweden,0.0
+Greece,Denmark,0.0
+Greece,Norway,0.0
+Greece,Switzerland,0.0
+Greece,Poland,0.0
+Greece,Czech Republic,0.0
+Greece,Hungary,0.0
+Greece,Romania,0.0
+Greece,Austria,2.3
+Greece,Portugal,0.0
+Greece,Greece,0.0
+Greece,UK,0.0
+Greece,Canada,8.6
+Greece,Mexico,11.7
+Greece,Brazil,5.8
+Greece,Argentina,2.7
+Greece,Chile,13.7
+Greece,Colombia,14.4
+Greece,Qatar,8.4
+Greece,Kuwait,3.5
+Greece,Israel,8.5
+Greece,Oman,9.7
+Greece,Pakistan,8.9
+Greece,Bangladesh,14.7
+Greece,Myanmar,14.8
+Greece,Morocco,14.1
+Greece,Ethiopia,3.7
+Greece,Ghana,13.2
+Greece,Tanzania,9.4
+Greece,Russia,0.0
+Greece,Kazakhstan,10.9
+Greece,Azerbaijan,11.9
+Greece,New Zealand,14.4
+Greece,Finland,0.0
+Greece,Slovakia,0.0
+Greece,Bulgaria,0.0
+Greece,Serbia,0.0
+Greece,Latvia,0.0
+UK,China,2.8
+UK,India,12.3
+UK,USA,8.6
+UK,Germany,0.0
+UK,Netherlands,0.0
+UK,France,0.0
+UK,Italy,0.0
+UK,Spain,0.0
+UK,Japan,9.0
+UK,South Korea,10.0
+UK,Taiwan,5.6
+UK,Singapore,6.0
+UK,Thailand,8.6
+UK,Vietnam,4.6
+UK,Indonesia,12.5
+UK,Malaysia,9.0
+UK,Philippines,7.1
+UK,Australia,10.2
+UK,Sri Lanka,12.8
+UK,UAE,10.9
+UK,Saudi Arabia,2.9
+UK,Nigeria,11.1
+UK,Egypt,11.5
+UK,South Africa,13.0
+UK,Turkey,2.8
+UK,Iran,3.1
+UK,Kenya,7.6
+UK,Belgium,0.0
+UK,Sweden,0.0
+UK,Denmark,0.0
+UK,Norway,0.0
+UK,Switzerland,0.0
+UK,Poland,0.0
+UK,Czech Republic,0.0
+UK,Hungary,0.0
+UK,Romania,0.0
+UK,Austria,2.0
+UK,Portugal,0.0
+UK,Greece,0.0
+UK,UK,0.0
+UK,Canada,4.2
+UK,Mexico,3.7
+UK,Brazil,12.2
+UK,Argentina,5.5
+UK,Chile,13.5
+UK,Colombia,12.0
+UK,Qatar,2.4
+UK,Kuwait,12.5
+UK,Israel,5.5
+UK,Oman,2.8
+UK,Pakistan,11.3
+UK,Bangladesh,9.5
+UK,Myanmar,3.0
+UK,Morocco,7.9
+UK,Ethiopia,6.7
+UK,Ghana,8.5
+UK,Tanzania,9.4
+UK,Russia,0.0
+UK,Kazakhstan,5.3
+UK,Azerbaijan,3.3
+UK,New Zealand,9.5
+UK,Finland,0.0
+UK,Slovakia,0.0
+UK,Bulgaria,0.0
+UK,Serbia,0.0
+UK,Latvia,1.5
+Canada,China,8.1
+Canada,India,7.0
+Canada,USA,0.0
+Canada,Germany,14.1
+Canada,Netherlands,13.1
+Canada,France,9.2
+Canada,Italy,13.9
+Canada,Spain,11.6
+Canada,Japan,7.5
+Canada,South Korea,6.2
+Canada,Taiwan,7.4
+Canada,Singapore,11.4
+Canada,Thailand,5.5
+Canada,Vietnam,3.0
+Canada,Indonesia,6.8
+Canada,Malaysia,8.5
+Canada,Philippines,13.7
+Canada,Australia,4.3
+Canada,Sri Lanka,12.5
+Canada,UAE,14.8
+Canada,Saudi Arabia,14.4
+Canada,Nigeria,2.9
+Canada,Egypt,8.0
+Canada,South Africa,5.7
+Canada,Turkey,13.0
+Canada,Iran,6.3
+Canada,Kenya,9.2
+Canada,Belgium,2.1
+Canada,Sweden,4.6
+Canada,Denmark,9.3
+Canada,Norway,6.0
+Canada,Switzerland,10.1
+Canada,Poland,8.0
+Canada,Czech Republic,9.7
+Canada,Hungary,8.4
+Canada,Romania,12.0
+Canada,Austria,4.5
+Canada,Portugal,13.7
+Canada,Greece,11.9
+Canada,UK,5.2
+Canada,Canada,0.0
+Canada,Mexico,2.1
+Canada,Brazil,7.3
+Canada,Argentina,5.0
+Canada,Chile,6.5
+Canada,Colombia,12.9
+Canada,Qatar,13.4
+Canada,Kuwait,14.4
+Canada,Israel,2.0
+Canada,Oman,10.5
+Canada,Pakistan,13.0
+Canada,Bangladesh,11.5
+Canada,Myanmar,3.4
+Canada,Morocco,8.9
+Canada,Ethiopia,5.1
+Canada,Ghana,8.4
+Canada,Tanzania,2.8
+Canada,Russia,15.0
+Canada,Kazakhstan,11.3
+Canada,Azerbaijan,3.2
+Canada,New Zealand,14.0
+Canada,Finland,13.7
+Canada,Slovakia,8.8
+Canada,Bulgaria,11.1
+Canada,Serbia,6.8
+Canada,Latvia,14.7
+Mexico,China,3.1
+Mexico,India,3.2
+Mexico,USA,3.7
+Mexico,Germany,12.7
+Mexico,Netherlands,3.0
+Mexico,France,9.4
+Mexico,Italy,7.7
+Mexico,Spain,14.5
+Mexico,Japan,5.1
+Mexico,South Korea,5.4
+Mexico,Taiwan,6.1
+Mexico,Singapore,12.4
+Mexico,Thailand,11.1
+Mexico,Vietnam,11.6
+Mexico,Indonesia,6.1
+Mexico,Malaysia,5.5
+Mexico,Philippines,3.0
+Mexico,Australia,4.6
+Mexico,Sri Lanka,12.1
+Mexico,UAE,9.6
+Mexico,Saudi Arabia,4.0
+Mexico,Nigeria,4.1
+Mexico,Egypt,8.1
+Mexico,South Africa,7.3
+Mexico,Turkey,9.0
+Mexico,Iran,14.5
+Mexico,Kenya,4.7
+Mexico,Belgium,6.0
+Mexico,Sweden,5.4
+Mexico,Denmark,3.6
+Mexico,Norway,4.0
+Mexico,Switzerland,10.9
+Mexico,Poland,12.7
+Mexico,Czech Republic,11.1
+Mexico,Hungary,2.5
+Mexico,Romania,12.9
+Mexico,Austria,6.3
+Mexico,Portugal,3.2
+Mexico,Greece,5.2
+Mexico,UK,6.6
+Mexico,Canada,8.7
+Mexico,Mexico,0.0
+Mexico,Brazil,0.0
+Mexico,Argentina,0.0
+Mexico,Chile,1.1
+Mexico,Colombia,0.0
+Mexico,Qatar,7.9
+Mexico,Kuwait,11.7
+Mexico,Israel,5.2
+Mexico,Oman,8.0
+Mexico,Pakistan,12.5
+Mexico,Bangladesh,3.8
+Mexico,Myanmar,2.2
+Mexico,Morocco,12.8
+Mexico,Ethiopia,14.8
+Mexico,Ghana,3.7
+Mexico,Tanzania,12.7
+Mexico,Russia,6.8
+Mexico,Kazakhstan,10.2
+Mexico,Azerbaijan,10.4
+Mexico,New Zealand,9.6
+Mexico,Finland,5.4
+Mexico,Slovakia,12.6
+Mexico,Bulgaria,2.3
+Mexico,Serbia,2.8
+Mexico,Latvia,13.7
+Brazil,China,7.8
+Brazil,India,3.7
+Brazil,USA,13.8
+Brazil,Germany,12.8
+Brazil,Netherlands,6.3
+Brazil,France,2.6
+Brazil,Italy,8.0
+Brazil,Spain,4.2
+Brazil,Japan,9.5
+Brazil,South Korea,12.7
+Brazil,Taiwan,7.1
+Brazil,Singapore,2.4
+Brazil,Thailand,10.9
+Brazil,Vietnam,4.2
+Brazil,Indonesia,4.8
+Brazil,Malaysia,4.4
+Brazil,Philippines,5.6
+Brazil,Australia,13.5
+Brazil,Sri Lanka,2.5
+Brazil,UAE,10.0
+Brazil,Saudi Arabia,5.2
+Brazil,Nigeria,5.8
+Brazil,Egypt,7.4
+Brazil,South Africa,9.2
+Brazil,Turkey,2.8
+Brazil,Iran,5.6
+Brazil,Kenya,3.8
+Brazil,Belgium,4.6
+Brazil,Sweden,13.5
+Brazil,Denmark,8.8
+Brazil,Norway,10.2
+Brazil,Switzerland,12.4
+Brazil,Poland,12.3
+Brazil,Czech Republic,14.9
+Brazil,Hungary,12.2
+Brazil,Romania,6.7
+Brazil,Austria,9.1
+Brazil,Portugal,8.3
+Brazil,Greece,13.9
+Brazil,UK,8.5
+Brazil,Canada,7.0
+Brazil,Mexico,0.0
+Brazil,Brazil,0.0
+Brazil,Argentina,0.0
+Brazil,Chile,0.0
+Brazil,Colombia,2.6
+Brazil,Qatar,2.8
+Brazil,Kuwait,14.9
+Brazil,Israel,8.9
+Brazil,Oman,12.0
+Brazil,Pakistan,15.0
+Brazil,Bangladesh,14.7
+Brazil,Myanmar,3.3
+Brazil,Morocco,10.5
+Brazil,Ethiopia,5.5
+Brazil,Ghana,12.6
+Brazil,Tanzania,13.9
+Brazil,Russia,2.7
+Brazil,Kazakhstan,15.0
+Brazil,Azerbaijan,4.9
+Brazil,New Zealand,13.0
+Brazil,Finland,12.4
+Brazil,Slovakia,6.6
+Brazil,Bulgaria,12.9
+Brazil,Serbia,13.0
+Brazil,Latvia,4.3
+Argentina,China,9.7
+Argentina,India,12.5
+Argentina,USA,11.1
+Argentina,Germany,13.9
+Argentina,Netherlands,2.4
+Argentina,France,11.1
+Argentina,Italy,14.3
+Argentina,Spain,9.3
+Argentina,Japan,9.3
+Argentina,South Korea,4.4
+Argentina,Taiwan,14.8
+Argentina,Singapore,13.5
+Argentina,Thailand,8.4
+Argentina,Vietnam,6.0
+Argentina,Indonesia,8.4
+Argentina,Malaysia,3.2
+Argentina,Philippines,5.0
+Argentina,Australia,4.8
+Argentina,Sri Lanka,8.8
+Argentina,UAE,2.0
+Argentina,Saudi Arabia,13.9
+Argentina,Nigeria,4.6
+Argentina,Egypt,3.7
+Argentina,South Africa,11.3
+Argentina,Turkey,13.9
+Argentina,Iran,13.0
+Argentina,Kenya,6.2
+Argentina,Belgium,2.3
+Argentina,Sweden,9.6
+Argentina,Denmark,13.9
+Argentina,Norway,12.1
+Argentina,Switzerland,13.0
+Argentina,Poland,13.2
+Argentina,Czech Republic,14.5
+Argentina,Hungary,6.9
+Argentina,Romania,14.2
+Argentina,Austria,7.1
+Argentina,Portugal,3.3
+Argentina,Greece,5.9
+Argentina,UK,3.8
+Argentina,Canada,4.0
+Argentina,Mexico,2.6
+Argentina,Brazil,2.3
+Argentina,Argentina,0.0
+Argentina,Chile,0.0
+Argentina,Colombia,2.4
+Argentina,Qatar,14.1
+Argentina,Kuwait,12.2
+Argentina,Israel,4.9
+Argentina,Oman,9.7
+Argentina,Pakistan,4.3
+Argentina,Bangladesh,6.0
+Argentina,Myanmar,11.0
+Argentina,Morocco,3.7
+Argentina,Ethiopia,11.5
+Argentina,Ghana,14.3
+Argentina,Tanzania,14.3
+Argentina,Russia,7.1
+Argentina,Kazakhstan,14.9
+Argentina,Azerbaijan,14.5
+Argentina,New Zealand,2.4
+Argentina,Finland,9.8
+Argentina,Slovakia,14.0
+Argentina,Bulgaria,14.6
+Argentina,Serbia,4.9
+Argentina,Latvia,9.4
+Chile,China,14.2
+Chile,India,3.8
+Chile,USA,11.7
+Chile,Germany,5.1
+Chile,Netherlands,14.8
+Chile,France,4.2
+Chile,Italy,13.5
+Chile,Spain,3.2
+Chile,Japan,11.2
+Chile,South Korea,10.3
+Chile,Taiwan,13.5
+Chile,Singapore,7.8
+Chile,Thailand,5.4
+Chile,Vietnam,5.2
+Chile,Indonesia,2.9
+Chile,Malaysia,5.3
+Chile,Philippines,3.4
+Chile,Australia,2.0
+Chile,Sri Lanka,7.0
+Chile,UAE,11.5
+Chile,Saudi Arabia,14.6
+Chile,Nigeria,13.5
+Chile,Egypt,8.4
+Chile,South Africa,6.9
+Chile,Turkey,9.1
+Chile,Iran,3.3
+Chile,Kenya,8.2
+Chile,Belgium,13.2
+Chile,Sweden,10.5
+Chile,Denmark,10.9
+Chile,Norway,4.1
+Chile,Switzerland,3.0
+Chile,Poland,13.0
+Chile,Czech Republic,5.8
+Chile,Hungary,6.1
+Chile,Romania,14.4
+Chile,Austria,3.0
+Chile,Portugal,4.2
+Chile,Greece,6.9
+Chile,UK,11.5
+Chile,Canada,9.1
+Chile,Mexico,1.2
+Chile,Brazil,0.0
+Chile,Argentina,0.0
+Chile,Chile,0.0
+Chile,Colombia,0.0
+Chile,Qatar,2.4
+Chile,Kuwait,14.3
+Chile,Israel,4.1
+Chile,Oman,13.6
+Chile,Pakistan,4.0
+Chile,Bangladesh,3.3
+Chile,Myanmar,4.7
+Chile,Morocco,4.5
+Chile,Ethiopia,11.1
+Chile,Ghana,11.4
+Chile,Tanzania,11.5
+Chile,Russia,5.4
+Chile,Kazakhstan,5.7
+Chile,Azerbaijan,5.1
+Chile,New Zealand,2.6
+Chile,Finland,9.4
+Chile,Slovakia,12.9
+Chile,Bulgaria,4.0
+Chile,Serbia,6.7
+Chile,Latvia,7.6
+Colombia,China,5.8
+Colombia,India,10.6
+Colombia,USA,9.8
+Colombia,Germany,4.6
+Colombia,Netherlands,2.3
+Colombia,France,4.2
+Colombia,Italy,5.8
+Colombia,Spain,3.1
+Colombia,Japan,13.0
+Colombia,South Korea,6.0
+Colombia,Taiwan,7.2
+Colombia,Singapore,8.4
+Colombia,Thailand,10.6
+Colombia,Vietnam,3.2
+Colombia,Indonesia,9.1
+Colombia,Malaysia,4.4
+Colombia,Philippines,13.5
+Colombia,Australia,6.8
+Colombia,Sri Lanka,7.8
+Colombia,UAE,5.4
+Colombia,Saudi Arabia,8.0
+Colombia,Nigeria,4.9
+Colombia,Egypt,5.5
+Colombia,South Africa,2.8
+Colombia,Turkey,11.8
+Colombia,Iran,10.7
+Colombia,Kenya,3.1
+Colombia,Belgium,6.5
+Colombia,Sweden,9.0
+Colombia,Denmark,14.6
+Colombia,Norway,9.7
+Colombia,Switzerland,9.2
+Colombia,Poland,12.9
+Colombia,Czech Republic,12.6
+Colombia,Hungary,7.4
+Colombia,Romania,9.0
+Colombia,Austria,13.3
+Colombia,Portugal,8.2
+Colombia,Greece,13.5
+Colombia,UK,8.2
+Colombia,Canada,3.0
+Colombia,Mexico,2.4
+Colombia,Brazil,0.0
+Colombia,Argentina,2.6
+Colombia,Chile,0.0
+Colombia,Colombia,0.0
+Colombia,Qatar,10.1
+Colombia,Kuwait,3.6
+Colombia,Israel,11.8
+Colombia,Oman,4.2
+Colombia,Pakistan,14.8
+Colombia,Bangladesh,14.6
+Colombia,Myanmar,12.5
+Colombia,Morocco,3.6
+Colombia,Ethiopia,7.5
+Colombia,Ghana,14.8
+Colombia,Tanzania,7.7
+Colombia,Russia,15.0
+Colombia,Kazakhstan,10.2
+Colombia,Azerbaijan,12.8
+Colombia,New Zealand,5.4
+Colombia,Finland,13.8
+Colombia,Slovakia,13.9
+Colombia,Bulgaria,2.9
+Colombia,Serbia,7.0
+Colombia,Latvia,7.2
+Qatar,China,6.2
+Qatar,India,5.6
+Qatar,USA,8.0
+Qatar,Germany,13.4
+Qatar,Netherlands,12.2
+Qatar,France,10.1
+Qatar,Italy,8.8
+Qatar,Spain,7.5
+Qatar,Japan,7.4
+Qatar,South Korea,3.9
+Qatar,Taiwan,9.6
+Qatar,Singapore,11.9
+Qatar,Thailand,14.2
+Qatar,Vietnam,14.0
+Qatar,Indonesia,9.3
+Qatar,Malaysia,3.3
+Qatar,Philippines,5.7
+Qatar,Australia,9.0
+Qatar,Sri Lanka,6.5
+Qatar,UAE,0.0
+Qatar,Saudi Arabia,0.0
+Qatar,Nigeria,8.3
+Qatar,Egypt,9.9
+Qatar,South Africa,2.5
+Qatar,Turkey,0.0
+Qatar,Iran,0.0
+Qatar,Kenya,9.9
+Qatar,Belgium,11.0
+Qatar,Sweden,2.5
+Qatar,Denmark,13.6
+Qatar,Norway,6.3
+Qatar,Switzerland,5.1
+Qatar,Poland,11.7
+Qatar,Czech Republic,14.0
+Qatar,Hungary,13.7
+Qatar,Romania,2.3
+Qatar,Austria,12.6
+Qatar,Portugal,5.9
+Qatar,Greece,5.6
+Qatar,UK,8.4
+Qatar,Canada,11.1
+Qatar,Mexico,3.3
+Qatar,Brazil,13.3
+Qatar,Argentina,3.7
+Qatar,Chile,14.7
+Qatar,Colombia,7.8
+Qatar,Qatar,0.0
+Qatar,Kuwait,1.5
+Qatar,Israel,0.0
+Qatar,Oman,0.0
+Qatar,Pakistan,4.4
+Qatar,Bangladesh,4.7
+Qatar,Myanmar,12.7
+Qatar,Morocco,11.6
+Qatar,Ethiopia,11.9
+Qatar,Ghana,13.3
+Qatar,Tanzania,12.7
+Qatar,Russia,8.7
+Qatar,Kazakhstan,4.1
+Qatar,Azerbaijan,6.0
+Qatar,New Zealand,8.6
+Qatar,Finland,3.8
+Qatar,Slovakia,13.1
+Qatar,Bulgaria,13.4
+Qatar,Serbia,2.4
+Qatar,Latvia,4.5
+Kuwait,China,12.8
+Kuwait,India,12.9
+Kuwait,USA,5.2
+Kuwait,Germany,7.9
+Kuwait,Netherlands,13.9
+Kuwait,France,11.2
+Kuwait,Italy,5.6
+Kuwait,Spain,12.7
+Kuwait,Japan,8.6
+Kuwait,South Korea,10.3
+Kuwait,Taiwan,3.6
+Kuwait,Singapore,2.4
+Kuwait,Thailand,6.8
+Kuwait,Vietnam,9.7
+Kuwait,Indonesia,4.3
+Kuwait,Malaysia,13.3
+Kuwait,Philippines,9.6
+Kuwait,Australia,6.5
+Kuwait,Sri Lanka,4.1
+Kuwait,UAE,2.5
+Kuwait,Saudi Arabia,0.0
+Kuwait,Nigeria,5.7
+Kuwait,Egypt,7.0
+Kuwait,South Africa,4.1
+Kuwait,Turkey,0.0
+Kuwait,Iran,2.7
+Kuwait,Kenya,10.4
+Kuwait,Belgium,10.8
+Kuwait,Sweden,5.5
+Kuwait,Denmark,7.3
+Kuwait,Norway,2.3
+Kuwait,Switzerland,12.1
+Kuwait,Poland,12.0
+Kuwait,Czech Republic,2.1
+Kuwait,Hungary,13.8
+Kuwait,Romania,10.4
+Kuwait,Austria,9.8
+Kuwait,Portugal,2.1
+Kuwait,Greece,5.3
+Kuwait,UK,12.5
+Kuwait,Canada,6.0
+Kuwait,Mexico,14.6
+Kuwait,Brazil,10.4
+Kuwait,Argentina,7.5
+Kuwait,Chile,6.9
+Kuwait,Colombia,6.5
+Kuwait,Qatar,0.0
+Kuwait,Kuwait,0.0
+Kuwait,Israel,0.0
+Kuwait,Oman,0.0
+Kuwait,Pakistan,12.7
+Kuwait,Bangladesh,7.2
+Kuwait,Myanmar,3.3
+Kuwait,Morocco,8.6
+Kuwait,Ethiopia,10.6
+Kuwait,Ghana,13.0
+Kuwait,Tanzania,6.9
+Kuwait,Russia,10.4
+Kuwait,Kazakhstan,9.9
+Kuwait,Azerbaijan,5.9
+Kuwait,New Zealand,3.4
+Kuwait,Finland,2.8
+Kuwait,Slovakia,14.8
+Kuwait,Bulgaria,10.3
+Kuwait,Serbia,13.2
+Kuwait,Latvia,5.4
+Israel,China,11.2
+Israel,India,13.6
+Israel,USA,5.9
+Israel,Germany,3.9
+Israel,Netherlands,12.0
+Israel,France,13.7
+Israel,Italy,12.5
+Israel,Spain,12.4
+Israel,Japan,9.8
+Israel,South Korea,10.6
+Israel,Taiwan,10.8
+Israel,Singapore,11.4
+Israel,Thailand,10.5
+Israel,Vietnam,15.0
+Israel,Indonesia,5.4
+Israel,Malaysia,7.4
+Israel,Philippines,7.0
+Israel,Australia,2.5
+Israel,Sri Lanka,11.2
+Israel,UAE,0.0
+Israel,Saudi Arabia,0.0
+Israel,Nigeria,11.4
+Israel,Egypt,4.9
+Israel,South Africa,9.0
+Israel,Turkey,0.0
+Israel,Iran,2.3
+Israel,Kenya,8.6
+Israel,Belgium,13.0
+Israel,Sweden,12.9
+Israel,Denmark,13.4
+Israel,Norway,4.4
+Israel,Switzerland,3.3
+Israel,Poland,3.7
+Israel,Czech Republic,5.4
+Israel,Hungary,12.5
+Israel,Romania,11.9
+Israel,Austria,4.4
+Israel,Portugal,10.8
+Israel,Greece,6.4
+Israel,UK,3.2
+Israel,Canada,6.6
+Israel,Mexico,11.7
+Israel,Brazil,6.0
+Israel,Argentina,12.2
+Israel,Chile,6.3
+Israel,Colombia,5.4
+Israel,Qatar,0.0
+Israel,Kuwait,1.9
+Israel,Israel,0.0
+Israel,Oman,2.2
+Israel,Pakistan,14.3
+Israel,Bangladesh,2.9
+Israel,Myanmar,13.6
+Israel,Morocco,8.5
+Israel,Ethiopia,13.3
+Israel,Ghana,7.0
+Israel,Tanzania,5.9
+Israel,Russia,2.7
+Israel,Kazakhstan,13.1
+Israel,Azerbaijan,3.8
+Israel,New Zealand,4.6
+Israel,Finland,7.3
+Israel,Slovakia,9.4
+Israel,Bulgaria,13.8
+Israel,Serbia,7.9
+Israel,Latvia,6.1
+Oman,China,11.3
+Oman,India,12.1
+Oman,USA,8.3
+Oman,Germany,10.2
+Oman,Netherlands,4.3
+Oman,France,10.2
+Oman,Italy,2.1
+Oman,Spain,5.6
+Oman,Japan,11.9
+Oman,South Korea,4.2
+Oman,Taiwan,11.9
+Oman,Singapore,8.4
+Oman,Thailand,11.9
+Oman,Vietnam,3.1
+Oman,Indonesia,10.0
+Oman,Malaysia,10.2
+Oman,Philippines,7.2
+Oman,Australia,14.5
+Oman,Sri Lanka,7.0
+Oman,UAE,0.0
+Oman,Saudi Arabia,0.0
+Oman,Nigeria,6.9
+Oman,Egypt,2.2
+Oman,South Africa,6.2
+Oman,Turkey,1.4
+Oman,Iran,0.0
+Oman,Kenya,10.1
+Oman,Belgium,5.2
+Oman,Sweden,11.0
+Oman,Denmark,6.5
+Oman,Norway,3.7
+Oman,Switzerland,7.0
+Oman,Poland,9.7
+Oman,Czech Republic,4.2
+Oman,Hungary,12.7
+Oman,Romania,5.9
+Oman,Austria,5.8
+Oman,Portugal,11.5
+Oman,Greece,9.8
+Oman,UK,6.4
+Oman,Canada,13.5
+Oman,Mexico,14.9
+Oman,Brazil,6.5
+Oman,Argentina,13.7
+Oman,Chile,6.7
+Oman,Colombia,4.4
+Oman,Qatar,2.8
+Oman,Kuwait,0.0
+Oman,Israel,0.0
+Oman,Oman,0.0
+Oman,Pakistan,11.5
+Oman,Bangladesh,3.7
+Oman,Myanmar,11.5
+Oman,Morocco,9.7
+Oman,Ethiopia,4.2
+Oman,Ghana,6.8
+Oman,Tanzania,10.5
+Oman,Russia,2.5
+Oman,Kazakhstan,13.4
+Oman,Azerbaijan,5.3
+Oman,New Zealand,9.0
+Oman,Finland,2.6
+Oman,Slovakia,14.9
+Oman,Bulgaria,10.6
+Oman,Serbia,10.5
+Oman,Latvia,2.3
+Pakistan,China,11.0
+Pakistan,India,0.0
+Pakistan,USA,6.9
+Pakistan,Germany,9.1
+Pakistan,Netherlands,8.2
+Pakistan,France,4.0
+Pakistan,Italy,11.0
+Pakistan,Spain,10.2
+Pakistan,Japan,5.9
+Pakistan,South Korea,10.6
+Pakistan,Taiwan,10.6
+Pakistan,Singapore,5.5
+Pakistan,Thailand,9.9
+Pakistan,Vietnam,3.8
+Pakistan,Indonesia,12.8
+Pakistan,Malaysia,3.4
+Pakistan,Philippines,11.3
+Pakistan,Australia,3.5
+Pakistan,Sri Lanka,0.0
+Pakistan,UAE,3.4
+Pakistan,Saudi Arabia,4.6
+Pakistan,Nigeria,4.6
+Pakistan,Egypt,5.4
+Pakistan,South Africa,8.8
+Pakistan,Turkey,4.6
+Pakistan,Iran,11.1
+Pakistan,Kenya,5.8
+Pakistan,Belgium,2.5
+Pakistan,Sweden,8.5
+Pakistan,Denmark,4.7
+Pakistan,Norway,14.1
+Pakistan,Switzerland,6.3
+Pakistan,Poland,2.0
+Pakistan,Czech Republic,10.7
+Pakistan,Hungary,13.8
+Pakistan,Romania,12.9
+Pakistan,Austria,10.7
+Pakistan,Portugal,3.9
+Pakistan,Greece,3.2
+Pakistan,UK,8.7
+Pakistan,Canada,11.4
+Pakistan,Mexico,3.3
+Pakistan,Brazil,5.3
+Pakistan,Argentina,5.0
+Pakistan,Chile,14.9
+Pakistan,Colombia,5.8
+Pakistan,Qatar,8.0
+Pakistan,Kuwait,3.3
+Pakistan,Israel,4.3
+Pakistan,Oman,2.5
+Pakistan,Pakistan,0.0
+Pakistan,Bangladesh,0.0
+Pakistan,Myanmar,12.4
+Pakistan,Morocco,6.1
+Pakistan,Ethiopia,11.6
+Pakistan,Ghana,3.2
+Pakistan,Tanzania,11.9
+Pakistan,Russia,2.6
+Pakistan,Kazakhstan,13.1
+Pakistan,Azerbaijan,10.6
+Pakistan,New Zealand,4.2
+Pakistan,Finland,6.6
+Pakistan,Slovakia,7.7
+Pakistan,Bulgaria,10.1
+Pakistan,Serbia,13.4
+Pakistan,Latvia,3.2
+Bangladesh,China,12.6
+Bangladesh,India,0.0
+Bangladesh,USA,7.2
+Bangladesh,Germany,14.5
+Bangladesh,Netherlands,5.5
+Bangladesh,France,7.0
+Bangladesh,Italy,13.1
+Bangladesh,Spain,12.4
+Bangladesh,Japan,10.4
+Bangladesh,South Korea,12.4
+Bangladesh,Taiwan,3.5
+Bangladesh,Singapore,11.1
+Bangladesh,Thailand,2.8
+Bangladesh,Vietnam,14.3
+Bangladesh,Indonesia,4.1
+Bangladesh,Malaysia,7.4
+Bangladesh,Philippines,9.7
+Bangladesh,Australia,12.4
+Bangladesh,Sri Lanka,0.0
+Bangladesh,UAE,4.4
+Bangladesh,Saudi Arabia,6.9
+Bangladesh,Nigeria,6.7
+Bangladesh,Egypt,2.4
+Bangladesh,South Africa,10.9
+Bangladesh,Turkey,12.9
+Bangladesh,Iran,14.7
+Bangladesh,Kenya,3.7
+Bangladesh,Belgium,14.0
+Bangladesh,Sweden,3.5
+Bangladesh,Denmark,7.3
+Bangladesh,Norway,2.6
+Bangladesh,Switzerland,5.4
+Bangladesh,Poland,6.1
+Bangladesh,Czech Republic,11.2
+Bangladesh,Hungary,10.8
+Bangladesh,Romania,12.0
+Bangladesh,Austria,9.5
+Bangladesh,Portugal,9.3
+Bangladesh,Greece,14.7
+Bangladesh,UK,10.7
+Bangladesh,Canada,6.4
+Bangladesh,Mexico,8.8
+Bangladesh,Brazil,11.1
+Bangladesh,Argentina,3.2
+Bangladesh,Chile,10.6
+Bangladesh,Colombia,5.2
+Bangladesh,Qatar,6.5
+Bangladesh,Kuwait,10.8
+Bangladesh,Israel,7.0
+Bangladesh,Oman,12.9
+Bangladesh,Pakistan,0.0
+Bangladesh,Bangladesh,0.0
+Bangladesh,Myanmar,14.8
+Bangladesh,Morocco,2.7
+Bangladesh,Ethiopia,10.4
+Bangladesh,Ghana,4.0
+Bangladesh,Tanzania,13.0
+Bangladesh,Russia,13.1
+Bangladesh,Kazakhstan,13.3
+Bangladesh,Azerbaijan,3.0
+Bangladesh,New Zealand,8.4
+Bangladesh,Finland,5.1
+Bangladesh,Slovakia,14.6
+Bangladesh,Bulgaria,2.7
+Bangladesh,Serbia,4.9
+Bangladesh,Latvia,10.4
+Myanmar,China,7.2
+Myanmar,India,5.1
+Myanmar,USA,8.0
+Myanmar,Germany,12.4
+Myanmar,Netherlands,7.8
+Myanmar,France,13.1
+Myanmar,Italy,7.8
+Myanmar,Spain,3.5
+Myanmar,Japan,8.5
+Myanmar,South Korea,10.5
+Myanmar,Taiwan,3.3
+Myanmar,Singapore,0.0
+Myanmar,Thailand,0.0
+Myanmar,Vietnam,0.0
+Myanmar,Indonesia,0.0
+Myanmar,Malaysia,0.0
+Myanmar,Philippines,0.0
+Myanmar,Australia,6.0
+Myanmar,Sri Lanka,8.6
+Myanmar,UAE,4.7
+Myanmar,Saudi Arabia,10.7
+Myanmar,Nigeria,14.4
+Myanmar,Egypt,6.7
+Myanmar,South Africa,2.7
+Myanmar,Turkey,4.9
+Myanmar,Iran,7.9
+Myanmar,Kenya,9.3
+Myanmar,Belgium,10.1
+Myanmar,Sweden,8.2
+Myanmar,Denmark,10.5
+Myanmar,Norway,11.3
+Myanmar,Switzerland,3.5
+Myanmar,Poland,11.9
+Myanmar,Czech Republic,4.9
+Myanmar,Hungary,6.4
+Myanmar,Romania,12.8
+Myanmar,Austria,14.5
+Myanmar,Portugal,5.8
+Myanmar,Greece,8.8
+Myanmar,UK,11.1
+Myanmar,Canada,2.6
+Myanmar,Mexico,4.1
+Myanmar,Brazil,3.8
+Myanmar,Argentina,11.3
+Myanmar,Chile,11.4
+Myanmar,Colombia,3.4
+Myanmar,Qatar,9.9
+Myanmar,Kuwait,4.4
+Myanmar,Israel,14.1
+Myanmar,Oman,7.1
+Myanmar,Pakistan,7.9
+Myanmar,Bangladesh,12.2
+Myanmar,Myanmar,0.0
+Myanmar,Morocco,11.3
+Myanmar,Ethiopia,3.4
+Myanmar,Ghana,7.4
+Myanmar,Tanzania,14.0
+Myanmar,Russia,12.9
+Myanmar,Kazakhstan,9.7
+Myanmar,Azerbaijan,12.0
+Myanmar,New Zealand,7.9
+Myanmar,Finland,10.6
+Myanmar,Slovakia,14.4
+Myanmar,Bulgaria,3.8
+Myanmar,Serbia,8.5
+Myanmar,Latvia,8.9
+Morocco,China,2.6
+Morocco,India,14.2
+Morocco,USA,12.9
+Morocco,Germany,8.3
+Morocco,Netherlands,8.6
+Morocco,France,14.0
+Morocco,Italy,4.3
+Morocco,Spain,9.5
+Morocco,Japan,11.5
+Morocco,South Korea,3.7
+Morocco,Taiwan,7.0
+Morocco,Singapore,9.8
+Morocco,Thailand,13.5
+Morocco,Vietnam,8.6
+Morocco,Indonesia,7.0
+Morocco,Malaysia,14.7
+Morocco,Philippines,13.9
+Morocco,Australia,11.9
+Morocco,Sri Lanka,5.6
+Morocco,UAE,14.5
+Morocco,Saudi Arabia,14.6
+Morocco,Nigeria,0.0
+Morocco,Egypt,0.0
+Morocco,South Africa,0.0
+Morocco,Turkey,11.1
+Morocco,Iran,11.7
+Morocco,Kenya,0.0
+Morocco,Belgium,11.1
+Morocco,Sweden,13.2
+Morocco,Denmark,11.3
+Morocco,Norway,14.2
+Morocco,Switzerland,10.2
+Morocco,Poland,4.6
+Morocco,Czech Republic,10.1
+Morocco,Hungary,5.8
+Morocco,Romania,6.5
+Morocco,Austria,10.7
+Morocco,Portugal,14.8
+Morocco,Greece,10.5
+Morocco,UK,14.5
+Morocco,Canada,8.6
+Morocco,Mexico,11.0
+Morocco,Brazil,6.2
+Morocco,Argentina,3.5
+Morocco,Chile,6.6
+Morocco,Colombia,8.2
+Morocco,Qatar,9.4
+Morocco,Kuwait,10.7
+Morocco,Israel,7.4
+Morocco,Oman,11.7
+Morocco,Pakistan,12.9
+Morocco,Bangladesh,5.7
+Morocco,Myanmar,13.0
+Morocco,Morocco,0.0
+Morocco,Ethiopia,2.0
+Morocco,Ghana,0.0
+Morocco,Tanzania,0.0
+Morocco,Russia,10.7
+Morocco,Kazakhstan,4.6
+Morocco,Azerbaijan,11.8
+Morocco,New Zealand,4.1
+Morocco,Finland,5.7
+Morocco,Slovakia,5.3
+Morocco,Bulgaria,12.9
+Morocco,Serbia,11.0
+Morocco,Latvia,5.8
+Ethiopia,China,11.8
+Ethiopia,India,2.4
+Ethiopia,USA,12.6
+Ethiopia,Germany,3.3
+Ethiopia,Netherlands,13.3
+Ethiopia,France,11.6
+Ethiopia,Italy,13.2
+Ethiopia,Spain,11.7
+Ethiopia,Japan,9.3
+Ethiopia,South Korea,5.1
+Ethiopia,Taiwan,12.2
+Ethiopia,Singapore,12.4
+Ethiopia,Thailand,5.7
+Ethiopia,Vietnam,10.6
+Ethiopia,Indonesia,14.0
+Ethiopia,Malaysia,7.0
+Ethiopia,Philippines,14.4
+Ethiopia,Australia,14.7
+Ethiopia,Sri Lanka,6.1
+Ethiopia,UAE,9.2
+Ethiopia,Saudi Arabia,2.2
+Ethiopia,Nigeria,0.0
+Ethiopia,Egypt,0.0
+Ethiopia,South Africa,0.0
+Ethiopia,Turkey,13.3
+Ethiopia,Iran,12.8
+Ethiopia,Kenya,2.4
+Ethiopia,Belgium,10.4
+Ethiopia,Sweden,11.8
+Ethiopia,Denmark,9.1
+Ethiopia,Norway,9.8
+Ethiopia,Switzerland,12.1
+Ethiopia,Poland,14.5
+Ethiopia,Czech Republic,5.8
+Ethiopia,Hungary,4.3
+Ethiopia,Romania,10.9
+Ethiopia,Austria,4.4
+Ethiopia,Portugal,4.3
+Ethiopia,Greece,8.7
+Ethiopia,UK,6.9
+Ethiopia,Canada,7.6
+Ethiopia,Mexico,9.2
+Ethiopia,Brazil,3.7
+Ethiopia,Argentina,9.6
+Ethiopia,Chile,5.3
+Ethiopia,Colombia,6.3
+Ethiopia,Qatar,11.2
+Ethiopia,Kuwait,4.0
+Ethiopia,Israel,4.0
+Ethiopia,Oman,6.2
+Ethiopia,Pakistan,2.7
+Ethiopia,Bangladesh,14.1
+Ethiopia,Myanmar,10.0
+Ethiopia,Morocco,0.0
+Ethiopia,Ethiopia,0.0
+Ethiopia,Ghana,0.0
+Ethiopia,Tanzania,0.0
+Ethiopia,Russia,6.7
+Ethiopia,Kazakhstan,12.2
+Ethiopia,Azerbaijan,6.1
+Ethiopia,New Zealand,4.9
+Ethiopia,Finland,4.4
+Ethiopia,Slovakia,2.9
+Ethiopia,Bulgaria,8.6
+Ethiopia,Serbia,7.4
+Ethiopia,Latvia,9.0
+Ghana,China,3.2
+Ghana,India,4.9
+Ghana,USA,4.8
+Ghana,Germany,6.3
+Ghana,Netherlands,6.7
+Ghana,France,4.8
+Ghana,Italy,11.8
+Ghana,Spain,8.9
+Ghana,Japan,15.0
+Ghana,South Korea,12.7
+Ghana,Taiwan,14.8
+Ghana,Singapore,2.1
+Ghana,Thailand,10.7
+Ghana,Vietnam,7.8
+Ghana,Indonesia,13.8
+Ghana,Malaysia,10.0
+Ghana,Philippines,10.1
+Ghana,Australia,14.5
+Ghana,Sri Lanka,10.9
+Ghana,UAE,6.2
+Ghana,Saudi Arabia,13.9
+Ghana,Nigeria,1.8
+Ghana,Egypt,0.0
+Ghana,South Africa,0.0
+Ghana,Turkey,13.8
+Ghana,Iran,12.7
+Ghana,Kenya,0.0
+Ghana,Belgium,12.4
+Ghana,Sweden,7.8
+Ghana,Denmark,2.6
+Ghana,Norway,13.7
+Ghana,Switzerland,4.5
+Ghana,Poland,8.7
+Ghana,Czech Republic,14.3
+Ghana,Hungary,4.2
+Ghana,Romania,14.4
+Ghana,Austria,9.0
+Ghana,Portugal,2.1
+Ghana,Greece,2.9
+Ghana,UK,10.7
+Ghana,Canada,12.1
+Ghana,Mexico,13.2
+Ghana,Brazil,7.5
+Ghana,Argentina,3.4
+Ghana,Chile,9.0
+Ghana,Colombia,11.1
+Ghana,Qatar,14.7
+Ghana,Kuwait,12.1
+Ghana,Israel,10.4
+Ghana,Oman,14.2
+Ghana,Pakistan,11.7
+Ghana,Bangladesh,4.0
+Ghana,Myanmar,8.0
+Ghana,Morocco,0.0
+Ghana,Ethiopia,0.0
+Ghana,Ghana,0.0
+Ghana,Tanzania,0.0
+Ghana,Russia,12.3
+Ghana,Kazakhstan,9.3
+Ghana,Azerbaijan,9.5
+Ghana,New Zealand,5.0
+Ghana,Finland,5.4
+Ghana,Slovakia,7.0
+Ghana,Bulgaria,10.2
+Ghana,Serbia,7.6
+Ghana,Latvia,2.2
+Tanzania,China,10.8
+Tanzania,India,9.0
+Tanzania,USA,10.3
+Tanzania,Germany,10.0
+Tanzania,Netherlands,11.8
+Tanzania,France,9.6
+Tanzania,Italy,11.1
+Tanzania,Spain,2.9
+Tanzania,Japan,14.1
+Tanzania,South Korea,3.4
+Tanzania,Taiwan,12.2
+Tanzania,Singapore,5.9
+Tanzania,Thailand,3.1
+Tanzania,Vietnam,11.9
+Tanzania,Indonesia,7.7
+Tanzania,Malaysia,7.1
+Tanzania,Philippines,10.6
+Tanzania,Australia,8.2
+Tanzania,Sri Lanka,8.9
+Tanzania,UAE,3.8
+Tanzania,Saudi Arabia,7.1
+Tanzania,Nigeria,0.0
+Tanzania,Egypt,0.0
+Tanzania,South Africa,1.3
+Tanzania,Turkey,10.8
+Tanzania,Iran,13.9
+Tanzania,Kenya,0.0
+Tanzania,Belgium,11.5
+Tanzania,Sweden,6.9
+Tanzania,Denmark,14.3
+Tanzania,Norway,9.2
+Tanzania,Switzerland,9.2
+Tanzania,Poland,3.6
+Tanzania,Czech Republic,2.1
+Tanzania,Hungary,9.8
+Tanzania,Romania,9.0
+Tanzania,Austria,14.3
+Tanzania,Portugal,6.0
+Tanzania,Greece,11.7
+Tanzania,UK,13.7
+Tanzania,Canada,6.5
+Tanzania,Mexico,7.4
+Tanzania,Brazil,10.4
+Tanzania,Argentina,8.7
+Tanzania,Chile,4.1
+Tanzania,Colombia,4.9
+Tanzania,Qatar,12.9
+Tanzania,Kuwait,4.5
+Tanzania,Israel,4.4
+Tanzania,Oman,12.4
+Tanzania,Pakistan,13.1
+Tanzania,Bangladesh,13.1
+Tanzania,Myanmar,14.1
+Tanzania,Morocco,1.9
+Tanzania,Ethiopia,0.0
+Tanzania,Ghana,0.0
+Tanzania,Tanzania,0.0
+Tanzania,Russia,2.9
+Tanzania,Kazakhstan,3.3
+Tanzania,Azerbaijan,11.4
+Tanzania,New Zealand,8.3
+Tanzania,Finland,6.3
+Tanzania,Slovakia,3.7
+Tanzania,Bulgaria,10.5
+Tanzania,Serbia,3.3
+Tanzania,Latvia,10.1
+Russia,China,13.7
+Russia,India,6.1
+Russia,USA,7.9
+Russia,Germany,0.0
+Russia,Netherlands,0.0
+Russia,France,0.0
+Russia,Italy,0.0
+Russia,Spain,0.0
+Russia,Japan,6.1
+Russia,South Korea,7.6
+Russia,Taiwan,2.1
+Russia,Singapore,5.2
+Russia,Thailand,4.9
+Russia,Vietnam,11.6
+Russia,Indonesia,7.7
+Russia,Malaysia,12.9
+Russia,Philippines,3.7
+Russia,Australia,11.5
+Russia,Sri Lanka,13.4
+Russia,UAE,8.0
+Russia,Saudi Arabia,6.7
+Russia,Nigeria,6.0
+Russia,Egypt,9.2
+Russia,South Africa,4.3
+Russia,Turkey,9.9
+Russia,Iran,12.9
+Russia,Kenya,13.2
+Russia,Belgium,0.0
+Russia,Sweden,0.0
+Russia,Denmark,0.0
+Russia,Norway,1.2
+Russia,Switzerland,0.0
+Russia,Poland,0.0
+Russia,Czech Republic,0.0
+Russia,Hungary,0.0
+Russia,Romania,0.0
+Russia,Austria,0.0
+Russia,Portugal,0.0
+Russia,Greece,2.1
+Russia,UK,0.0
+Russia,Canada,15.0
+Russia,Mexico,8.1
+Russia,Brazil,12.1
+Russia,Argentina,6.8
+Russia,Chile,4.9
+Russia,Colombia,12.0
+Russia,Qatar,11.5
+Russia,Kuwait,5.8
+Russia,Israel,8.0
+Russia,Oman,8.6
+Russia,Pakistan,7.2
+Russia,Bangladesh,8.5
+Russia,Myanmar,10.6
+Russia,Morocco,13.0
+Russia,Ethiopia,12.5
+Russia,Ghana,10.0
+Russia,Tanzania,4.2
+Russia,Russia,0.0
+Russia,Kazakhstan,8.7
+Russia,Azerbaijan,7.8
+Russia,New Zealand,4.3
+Russia,Finland,2.3
+Russia,Slovakia,2.5
+Russia,Bulgaria,0.0
+Russia,Serbia,0.0
+Russia,Latvia,0.0
+Kazakhstan,China,8.3
+Kazakhstan,India,2.8
+Kazakhstan,USA,6.8
+Kazakhstan,Germany,2.6
+Kazakhstan,Netherlands,4.7
+Kazakhstan,France,13.8
+Kazakhstan,Italy,6.7
+Kazakhstan,Spain,8.1
+Kazakhstan,Japan,7.9
+Kazakhstan,South Korea,2.6
+Kazakhstan,Taiwan,14.7
+Kazakhstan,Singapore,6.2
+Kazakhstan,Thailand,11.1
+Kazakhstan,Vietnam,8.8
+Kazakhstan,Indonesia,12.8
+Kazakhstan,Malaysia,12.9
+Kazakhstan,Philippines,5.4
+Kazakhstan,Australia,9.1
+Kazakhstan,Sri Lanka,4.3
+Kazakhstan,UAE,10.5
+Kazakhstan,Saudi Arabia,6.7
+Kazakhstan,Nigeria,10.5
+Kazakhstan,Egypt,12.9
+Kazakhstan,South Africa,8.7
+Kazakhstan,Turkey,6.9
+Kazakhstan,Iran,13.8
+Kazakhstan,Kenya,8.7
+Kazakhstan,Belgium,6.6
+Kazakhstan,Sweden,13.3
+Kazakhstan,Denmark,8.3
+Kazakhstan,Norway,8.3
+Kazakhstan,Switzerland,9.9
+Kazakhstan,Poland,8.5
+Kazakhstan,Czech Republic,3.8
+Kazakhstan,Hungary,4.2
+Kazakhstan,Romania,3.0
+Kazakhstan,Austria,10.4
+Kazakhstan,Portugal,4.7
+Kazakhstan,Greece,4.4
+Kazakhstan,UK,6.7
+Kazakhstan,Canada,11.3
+Kazakhstan,Mexico,3.5
+Kazakhstan,Brazil,5.0
+Kazakhstan,Argentina,12.5
+Kazakhstan,Chile,11.4
+Kazakhstan,Colombia,8.3
+Kazakhstan,Qatar,8.2
+Kazakhstan,Kuwait,4.7
+Kazakhstan,Israel,4.1
+Kazakhstan,Oman,12.8
+Kazakhstan,Pakistan,2.3
+Kazakhstan,Bangladesh,2.6
+Kazakhstan,Myanmar,9.5
+Kazakhstan,Morocco,4.1
+Kazakhstan,Ethiopia,10.2
+Kazakhstan,Ghana,2.5
+Kazakhstan,Tanzania,9.4
+Kazakhstan,Russia,2.7
+Kazakhstan,Kazakhstan,0.0
+Kazakhstan,Azerbaijan,0.0
+Kazakhstan,New Zealand,4.3
+Kazakhstan,Finland,14.5
+Kazakhstan,Slovakia,9.8
+Kazakhstan,Bulgaria,9.3
+Kazakhstan,Serbia,2.2
+Kazakhstan,Latvia,11.4
+Azerbaijan,China,10.6
+Azerbaijan,India,5.7
+Azerbaijan,USA,3.1
+Azerbaijan,Germany,7.8
+Azerbaijan,Netherlands,14.9
+Azerbaijan,France,13.3
+Azerbaijan,Italy,4.2
+Azerbaijan,Spain,12.8
+Azerbaijan,Japan,9.8
+Azerbaijan,South Korea,12.3
+Azerbaijan,Taiwan,12.7
+Azerbaijan,Singapore,4.4
+Azerbaijan,Thailand,10.6
+Azerbaijan,Vietnam,5.4
+Azerbaijan,Indonesia,11.4
+Azerbaijan,Malaysia,6.5
+Azerbaijan,Philippines,7.9
+Azerbaijan,Australia,9.7
+Azerbaijan,Sri Lanka,5.0
+Azerbaijan,UAE,7.0
+Azerbaijan,Saudi Arabia,3.4
+Azerbaijan,Nigeria,4.6
+Azerbaijan,Egypt,13.2
+Azerbaijan,South Africa,8.6
+Azerbaijan,Turkey,7.5
+Azerbaijan,Iran,3.9
+Azerbaijan,Kenya,3.3
+Azerbaijan,Belgium,8.2
+Azerbaijan,Sweden,10.0
+Azerbaijan,Denmark,2.5
+Azerbaijan,Norway,12.2
+Azerbaijan,Switzerland,8.5
+Azerbaijan,Poland,3.5
+Azerbaijan,Czech Republic,8.3
+Azerbaijan,Hungary,3.7
+Azerbaijan,Romania,9.8
+Azerbaijan,Austria,12.8
+Azerbaijan,Portugal,13.7
+Azerbaijan,Greece,12.1
+Azerbaijan,UK,10.4
+Azerbaijan,Canada,8.8
+Azerbaijan,Mexico,6.8
+Azerbaijan,Brazil,2.6
+Azerbaijan,Argentina,8.9
+Azerbaijan,Chile,5.0
+Azerbaijan,Colombia,12.4
+Azerbaijan,Qatar,12.3
+Azerbaijan,Kuwait,7.0
+Azerbaijan,Israel,9.7
+Azerbaijan,Oman,11.6
+Azerbaijan,Pakistan,11.9
+Azerbaijan,Bangladesh,11.1
+Azerbaijan,Myanmar,3.3
+Azerbaijan,Morocco,3.7
+Azerbaijan,Ethiopia,8.2
+Azerbaijan,Ghana,5.0
+Azerbaijan,Tanzania,13.2
+Azerbaijan,Russia,5.7
+Azerbaijan,Kazakhstan,1.8
+Azerbaijan,Azerbaijan,0.0
+Azerbaijan,New Zealand,4.5
+Azerbaijan,Finland,11.2
+Azerbaijan,Slovakia,12.3
+Azerbaijan,Bulgaria,9.5
+Azerbaijan,Serbia,3.5
+Azerbaijan,Latvia,2.1
+New Zealand,China,10.5
+New Zealand,India,10.9
+New Zealand,USA,6.1
+New Zealand,Germany,6.7
+New Zealand,Netherlands,4.0
+New Zealand,France,10.5
+New Zealand,Italy,5.3
+New Zealand,Spain,13.1
+New Zealand,Japan,7.5
+New Zealand,South Korea,6.8
+New Zealand,Taiwan,5.6
+New Zealand,Singapore,10.8
+New Zealand,Thailand,11.8
+New Zealand,Vietnam,7.4
+New Zealand,Indonesia,12.2
+New Zealand,Malaysia,8.3
+New Zealand,Philippines,6.8
+New Zealand,Australia,0.0
+New Zealand,Sri Lanka,5.3
+New Zealand,UAE,6.0
+New Zealand,Saudi Arabia,6.5
+New Zealand,Nigeria,11.2
+New Zealand,Egypt,11.6
+New Zealand,South Africa,13.1
+New Zealand,Turkey,10.6
+New Zealand,Iran,11.7
+New Zealand,Kenya,7.8
+New Zealand,Belgium,11.1
+New Zealand,Sweden,4.1
+New Zealand,Denmark,4.8
+New Zealand,Norway,7.2
+New Zealand,Switzerland,6.4
+New Zealand,Poland,9.2
+New Zealand,Czech Republic,11.1
+New Zealand,Hungary,11.2
+New Zealand,Romania,4.1
+New Zealand,Austria,14.5
+New Zealand,Portugal,2.1
+New Zealand,Greece,3.2
+New Zealand,UK,3.9
+New Zealand,Canada,14.0
+New Zealand,Mexico,7.7
+New Zealand,Brazil,2.8
+New Zealand,Argentina,4.9
+New Zealand,Chile,3.0
+New Zealand,Colombia,2.5
+New Zealand,Qatar,7.0
+New Zealand,Kuwait,14.8
+New Zealand,Israel,10.0
+New Zealand,Oman,8.8
+New Zealand,Pakistan,11.3
+New Zealand,Bangladesh,9.8
+New Zealand,Myanmar,14.3
+New Zealand,Morocco,12.7
+New Zealand,Ethiopia,10.3
+New Zealand,Ghana,7.7
+New Zealand,Tanzania,4.6
+New Zealand,Russia,10.5
+New Zealand,Kazakhstan,12.5
+New Zealand,Azerbaijan,5.7
+New Zealand,New Zealand,0.0
+New Zealand,Finland,2.4
+New Zealand,Slovakia,9.8
+New Zealand,Bulgaria,8.7
+New Zealand,Serbia,5.0
+New Zealand,Latvia,4.2
+Finland,China,2.5
+Finland,India,5.1
+Finland,USA,2.0
+Finland,Germany,0.0
+Finland,Netherlands,2.6
+Finland,France,0.0
+Finland,Italy,0.0
+Finland,Spain,0.0
+Finland,Japan,8.7
+Finland,South Korea,11.6
+Finland,Taiwan,2.9
+Finland,Singapore,3.2
+Finland,Thailand,5.7
+Finland,Vietnam,12.8
+Finland,Indonesia,13.9
+Finland,Malaysia,6.5
+Finland,Philippines,14.5
+Finland,Australia,5.6
+Finland,Sri Lanka,9.9
+Finland,UAE,4.5
+Finland,Saudi Arabia,14.1
+Finland,Nigeria,9.5
+Finland,Egypt,5.4
+Finland,South Africa,7.3
+Finland,Turkey,3.4
+Finland,Iran,2.9
+Finland,Kenya,5.8
+Finland,Belgium,2.6
+Finland,Sweden,2.8
+Finland,Denmark,2.1
+Finland,Norway,0.0
+Finland,Switzerland,2.1
+Finland,Poland,0.0
+Finland,Czech Republic,0.0
+Finland,Hungary,1.9
+Finland,Romania,0.0
+Finland,Austria,0.0
+Finland,Portugal,0.0
+Finland,Greece,0.0
+Finland,UK,0.0
+Finland,Canada,10.2
+Finland,Mexico,14.9
+Finland,Brazil,10.8
+Finland,Argentina,5.0
+Finland,Chile,6.1
+Finland,Colombia,14.4
+Finland,Qatar,8.7
+Finland,Kuwait,2.1
+Finland,Israel,12.8
+Finland,Oman,5.2
+Finland,Pakistan,3.2
+Finland,Bangladesh,10.8
+Finland,Myanmar,12.7
+Finland,Morocco,3.0
+Finland,Ethiopia,14.1
+Finland,Ghana,8.2
+Finland,Tanzania,6.6
+Finland,Russia,1.5
+Finland,Kazakhstan,14.3
+Finland,Azerbaijan,10.9
+Finland,New Zealand,13.8
+Finland,Finland,0.0
+Finland,Slovakia,0.0
+Finland,Bulgaria,0.0
+Finland,Serbia,0.0
+Finland,Latvia,1.4
+Slovakia,China,4.6
+Slovakia,India,5.2
+Slovakia,USA,10.0
+Slovakia,Germany,0.0
+Slovakia,Netherlands,0.0
+Slovakia,France,2.4
+Slovakia,Italy,0.0
+Slovakia,Spain,0.0
+Slovakia,Japan,11.9
+Slovakia,South Korea,9.0
+Slovakia,Taiwan,2.5
+Slovakia,Singapore,8.3
+Slovakia,Thailand,10.1
+Slovakia,Vietnam,8.4
+Slovakia,Indonesia,14.8
+Slovakia,Malaysia,13.7
+Slovakia,Philippines,13.3
+Slovakia,Australia,8.4
+Slovakia,Sri Lanka,14.8
+Slovakia,UAE,13.9
+Slovakia,Saudi Arabia,5.6
+Slovakia,Nigeria,4.9
+Slovakia,Egypt,9.5
+Slovakia,South Africa,2.7
+Slovakia,Turkey,12.4
+Slovakia,Iran,8.2
+Slovakia,Kenya,9.0
+Slovakia,Belgium,0.0
+Slovakia,Sweden,0.0
+Slovakia,Denmark,0.0
+Slovakia,Norway,0.0
+Slovakia,Switzerland,2.4
+Slovakia,Poland,0.0
+Slovakia,Czech Republic,0.0
+Slovakia,Hungary,0.0
+Slovakia,Romania,0.0
+Slovakia,Austria,0.0
+Slovakia,Portugal,0.0
+Slovakia,Greece,0.0
+Slovakia,UK,0.0
+Slovakia,Canada,9.1
+Slovakia,Mexico,5.1
+Slovakia,Brazil,8.1
+Slovakia,Argentina,10.0
+Slovakia,Chile,6.8
+Slovakia,Colombia,8.5
+Slovakia,Qatar,4.7
+Slovakia,Kuwait,11.1
+Slovakia,Israel,6.8
+Slovakia,Oman,13.1
+Slovakia,Pakistan,5.6
+Slovakia,Bangladesh,4.3
+Slovakia,Myanmar,3.7
+Slovakia,Morocco,9.5
+Slovakia,Ethiopia,5.0
+Slovakia,Ghana,3.3
+Slovakia,Tanzania,5.5
+Slovakia,Russia,0.0
+Slovakia,Kazakhstan,7.6
+Slovakia,Azerbaijan,7.0
+Slovakia,New Zealand,3.9
+Slovakia,Finland,1.3
+Slovakia,Slovakia,0.0
+Slovakia,Bulgaria,1.4
+Slovakia,Serbia,0.0
+Slovakia,Latvia,2.7
+Bulgaria,China,8.7
+Bulgaria,India,11.4
+Bulgaria,USA,12.2
+Bulgaria,Germany,0.0
+Bulgaria,Netherlands,0.0
+Bulgaria,France,0.0
+Bulgaria,Italy,0.0
+Bulgaria,Spain,0.0
+Bulgaria,Japan,2.8
+Bulgaria,South Korea,12.6
+Bulgaria,Taiwan,8.2
+Bulgaria,Singapore,10.2
+Bulgaria,Thailand,7.8
+Bulgaria,Vietnam,6.4
+Bulgaria,Indonesia,6.7
+Bulgaria,Malaysia,9.3
+Bulgaria,Philippines,14.1
+Bulgaria,Australia,5.4
+Bulgaria,Sri Lanka,2.3
+Bulgaria,UAE,3.6
+Bulgaria,Saudi Arabia,13.3
+Bulgaria,Nigeria,14.5
+Bulgaria,Egypt,4.6
+Bulgaria,South Africa,9.5
+Bulgaria,Turkey,10.4
+Bulgaria,Iran,4.3
+Bulgaria,Kenya,12.1
+Bulgaria,Belgium,0.0
+Bulgaria,Sweden,0.0
+Bulgaria,Denmark,0.0
+Bulgaria,Norway,0.0
+Bulgaria,Switzerland,1.8
+Bulgaria,Poland,0.0
+Bulgaria,Czech Republic,0.0
+Bulgaria,Hungary,0.0
+Bulgaria,Romania,0.0
+Bulgaria,Austria,1.7
+Bulgaria,Portugal,0.0
+Bulgaria,Greece,0.0
+Bulgaria,UK,1.1
+Bulgaria,Canada,4.1
+Bulgaria,Mexico,5.0
+Bulgaria,Brazil,6.1
+Bulgaria,Argentina,5.8
+Bulgaria,Chile,5.5
+Bulgaria,Colombia,10.4
+Bulgaria,Qatar,5.5
+Bulgaria,Kuwait,7.8
+Bulgaria,Israel,13.2
+Bulgaria,Oman,6.7
+Bulgaria,Pakistan,9.6
+Bulgaria,Bangladesh,14.6
+Bulgaria,Myanmar,7.4
+Bulgaria,Morocco,4.4
+Bulgaria,Ethiopia,2.3
+Bulgaria,Ghana,11.5
+Bulgaria,Tanzania,10.6
+Bulgaria,Russia,2.4
+Bulgaria,Kazakhstan,3.0
+Bulgaria,Azerbaijan,4.2
+Bulgaria,New Zealand,3.3
+Bulgaria,Finland,0.0
+Bulgaria,Slovakia,2.1
+Bulgaria,Bulgaria,0.0
+Bulgaria,Serbia,0.0
+Bulgaria,Latvia,0.0
+Serbia,China,11.9
+Serbia,India,3.1
+Serbia,USA,5.4
+Serbia,Germany,0.0
+Serbia,Netherlands,0.0
+Serbia,France,1.6
+Serbia,Italy,0.0
+Serbia,Spain,0.0
+Serbia,Japan,10.1
+Serbia,South Korea,3.7
+Serbia,Taiwan,12.9
+Serbia,Singapore,2.4
+Serbia,Thailand,10.6
+Serbia,Vietnam,13.2
+Serbia,Indonesia,6.2
+Serbia,Malaysia,8.2
+Serbia,Philippines,14.7
+Serbia,Australia,9.0
+Serbia,Sri Lanka,5.5
+Serbia,UAE,7.8
+Serbia,Saudi Arabia,14.6
+Serbia,Nigeria,11.1
+Serbia,Egypt,4.3
+Serbia,South Africa,9.8
+Serbia,Turkey,10.2
+Serbia,Iran,10.3
+Serbia,Kenya,9.3
+Serbia,Belgium,0.0
+Serbia,Sweden,0.0
+Serbia,Denmark,0.0
+Serbia,Norway,0.0
+Serbia,Switzerland,0.0
+Serbia,Poland,1.9
+Serbia,Czech Republic,0.0
+Serbia,Hungary,0.0
+Serbia,Romania,0.0
+Serbia,Austria,0.0
+Serbia,Portugal,2.7
+Serbia,Greece,0.0
+Serbia,UK,0.0
+Serbia,Canada,2.1
+Serbia,Mexico,14.0
+Serbia,Brazil,14.3
+Serbia,Argentina,8.2
+Serbia,Chile,2.1
+Serbia,Colombia,7.6
+Serbia,Qatar,5.8
+Serbia,Kuwait,5.0
+Serbia,Israel,2.1
+Serbia,Oman,6.9
+Serbia,Pakistan,7.4
+Serbia,Bangladesh,9.3
+Serbia,Myanmar,7.1
+Serbia,Morocco,4.1
+Serbia,Ethiopia,11.6
+Serbia,Ghana,7.1
+Serbia,Tanzania,6.9
+Serbia,Russia,0.0
+Serbia,Kazakhstan,7.5
+Serbia,Azerbaijan,5.1
+Serbia,New Zealand,11.9
+Serbia,Finland,2.6
+Serbia,Slovakia,0.0
+Serbia,Bulgaria,0.0
+Serbia,Serbia,0.0
+Serbia,Latvia,0.0
+Latvia,China,12.5
+Latvia,India,7.4
+Latvia,USA,13.1
+Latvia,Germany,0.0
+Latvia,Netherlands,0.0
+Latvia,France,0.0
+Latvia,Italy,0.0
+Latvia,Spain,0.0
+Latvia,Japan,10.1
+Latvia,South Korea,4.4
+Latvia,Taiwan,2.3
+Latvia,Singapore,2.6
+Latvia,Thailand,9.0
+Latvia,Vietnam,4.4
+Latvia,Indonesia,3.3
+Latvia,Malaysia,5.5
+Latvia,Philippines,11.3
+Latvia,Australia,11.5
+Latvia,Sri Lanka,5.0
+Latvia,UAE,4.0
+Latvia,Saudi Arabia,8.4
+Latvia,Nigeria,6.4
+Latvia,Egypt,6.1
+Latvia,South Africa,12.4
+Latvia,Turkey,15.0
+Latvia,Iran,8.0
+Latvia,Kenya,12.3
+Latvia,Belgium,0.0
+Latvia,Sweden,2.9
+Latvia,Denmark,0.0
+Latvia,Norway,0.0
+Latvia,Switzerland,0.0
+Latvia,Poland,0.0
+Latvia,Czech Republic,0.0
+Latvia,Hungary,2.6
+Latvia,Romania,1.2
+Latvia,Austria,0.0
+Latvia,Portugal,0.0
+Latvia,Greece,0.0
+Latvia,UK,0.0
+Latvia,Canada,11.6
+Latvia,Mexico,2.4
+Latvia,Brazil,8.0
+Latvia,Argentina,12.0
+Latvia,Chile,8.8
+Latvia,Colombia,14.8
+Latvia,Qatar,8.1
+Latvia,Kuwait,10.9
+Latvia,Israel,6.1
+Latvia,Oman,6.2
+Latvia,Pakistan,10.2
+Latvia,Bangladesh,2.5
+Latvia,Myanmar,14.2
+Latvia,Morocco,8.8
+Latvia,Ethiopia,5.3
+Latvia,Ghana,10.3
+Latvia,Tanzania,4.6
+Latvia,Russia,2.7
+Latvia,Kazakhstan,4.8
+Latvia,Azerbaijan,3.5
+Latvia,New Zealand,10.2
+Latvia,Finland,0.0
+Latvia,Slovakia,0.0
+Latvia,Bulgaria,0.0
+Latvia,Serbia,0.0
+Latvia,Latvia,0.0
