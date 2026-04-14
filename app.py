@@ -1216,13 +1216,16 @@ def render_sidebar():
         live_events = st.session_state.get("live_events")
         if live_events:
             st.markdown(f"**{len(live_events)} disruption(s) detected:**")
-            for i, evt in enumerate(live_events):
-                sev_icon = {"high": "🔴", "medium": "🟠", "low": "🟡"}.get(evt["severity"], "⚪")
-                src_icon = {"USGS": "🌋", "OpenWeatherMap": "🌩️", "Open-Meteo": "🌩️"}.get(evt.get("source",""), "📰")
-                label = f"{sev_icon}{src_icon} {evt['title'][:40]}{'…' if len(evt['title']) > 40 else ''}"
-                if st.button(label, key=f"live_evt_{i}", width="stretch"):
-                    st.session_state["event_text"] = evt["event_text"]
-                    st.rerun()
+            
+            # Use a fixed-height container to make the feed scrollable
+            with st.container(height=400, border=False):
+                for i, evt in enumerate(live_events):
+                    sev_icon = {"high": "🔴", "medium": "🟠", "low": "🟡"}.get(evt["severity"], "⚪")
+                    src_icon = {"USGS": "🌋", "OpenWeatherMap": "🌩️", "Open-Meteo": "🌩️"}.get(evt.get("source",""), "📰")
+                    label = f"{sev_icon}{src_icon} {evt['title'][:40]}{'…' if len(evt['title']) > 40 else ''}"
+                    if st.button(label, key=f"live_evt_{i}", width="stretch"):
+                        st.session_state["event_text"] = evt["event_text"]
+                        st.rerun()
         elif live_events is not None:
             st.info("No disruptions detected right now.")
 
