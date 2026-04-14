@@ -35,7 +35,7 @@ from graph_builder    import build_graph, load_supply_metadata, get_graph_summar
 from cascade_model    import run_cascade, get_cascade_stats
 from risk_scoring     import score_nodes, compute_centrality
 from reroute          import find_alternates, format_path
-from llm_brief        import generate_brief
+from llm_brief        import generate_brief, generate_execution_payloads
 from shap_explain     import compute_shap, shap_bar_figure, shap_waterfall_figure, shap_to_text, FEATURE_DESCRIPTIONS, FEATURE_LABELS
 from anomaly_detector import load_anomaly_model, score_anomalies, anomaly_bar_figure
 from material_flow    import (
@@ -3052,6 +3052,39 @@ def main():
                 card_html += '</div></div>'
                 
                 st.markdown(card_html, unsafe_allow_html=True)
+                
+                if found:
+                    if st.button("⚡ Execute Auto-Reroute via Agent", key=f"exec_reroute_{i}"):
+                        st.session_state[f"execating_{i}"] = True
+                        # Clear any previously cached payloads so fresh output is generated
+                        st.session_state.pop(f"execution_payloads_{i}", None)
+                    
+                    if st.session_state.get(f"execating_{i}"):
+                        if f"execution_payloads_{i}" not in st.session_state:
+                            with st.spinner("🤖 Agentic execution running... drafting emails and simulated ERP payloads..."):
+                                time.sleep(0.5)
+                                st.session_state[f"execution_payloads_{i}"] = generate_execution_payloads(route)
+                                st.toast("✅ Simulated Transaction Successful", icon="✅")
+                        
+                        payloads = st.session_state[f"execution_payloads_{i}"]
+                        if payloads:
+                            st.markdown(f'''
+                            <div style="background:linear-gradient(135deg,rgba(15,23,42,0.95),rgba(10,14,26,0.98)); border:1px solid #4285f4; border-radius:12px; padding:1.2rem; margin-top:0.4rem; margin-bottom:0.1rem; box-shadow: 0 4px 16px rgba(66,133,244,0.15);">
+                                <div style="color:#4285f4; font-weight:800; margin-bottom:0.8rem; font-size:1.1rem; font-family:'Space Grotesk',sans-serif; display:flex; align-items:center; gap:0.5rem;">
+                                    <span>⚡</span> AUTONOMOUS AGENT EXECUTION
+                                </div>
+                                <div style="margin-bottom:1rem;">
+                                    <div style="color:#e2e8f0; font-size:0.85rem; margin-bottom:0.4rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em;">📧 Supplier Reach-out Email</div>
+                                    <div style="background:rgba(0,0,0,0.3); padding:1rem; border-radius:8px; font-family:'Inter', sans-serif; font-size:0.9rem; color:#cbd5e1; border:1px solid #334155; white-space: pre-wrap; line-height:1.5;">{payloads.get('email_draft', '')}</div>
+                                </div>
+                                <div style="color:#e2e8f0; font-size:0.85rem; margin-bottom:0.4rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em;">⚙️ ERP API Payload (SAP/Oracle)</div>
+                            </div>
+                            ''', unsafe_allow_html=True)
+                            
+                            try:
+                                st.json(json.loads(payloads.get('erp_json_payload', '{}')))
+                            except:
+                                st.code(payloads.get('erp_json_payload', ''), language="json")
 
     # ==================================================================
     # TAB 4 — AI Brief

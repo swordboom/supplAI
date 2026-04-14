@@ -335,6 +335,93 @@ def generate_brief(
 
 
 # ---------------------------------------------------------------------------
+# Agentic Action Execution (Mock ERP)
+# ---------------------------------------------------------------------------
+def generate_execution_payloads(
+    route: Dict[str, Any],
+    api_key: Optional[str] = None
+) -> Dict[str, Any]:
+    """
+    Generate an email to the new supplier and a JSON payload mocking an
+    ERP (e.g. SAP/Oracle) system update to execute the reroute.
+    """
+    gemini_key = _resolve_api_key(api_key, GEMINI_KEY_ENV_VARS)
+    
+    source_city = route.get("source_name", "Unknown Source")
+    dest_city = route.get("destination_name", "Unknown Destination")
+    cost = route.get("alt_cost_usd", 50000)
+    
+    prompt = f"""You are an Autonomous Logistics Execution Agent.
+An alternate supply route has been approved to bypass a disruption.
+Route details:
+- Original Origin: Disrupted
+- New Origin: {source_city}
+- Destination: {dest_city}
+- Estimated Cost: ${cost:,.0f}
+- Units required: 500
+
+Generate EXACTLY the following JSON:
+{{
+  "email_draft": "<A professional email to a generic supplier in {source_city} requesting 500 units of capacity urgently.>",
+  "erp_json_payload": {{
+     "transaction_type": "PURCHASE_ORDER_UPDATE",
+     "po_number": "PO-99482-EMG",
+     "supplier": "Generic Supplier {source_city}",
+     "origin": "{source_city}",
+     "destination": "{dest_city}",
+     "units": 500,
+     "cost_estimate_usd": {cost},
+     "status": "Awaiting Vendor Confirmation"
+  }}
+}}
+Return ONLY valid JSON, no extra text."""
+
+    if gemini_key:
+        try:
+            import json, re
+            raw_text = _gemini_generate(gemini_key, prompt, temperature=0.2)
+            json_match = re.search(r"\{.*\}", raw_text, re.DOTALL)
+            if json_match:
+                payloads = json.loads(json_match.group(0))
+                payloads["erp_json_payload"] = json.dumps(payloads["erp_json_payload"], indent=2)
+                return payloads
+        except Exception as e:
+            print(f"  [llm_brief] Agentic Execution via Gemini failed: {e}")
+
+    # Fallback if no API or error
+    import json
+    fallback_email = (
+        f"Subject: URGENT: Capacity Request for 500 Units\n\n"
+        f"Dear Supplier Team in {source_city},\n\n"
+        f"We are writing to urgently request your assistance. Due to an active supply chain disruption, "
+        f"we require an immediate capacity allocation of 500 units to be routed to {dest_city}.\n\n"
+        f"Please find the preliminary order details below:\n"
+        f"  - Origin: {source_city}\n"
+        f"  - Destination: {dest_city}\n"
+        f"  - Units Required: 500\n"
+        f"  - Estimated Cost: ${cost:,.0f}\n"
+        f"  - Priority: CRITICAL / Emergency Procurement\n\n"
+        f"Kindly acknowledge receipt of this request and confirm your earliest available shipment window "
+        f"at your earliest convenience. Our procurement team is standing by.\n\n"
+        f"Best regards,\n"
+        f"Autonomous Supply Chain Agent\n"
+        f"SupplAI — Enterprise Logistics Intelligence Platform"
+    )
+    return {
+        "email_draft": fallback_email,
+        "erp_json_payload": json.dumps({
+            "transaction_type": "PURCHASE_ORDER_UPDATE",
+            "po_number": "PO-99482-EMG",
+            "supplier": f"Generic Supplier {source_city}",
+            "origin": source_city,
+            "destination": dest_city,
+            "units": 500,
+            "cost_estimate_usd": cost,
+            "status": "Awaiting Vendor Confirmation"
+        }, indent=2)
+    }
+
+# ---------------------------------------------------------------------------
 # Quick test
 # ---------------------------------------------------------------------------
 if __name__ == "__main__":
