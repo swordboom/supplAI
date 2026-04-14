@@ -700,11 +700,11 @@ def build_plotly_graph(
     risk_df:        pd.DataFrame,
     supply_df:      pd.DataFrame,
     seed_nodes:     list,
-    color_by:       str = "risk",   # "risk" | "tier"
+    color_by:       str = "risk",
+    reroute_suggestions: list = None,
 ) -> go.Figure:
     """Build an interactive Plotly geo-scatter map coloured by risk level or supply-chain tier."""
 
-    # Build node risk lookup
     risk_lookup = {}
     if not risk_df.empty:
         for _, row in risk_df.iterrows():
@@ -713,14 +713,12 @@ def build_plotly_graph(
     cascade_nodes = set(cascade_result.keys())
     seed_set      = set(seed_nodes)
 
-    # Colour + size helpers
     def node_colour(node):
         if color_by == "tier":
             if node not in cascade_nodes:
                 return "#1e293b"
             tier = int(G.nodes[node].get("tier", 3))
             return TIER_COLORS.get(tier, "#334155")
-        # default: risk score
         if node in seed_set:   return "#ef4444"
         rs = risk_lookup.get(node, 0)
         if rs >= 0.65:         return "#f97316"
@@ -736,77 +734,81 @@ def build_plotly_graph(
         if rs >= 0.10:         return 9
         return 7
 
-    # ------------------------------------------------------------------ #
-    # Arc lines — only high-priority cascade edges to keep JSON small    #
-    # Priority: seed→depth1, depth1→depth2, then sample remaining.      #
-    # Hard cap at 400 arcs to prevent browser JSON.parse failure.       #
-    # ------------------------------------------------------------------ #
-    MAX_ARCS = 400
+    traces = []
 
-    # Depth lookup for quick access
-    depth_map = cascade_result  # node -> depth int
-
-    # Sort edges by priority: lower max-depth of endpoints = higher priority
+    # ------------------------------------------------------------------ #
+    # 1. Cascade impact lines — subtle red, showing disrupted connections #
+    # ------------------------------------------------------------------ #
+    MAX_ARCS = 300
+    depth_map = cascade_result
     priority_edges = []
     for src, dst in G.edges():
         if src in cascade_nodes and dst in cascade_nodes:
             d = depth_map.get(src, 99) + depth_map.get(dst, 99)
             priority_edges.append((d, src, dst))
-    priority_edges.sort()   # lowest combined depth first
+    priority_edges.sort()
     priority_edges = priority_edges[:MAX_ARCS]
 
     arc_lats, arc_lons = [], []
-    mid_lats, mid_lons, mid_texts = [], [], []
-
     for _, src, dst in priority_edges:
-        src_lat = G.nodes[src].get("lat", 0)
-        src_lon = G.nodes[src].get("lon", 0)
-        dst_lat = G.nodes[dst].get("lat", 0)
-        dst_lon = G.nodes[dst].get("lon", 0)
-        arc_lats += [src_lat, dst_lat, None]
-        arc_lons += [src_lon, dst_lon, None]
+        arc_lats += [G.nodes[src].get("lat", 0), G.nodes[dst].get("lat", 0), None]
+        arc_lons += [G.nodes[src].get("lon", 0), G.nodes[dst].get("lon", 0), None]
 
-        mid_lat  = (src_lat + dst_lat) / 2
-        mid_lon  = (src_lon + dst_lon) / 2
-        material = get_edge_material(G, src, dst)
-        src_name = G.nodes[src].get("city_name", src)
-        dst_name = G.nodes[dst].get("city_name", dst)
-        hover_txt = (
-            f"<b>{material}</b><br>"
-            f"{src_name} to {dst_name}<br>"
-            f"{G.nodes[src].get('country','?')} to {G.nodes[dst].get('country','?')}"
-        )
-        mid_lats.append(mid_lat)
-        mid_lons.append(mid_lon)
-        mid_texts.append(hover_txt)
-
-    arc_trace = go.Scattergeo(
+    traces.append(go.Scattergeo(
         lat=arc_lats, lon=arc_lons,
         mode="lines",
-        line=dict(width=0.8, color="rgba(239,68,68,0.35)"),
+        line=dict(width=0.6, color="rgba(239,68,68,0.22)"),
         hoverinfo="none",
-        name="Disrupted Routes",
+        name="Cascade Impact",
         showlegend=False,
-    )
-
-    # Midpoint hover markers (capped — same count as arcs)
-    material_trace = go.Scattergeo(
-        lat=mid_lats, lon=mid_lons,
-        mode="markers",
-        hoverinfo="text",
-        text=mid_texts,
-        marker=dict(
-            size=6,
-            color="rgba(251,191,36,0.7)",
-            symbol="diamond",
-            line=dict(width=0.5, color="rgba(255,255,255,0.3)"),
-        ),
-        name="Material Flows",
-        showlegend=False,
-    )
+    ))
 
     # ------------------------------------------------------------------ #
-    # Node scatter                                                        #
+    # 2. Blocked routes — red dashed lines for disrupted paths           #
+    # ------------------------------------------------------------------ #
+    if reroute_suggestions:
+        for r in reroute_suggestions:
+            d_path = r.get("disrupted_path", [])
+            if len(d_path) >= 2:
+                blk_lats = [G.nodes[n].get("lat", 0) for n in d_path if n in G.nodes]
+                blk_lons = [G.nodes[n].get("lon", 0) for n in d_path if n in G.nodes]
+                src_name = r.get("source_name", d_path[0])
+                dst_name = r.get("destination_name", d_path[-1])
+                traces.append(go.Scattergeo(
+                    lat=blk_lats, lon=blk_lons,
+                    mode="lines",
+                    line=dict(width=2.5, color="#ef4444", dash="dot"),
+                    hoverinfo="text",
+                    text=f"⛔ BLOCKED: {src_name} → {dst_name}",
+                    name="Blocked Route",
+                    showlegend=False,
+                ))
+
+    # ------------------------------------------------------------------ #
+    # 3. Alternate routes — green solid lines for safe reroutes          #
+    # ------------------------------------------------------------------ #
+    if reroute_suggestions:
+        for r in reroute_suggestions:
+            if r["status"] == "✅ Alternate Found" and r.get("alternate_path"):
+                a_path = r["alternate_path"]
+                alt_lats = [G.nodes[n].get("lat", 0) for n in a_path if n in G.nodes]
+                alt_lons = [G.nodes[n].get("lon", 0) for n in a_path if n in G.nodes]
+                src_name = r.get("source_name", a_path[0])
+                dst_name = r.get("destination_name", a_path[-1])
+                vstat = r.get("route_validation", "")
+                traces.append(go.Scattergeo(
+                    lat=alt_lats, lon=alt_lons,
+                    mode="lines+markers",
+                    line=dict(width=2.5, color="#22c55e"),
+                    marker=dict(size=5, color="#22c55e", symbol="diamond"),
+                    hoverinfo="text",
+                    text=f"✅ ALTERNATE: {src_name} → {dst_name}<br>{vstat}",
+                    name="Alternate Route",
+                    showlegend=False,
+                ))
+
+    # ------------------------------------------------------------------ #
+    # 4. Supply chain nodes                                               #
     # ------------------------------------------------------------------ #
     lats, lons, texts, colours, sizes = [], [], [], [], []
 
@@ -838,7 +840,7 @@ def build_plotly_graph(
         colours.append(node_colour(node))
         sizes.append(node_size(node))
 
-    node_trace = go.Scattergeo(
+    traces.append(go.Scattergeo(
         lat=lats, lon=lons,
         mode="markers",
         hoverinfo="text",
@@ -851,9 +853,9 @@ def build_plotly_graph(
         ),
         name="Supply Chain Nodes",
         showlegend=False,
-    )
+    ))
 
-    fig = go.Figure(data=[arc_trace, material_trace, node_trace])
+    fig = go.Figure(data=traces)
     fig.update_geos(
         projection_type="natural earth",
         showland=True,       landcolor="#1a2235",
@@ -863,23 +865,51 @@ def build_plotly_graph(
         showcountries=True,  countrycolor="#1e3050",
         bgcolor="#0a0e1a",
     )
+
+    # Build colored legend text for the annotation
+    if color_by == "tier":
+        legend_text = (
+            "<span style='color:#ef4444'>●</span> Tier-1 Direct  "
+            "<span style='color:#f97316'>●</span> Tier-2  "
+            "<span style='color:#eab308'>●</span> Tier-3  "
+            "<span style='color:#22c55e'>●</span> Tier-4  "
+            "<span style='color:#3b82f6'>●</span> Tier-5  "
+            "<span style='color:#334155'>●</span> Unaffected"
+        )
+    else:
+        legend_text = (
+            "<span style='color:#ef4444'>●</span> Disruption Source  "
+            "<span style='color:#f97316'>●</span> Critical (≥0.65)  "
+            "<span style='color:#eab308'>●</span> High Risk (≥0.40)  "
+            "<span style='color:#3b82f6'>●</span> Monitoring (≥0.10)  "
+            "<span style='color:#334155'>●</span> Unaffected"
+        )
+
+    route_legend = (
+        "    <span style='color:#ef4444'>┄┄</span> Blocked Route  "
+        "<span style='color:#22c55e'>━━</span> Alternate Route  "
+        "<span style='color:rgba(239,68,68,0.4)'>──</span> Cascade Impact"
+    )
+
     fig.update_layout(
         title=dict(
             text="Supply Chain Network — Global Disruption Impact Map",
             font=dict(color="#e2e8f0", size=16, family="Space Grotesk, Inter, sans-serif"),
         ),
         paper_bgcolor="#060b18",
-        margin=dict(l=0, r=0, t=45, b=0),
+        margin=dict(l=0, r=0, t=45, b=35),
         height=580,
         annotations=[
-            dict(x=0.01, y=0.02, xref="paper", yref="paper", showarrow=False,
-                 text=(
-                     "&#9632; Tier-1 Direct &nbsp; &#9632; Tier-2 &nbsp; &#9632; Tier-3 &nbsp; &#9632; Tier-4 &nbsp; &#9632; Tier-5 &nbsp; &#9632; Unaffected"
-                     if color_by == "tier" else
-                     "&#9632; Disruption Source &nbsp; &#9632; Critical Cascade &nbsp; &#9632; High Risk &nbsp; &#9632; Monitoring &nbsp; &#9632; Unaffected"
-                 ),
+            dict(x=0.01, y=0.06, xref="paper", yref="paper", showarrow=False,
+                 text=legend_text,
+                 font=dict(color="#cbd5e1", size=12, family="Space Grotesk, Inter, sans-serif"),
+                 bgcolor="rgba(6,11,24,0.85)", borderpad=8, align="left",
+                 bordercolor="rgba(66,133,244,0.2)", borderwidth=1),
+            dict(x=0.01, y=0.01, xref="paper", yref="paper", showarrow=False,
+                 text=route_legend,
                  font=dict(color="#94a3b8", size=11, family="Space Grotesk, Inter, sans-serif"),
-                 bgcolor="rgba(10,14,26,0.7)", borderpad=6, align="left"),
+                 bgcolor="rgba(6,11,24,0.85)", borderpad=6, align="left",
+                 bordercolor="rgba(66,133,244,0.15)", borderwidth=1),
         ],
     )
     return fig
@@ -1224,20 +1254,6 @@ def render_sidebar():
         run_analysis = st.button("🚀 Analyse Disruption", type="primary", width="stretch")
 
         st.markdown("---")
-        st.markdown("""
-        <div style="font-size: 0.68rem; color: #334155; text-align: center; padding: 0.5rem 0; line-height: 1.8;">
-            <span style="color:#4285f4;">■</span>
-            <span style="color:#ea4335;">■</span>
-            <span style="color:#fbbc04;">■</span>
-            <span style="color:#34a853;">■</span>
-            <br>
-            <span style="color:#475569;">Powered by</span>
-            <span style="color:#4285f4; font-weight:600;"> Google Gemini</span> ·
-            <span style="color:#64748b;">NetworkX · XGBoost · SHAP</span>
-            <br>
-            <span style="color:#334155;">© 2025 SupplAI</span>
-        </div>
-        """, unsafe_allow_html=True)
 
     # Sync text area value to session state
     st.session_state["event_text"] = event_text
@@ -1839,6 +1855,7 @@ def main():
                 G, cascade_result, risk_df, supply_df,
                 seed_nodes=disruption_info["affected_nodes"],
                 color_by="tier",
+                reroute_suggestions=reroute_suggestions,
             )
             st.plotly_chart(fig, width="stretch")
 
@@ -1862,8 +1879,56 @@ def main():
                 G, cascade_result, risk_df, supply_df,
                 seed_nodes=disruption_info["affected_nodes"],
                 color_by="risk",
+                reroute_suggestions=reroute_suggestions,
             )
             st.plotly_chart(fig, width="stretch")
+
+            # ---- Visual Legend Card ----
+            n_blocked = len([r for r in reroute_suggestions if r["status"] != "✅ Alternate Found"]) if reroute_suggestions else 0
+            n_alt     = len([r for r in reroute_suggestions if r["status"] == "✅ Alternate Found"]) if reroute_suggestions else 0
+            st.markdown(f"""
+            <div style="background:linear-gradient(135deg,rgba(15,23,42,0.92),rgba(6,11,24,0.96));
+                        border:1px solid rgba(66,133,244,0.2); border-radius:14px;
+                        padding:1rem 1.4rem; margin:0.5rem 0 1rem;
+                        display:flex; flex-wrap:wrap; gap:1.5rem; align-items:center;
+                        backdrop-filter:blur(8px);">
+                <div style="font-size:0.72rem;color:#64748b;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;width:100%;margin-bottom:-0.3rem;
+                            font-family:'Space Grotesk',sans-serif;">MAP LEGEND</div>
+                <span style="display:flex;align-items:center;gap:6px;font-size:0.84rem;">
+                    <span style="width:12px;height:12px;border-radius:50%;background:#ef4444;display:inline-block;box-shadow:0 0 6px rgba(239,68,68,0.6);"></span>
+                    <span style="color:#fca5a5;font-weight:600;">Disruption Source</span>
+                </span>
+                <span style="display:flex;align-items:center;gap:6px;font-size:0.84rem;">
+                    <span style="width:12px;height:12px;border-radius:50%;background:#f97316;display:inline-block;"></span>
+                    <span style="color:#fed7aa;">Critical Risk (≥0.65)</span>
+                </span>
+                <span style="display:flex;align-items:center;gap:6px;font-size:0.84rem;">
+                    <span style="width:12px;height:12px;border-radius:50%;background:#eab308;display:inline-block;"></span>
+                    <span style="color:#fef08a;">High Risk (≥0.40)</span>
+                </span>
+                <span style="display:flex;align-items:center;gap:6px;font-size:0.84rem;">
+                    <span style="width:12px;height:12px;border-radius:50%;background:#3b82f6;display:inline-block;"></span>
+                    <span style="color:#93c5fd;">Monitoring (≥0.10)</span>
+                </span>
+                <span style="display:flex;align-items:center;gap:6px;font-size:0.84rem;">
+                    <span style="width:12px;height:12px;border-radius:50%;background:#334155;display:inline-block;border:1px solid #475569;"></span>
+                    <span style="color:#64748b;">Unaffected</span>
+                </span>
+                <span style="border-left:1px solid #1e293b;height:20px;margin:0 0.2rem;"></span>
+                <span style="display:flex;align-items:center;gap:6px;font-size:0.84rem;">
+                    <span style="width:20px;height:3px;background:#ef4444;display:inline-block;border-radius:2px;border:1px dashed #ef4444;"></span>
+                    <span style="color:#fca5a5;">Blocked ({n_blocked})</span>
+                </span>
+                <span style="display:flex;align-items:center;gap:6px;font-size:0.84rem;">
+                    <span style="width:20px;height:3px;background:#22c55e;display:inline-block;border-radius:2px;"></span>
+                    <span style="color:#86efac;">Alternate ({n_alt})</span>
+                </span>
+                <span style="display:flex;align-items:center;gap:6px;font-size:0.84rem;">
+                    <span style="width:20px;height:1px;background:rgba(239,68,68,0.4);display:inline-block;"></span>
+                    <span style="color:#475569;">Cascade Impact</span>
+                </span>
+            </div>
+            """, unsafe_allow_html=True)
 
         # Depth breakdown
         st.markdown("#### Cascade Depth Breakdown")
@@ -3083,64 +3148,7 @@ def main():
                     ):
                         st.warning("Agent decisions rejected. Re-run analysis to generate a new plan.")
 
-    # Premium footer
-    render_footer()
-
-
-def render_footer():
-    """Render the footer at the bottom of the main area."""
-    st.markdown("""
-    <div style="margin-top:3rem; padding:1.2rem 1.5rem;
-                background:linear-gradient(135deg,rgba(10,14,26,0.95),rgba(6,11,24,0.98));
-                border:1px solid rgba(66,133,244,0.12); border-radius:16px;
-                display:flex; align-items:center; justify-content:space-between;
-                flex-wrap:wrap; gap:1rem; backdrop-filter:blur(12px);">
-        <div style="display:flex; align-items:center; gap:10px;">
-            <span style="font-size:1.4rem;">🔗</span>
-            <div>
-                <div style="font-weight:700; font-size:0.92rem;
-                            background:linear-gradient(90deg,#4285f4,#34a853,#fbbc04,#ea4335);
-                            background-size:200% auto;
-                            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-                            animation:shimmer 4s linear infinite;
-                            font-family:'Space Grotesk',sans-serif;">SupplAI</div>
-                <div style="color:#334155; font-size:0.72rem; margin-top:1px;">
-                    AI Supply Chain Disruption Intelligence
-                </div>
-            </div>
-        </div>
-        <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
-            <span style="background:rgba(66,133,244,0.1); border:1px solid rgba(66,133,244,0.2);
-                         border-radius:6px; padding:3px 10px; font-size:0.72rem; color:#4285f4;">
-                Google Gemini
-            </span>
-            <span style="background:rgba(52,168,83,0.1); border:1px solid rgba(52,168,83,0.2);
-                         border-radius:6px; padding:3px 10px; font-size:0.72rem; color:#34a853;">
-                NetworkX
-            </span>
-            <span style="background:rgba(251,188,4,0.1); border:1px solid rgba(251,188,4,0.2);
-                         border-radius:6px; padding:3px 10px; font-size:0.72rem; color:#fbbc04;">
-                XGBoost
-            </span>
-            <span style="background:rgba(234,67,53,0.1); border:1px solid rgba(234,67,53,0.2);
-                         border-radius:6px; padding:3px 10px; font-size:0.72rem; color:#ea4335;">
-                SHAP
-            </span>
-            <span style="background:rgba(139,92,246,0.1); border:1px solid rgba(139,92,246,0.2);
-                         border-radius:6px; padding:3px 10px; font-size:0.72rem; color:#8b5cf6;">
-                Plotly
-            </span>
-        </div>
-        <div style="text-align:right;">
-            <div style="font-size:0.72rem; color:#475569; margin-bottom:2px;">
-                SupplAI — AI Supply Chain Intelligence
-            </div>
-            <div style="font-size:0.68rem; color:#1e293b;">
-                © 2025
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    pass
 
 
 # ---------------------------------------------------------------------------

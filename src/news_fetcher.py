@@ -83,26 +83,60 @@ def is_supply_chain_relevant(title: str, summary: str) -> bool:
     title_lower = title.lower()
     combined = (title + " " + summary).lower()
 
-    # NLP Heuristics - Reject
+    # 1. NLP Heuristics - Reject opinion and narrative pieces
     if title_lower.startswith(("who ", "what ", "he's ", "she's ", "he is ", "she is ", "he’s ", "she’s ")):
         return False
 
-    if "opinion:" in title_lower or "editorial:" in title_lower:
+    if "opinion:" in title_lower or "editorial:" in title_lower or title_lower.startswith(("opinion ", "editorial ")):
+        return False
+
+    # Reject mostly human-centric narratives
+    human_centric_pattern = r'\b(he|she|him|her|his|their|they|we|you|i)\b'
+    if len(re.findall(human_centric_pattern, combined)) >= 4:
         return False
 
     score = 0
+    found_strong = set()
+    found_weak = set()
+    found_negative = False
 
+    # Use regex word boundaries to avoid partial matches like "case" in "suitcase"
     for kw in STRONG_KEYWORDS:
-        if kw in combined:
+        if re.search(rf'\b{re.escape(kw)}\b', combined):
             score += 2
+            found_strong.add(kw)
 
     for kw in WEAK_KEYWORDS:
-        if kw in combined:
+        if re.search(rf'\b{re.escape(kw)}\b', combined):
             score += 1
+            found_weak.add(kw)
 
     for kw in NEGATIVE_KEYWORDS:
-        if kw in combined:
+        if re.search(rf'\b{re.escape(kw)}\b', combined):
             score -= 3
+            found_negative = True
+
+    # 2. Negative signals override and reject even if positives exist
+    if found_negative:
+        return False
+
+    # 3. Must have at least one positive strong signal
+    if not found_strong:
+        return False
+
+    # 4. NLP Heuristics - Prefer specific pairings
+    countries = {"china", "russia", "ukraine", "taiwan", "iran", "north korea", "india", "pakistan", "israel", "gaza"}
+    industries = {"semiconductor", "chip", "electronics", "oil", "gas", "steel", "pharma", "automotive", "textile", "energy", "fuel"}
+    places = countries.union({"red sea", "suez", "middle east"})
+    disruptions = {"shutdown", "closure", "outage", "blockade", "strike", "protest", "riot", "earthquake", "tsunami", "typhoon", "hurricane", "flood", "wildfire", "storm", "explosion", "accident", "fire", "collapse"}
+
+    has_country = any(c in found_weak for c in countries)
+    has_industry = any(i in found_weak for i in industries)
+    has_place = any(p in found_weak for p in places)
+    has_disruption = any(d in found_strong.union(found_weak) for d in disruptions)
+
+    if (has_country and has_industry) or (has_place and has_disruption):
+        score += 2
 
     return score >= 2
 
