@@ -2482,29 +2482,12 @@ def main():
         # View toggle
         view_mode = st.radio(
             "View mode",
-            ["🗺️ Risk Map", "🏭 Tier Structure Map", "🎬 Cascade Animation", "🎯 Disruption Focus"],
+            ["🗺️ Risk Map", "🏭 Tier Structure Map", "🎯 Disruption Focus"],
             horizontal=True,
             label_visibility="collapsed",
         )
 
-        if view_mode == "🎬 Cascade Animation":
-            st.markdown(
-                "<span style='color:#64748b;font-size:0.85rem;'>"
-                "Press <b style='color:#a5b4fc;'>▶ Play Cascade</b> to watch the disruption spread "
-                "across the supply chain network in real time. Use the depth slider to step manually."
-                "</span>",
-                unsafe_allow_html=True,
-            )
-            anim_fig = build_cascade_animation(
-                G, cascade_result, risk_df,
-                seed_nodes=disruption_info["affected_nodes"],
-            )
-            if anim_fig:
-                st.plotly_chart(anim_fig, width="stretch")
-            else:
-                st.info("Not enough cascade data to animate.")
-
-        elif view_mode == "🏭 Tier Structure Map":
+        if view_mode == "🏭 Tier Structure Map":
             st.markdown(
                 "<span style='color:#64748b;font-size:0.85rem;'>"
                 "GPU-accelerated 3D tier view — "
