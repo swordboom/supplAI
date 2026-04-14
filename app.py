@@ -462,6 +462,46 @@ hr {
 }
 .stat-chip b { color: #e2e8f0; }
 
+/* ===== Animated Counter Metric Cards ===== */
+.counter-row {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+.counter-card {
+    flex: 1;
+    min-width: 140px;
+    background: linear-gradient(135deg, rgba(15,23,42,0.92), rgba(6,11,24,0.96));
+    border: 1px solid rgba(66,133,244,0.18);
+    border-radius: 14px;
+    padding: 1rem 1.2rem;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    transition: border-color 0.3s, transform 0.3s;
+}
+.counter-card:hover {
+    border-color: rgba(66,133,244,0.45);
+    transform: translateY(-2px);
+}
+.counter-label {
+    font-size: 0.7rem;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    font-family: 'Space Grotesk', sans-serif;
+}
+.counter-value {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #e2e8f0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-variant-numeric: tabular-nums;
+}
+.counter-value .counter-icon { font-size: 1.1rem; margin-right: 4px; }
+
 /* ===== Google-brand feature cards ===== */
 .feature-card {
     background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(10,14,26,0.95));
@@ -1887,22 +1927,75 @@ def main():
                 </p>
             </div>
             <div style="display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center;">
-                <span class="stat-chip">🌐 <b>{summary['nodes']:,}</b> Nodes</span>
-                <span class="stat-chip">🔗 <b>{summary['edges']:,}</b> Routes</span>
-                <span class="stat-chip">🌍 <b>{summary['countries']}</b> Countries</span>
+                <span class="stat-chip">🌐 <b class="count-up" data-target="{summary['nodes']}" data-suffix=""></b> Nodes</span>
+                <span class="stat-chip">🔗 <b class="count-up" data-target="{summary['edges']}" data-suffix=""></b> Routes</span>
+                <span class="stat-chip">🌍 <b class="count-up" data-target="{summary['countries']}" data-suffix=""></b> Countries</span>
                 <span class="stat-chip">📊 <b>{summary['avg_degree']:,.1f}</b> Avg Degree</span>
             </div>
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-    # Secondary metric row
-    col1, col2, col3, col4, col5 = st.columns(5)
-    col1.metric("🌐 Network Nodes",   f"{summary['nodes']:,}")
-    col2.metric("🔗 Supply Routes",   f"{summary['edges']:,}")
-    col3.metric("🌍 Countries",       f"{summary['countries']}")
-    col4.metric("📊 Avg Connections", f"{summary['avg_degree']:,.1f}")
-    col5.metric("⚡ Graph Connected", "Yes" if summary["is_connected"] else "Partial")
+    # Secondary metric row — animated counters
+    is_connected_label = "Yes" if summary["is_connected"] else "Partial"
+    is_connected_color = "#22c55e" if summary["is_connected"] else "#f97316"
+    st.markdown(f"""
+    <div class="counter-row">
+        <div class="counter-card">
+            <div class="counter-label">🌐 Network Nodes</div>
+            <div class="counter-value"><span class="count-up" data-target="{summary['nodes']}">0</span></div>
+        </div>
+        <div class="counter-card">
+            <div class="counter-label">🔗 Supply Routes</div>
+            <div class="counter-value"><span class="count-up" data-target="{summary['edges']}">0</span></div>
+        </div>
+        <div class="counter-card">
+            <div class="counter-label">🌍 Countries</div>
+            <div class="counter-value"><span class="count-up" data-target="{summary['countries']}">0</span></div>
+        </div>
+        <div class="counter-card">
+            <div class="counter-label">📊 Avg Connections</div>
+            <div class="counter-value"><span class="count-up" data-target="{summary['avg_degree']}" data-decimals="1">0</span></div>
+        </div>
+        <div class="counter-card">
+            <div class="counter-label">⚡ Graph Connected</div>
+            <div class="counter-value" style="color:{is_connected_color};font-size:1.3rem;">{is_connected_label}</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    import streamlit.components.v1 as components
+    components.html("""
+    <script>
+    (function() {
+        const counters = window.parent.document.querySelectorAll('.count-up');
+        const duration = 1800;
+        counters.forEach(el => {
+            const target = parseFloat(el.getAttribute('data-target'));
+            const decimals = parseInt(el.getAttribute('data-decimals') || '0');
+            if (isNaN(target)) return;
+            // Prevent re-animating if already done
+            if (el.getAttribute('data-animated') === 'true') return;
+            el.setAttribute('data-animated', 'true');
+            
+            const start = performance.now();
+            function step(now) {
+                const elapsed = now - start;
+                const progress = Math.min(elapsed / duration, 1);
+                const ease = 1 - Math.pow(1 - progress, 4);
+                const current = target * ease;
+                if (decimals > 0) {
+                    el.textContent = current.toLocaleString(undefined, {minimumFractionDigits: decimals, maximumFractionDigits: decimals});
+                } else {
+                    el.textContent = Math.round(current).toLocaleString();
+                }
+                if (progress < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        });
+    })();
+    </script>
+    """, height=0, width=0)
 
     st.markdown("---")
 
