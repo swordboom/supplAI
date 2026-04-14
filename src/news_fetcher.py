@@ -13,6 +13,10 @@ import re
 import os
 from pathlib import Path
 from typing import List, Dict, Any, Optional
+import difflib
+import concurrent.futures
+from datetime import datetime, timedelta, timezone
+from time import mktime
 
 import feedparser
 
@@ -59,6 +63,10 @@ NEGATIVE_KEYWORDS = {
     "murder", "prison", "sentenced", "guilty", "suspect", "arrest"
 }
 
+STRONG_RE = {kw: re.compile(rf'\b{re.escape(kw)}\b') for kw in STRONG_KEYWORDS}
+WEAK_RE = {kw: re.compile(rf'\b{re.escape(kw)}\b') for kw in WEAK_KEYWORDS}
+NEGATIVE_RE = {kw: re.compile(rf'\b{re.escape(kw)}\b') for kw in NEGATIVE_KEYWORDS}
+
 GEMINI_KEY_ENV_VARS = ("GEMINI_API_KEY", "GOOGLE_API_KEY", "GOOGLE_GENAI_API_KEY")
 
 # ---------------------------------------------------------------------------
@@ -100,21 +108,21 @@ def is_supply_chain_relevant(title: str, summary: str) -> bool:
     found_weak = set()
     found_negative = False
 
-    # Use regex word boundaries to avoid partial matches like "case" in "suitcase"
-    for kw in STRONG_KEYWORDS:
-        if re.search(rf'\b{re.escape(kw)}\b', combined):
+    # Use pre-compiled regex word boundaries to avoid partial matches and speed up execution
+    for kw, pattern in STRONG_RE.items():
+        if pattern.search(combined):
             score += 2
             found_strong.add(kw)
 
-    for kw in WEAK_KEYWORDS:
-        if re.search(rf'\b{re.escape(kw)}\b', combined):
+    for kw, pattern in WEAK_RE.items():
+        if pattern.search(combined):
             score += 1
             found_weak.add(kw)
 
-    for kw in NEGATIVE_KEYWORDS:
-        if re.search(rf'\b{re.escape(kw)}\b', combined):
-            score -= 3
+    for kw, pattern in NEGATIVE_RE.items():
+        if pattern.search(combined):
             found_negative = True
+            break
 
     # 2. Negative signals override and reject even if positives exist
     if found_negative:
@@ -143,40 +151,61 @@ def is_supply_chain_relevant(title: str, summary: str) -> bool:
 # ---------------------------------------------------------------------------
 # Fetch raw headlines from RSS
 # ---------------------------------------------------------------------------
-def fetch_headlines(max_per_feed: int = 15) -> List[Dict[str, str]]:
-    """
-    Pull headlines from all RSS feeds, filter by supply-chain keywords.
+def _fetch_single_feed(feed_info: Dict[str, str], max_per_feed: int, cutoff_date: datetime) -> List[Dict[str, str]]:
+    headlines = []
+    try:
+        feed = feedparser.parse(feed_info["url"])
+        for entry in feed.entries[:max_per_feed]:
+            # Freshness check
+            entry_date = None
+            if hasattr(entry, 'published_parsed') and entry.published_parsed:
+                entry_date = datetime.fromtimestamp(mktime(entry.published_parsed), tz=timezone.utc)
+            elif hasattr(entry, 'updated_parsed') and entry.updated_parsed:
+                entry_date = datetime.fromtimestamp(mktime(entry.updated_parsed), tz=timezone.utc)
+            
+            if entry_date and entry_date < cutoff_date:
+                continue
 
+            title = getattr(entry, "title", "") or ""
+            summary = getattr(entry, "summary", "") or ""
+
+            if is_supply_chain_relevant(title, summary):
+                headlines.append({
+                    "title": title.strip(),
+                    "summary": summary.strip()[:200],
+                    "source": feed_info["name"],
+                })
+            else:
+                if title.strip():
+                    print(f"  [FILTERED OUT] {title.strip()[:60]}...")
+    except Exception as e:
+        print(f"  [news_fetcher] Failed to fetch {feed_info['name']}: {e}")
+    return headlines
+
+def fetch_headlines(max_per_feed: int = 15, max_age_hours: int = 48) -> List[Dict[str, str]]:
+    """
+    Pull headlines from all RSS feeds concurrently, filter by supply-chain keywords and freshness.
     Returns list of dicts: {title, summary, source}
     """
-    headlines = []
+    cutoff_date = datetime.now(timezone.utc) - timedelta(hours=max_age_hours)
+    all_headlines = []
 
-    for feed_info in RSS_FEEDS:
-        try:
-            feed = feedparser.parse(feed_info["url"])
-            for entry in feed.entries[:max_per_feed]:
-                title   = getattr(entry, "title",   "") or ""
-                summary = getattr(entry, "summary", "") or ""
+    with concurrent.futures.ThreadPoolExecutor(max_workers=len(RSS_FEEDS)) as executor:
+        futures = [executor.submit(_fetch_single_feed, feed_info, max_per_feed, cutoff_date) 
+                   for feed_info in RSS_FEEDS]
+        for future in concurrent.futures.as_completed(futures):
+            all_headlines.extend(future.result())
 
-                if is_supply_chain_relevant(title, summary):
-                    headlines.append({
-                        "title":   title.strip(),
-                        "summary": summary.strip()[:200],
-                        "source":  feed_info["name"],
-                    })
-                else:
-                    if title.strip():
-                        print(f"  [FILTERED OUT] {title.strip()}")
-        except Exception as e:
-            print(f"  [news_fetcher] Failed to fetch {feed_info['name']}: {e}")
-
-    # Deduplicate by title similarity (simple: exact title match)
-    seen_titles = set()
+    # Fuzzy Deduplication
     unique = []
-    for h in headlines:
+    for h in all_headlines:
         t = h["title"].lower()
-        if t not in seen_titles:
-            seen_titles.add(t)
+        is_duplicate = False
+        for u in unique:
+            if difflib.SequenceMatcher(None, t, u["title"].lower()).ratio() > 0.8:
+                is_duplicate = True
+                break
+        if not is_duplicate:
             unique.append(h)
 
     print(f"  [news_fetcher] Fetched {len(unique)} unique relevant headlines")
@@ -190,6 +219,7 @@ def _gemini_generate(api_key: str, prompt: str, temperature: float = 0.1, max_to
     """
     Call Gemini, trying the new google-genai SDK first, then falling back to
     the legacy google-generativeai SDK so the app works in any environment.
+    Enforces native JSON structured outputs.
     """
     try:
         from google import genai
@@ -201,6 +231,7 @@ def _gemini_generate(api_key: str, prompt: str, temperature: float = 0.1, max_to
             config=genai_types.GenerateContentConfig(
                 temperature=temperature,
                 max_output_tokens=max_tokens,
+                response_mime_type="application/json",
             ),
         )
         return response.text.strip()
@@ -210,7 +241,11 @@ def _gemini_generate(api_key: str, prompt: str, temperature: float = 0.1, max_to
         model = _genai.GenerativeModel("gemini-2.5-flash")
         response = model.generate_content(
             prompt,
-            generation_config={"temperature": temperature, "max_output_tokens": max_tokens},
+            generation_config={
+                "temperature": temperature,
+                "max_output_tokens": max_tokens,
+                "response_mime_type": "application/json"
+            },
         )
         return response.text.strip()
 
@@ -334,12 +369,17 @@ def extract_disruptions_with_gemini(
     try:
         prompt = _EXTRACT_PROMPT.format(headlines=headline_block)
         raw = _gemini_generate(effective_key, prompt, temperature=0.1, max_tokens=8192)
-        # Extract JSON array robustly — find first [ ... ] block
-        match = re.search(r"\[.*\]", raw, re.DOTALL)
-        if not match:
-            raise ValueError("No JSON array found in Gemini response")
+        
+        try:
+            gemini_events = json.loads(raw)
+        except json.JSONDecodeError:
+            # Fallback to regex extraction just in case the model ignored response_mime_type
+            match = re.search(r"\[.*\]", raw, re.DOTALL)
+            if match:
+                gemini_events = json.loads(match.group(0))
+            else:
+                raise ValueError("Could not parse JSON from Gemini response")
 
-        gemini_events = json.loads(match.group(0))
         if not isinstance(gemini_events, list):
             return []
 
