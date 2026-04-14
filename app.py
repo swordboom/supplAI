@@ -18,6 +18,7 @@ import streamlit as st
 import pandas as pd
 import networkx as nx
 import plotly.graph_objects as go
+import pydeck as pdk
 import numpy as np
 from streamlit_autorefresh import st_autorefresh
 
@@ -913,6 +914,572 @@ def build_plotly_graph(
         ],
     )
     return fig
+
+
+# ---------------------------------------------------------------------------
+# PyDeck 3D Hardware-Accelerated Map
+# ---------------------------------------------------------------------------
+def _hex_to_rgba(hex_color: str, alpha: int = 200) -> list:
+    """Convert '#rrggbb' to [r, g, b, a]."""
+    h = hex_color.lstrip("#")
+    return [int(h[i:i+2], 16) for i in (0, 2, 4)] + [alpha]
+
+
+def build_pydeck_graph(
+    G:              nx.DiGraph,
+    cascade_result: dict,
+    risk_df:        pd.DataFrame,
+    seed_nodes:     list,
+    reroute_suggestions: list = None,
+) -> pdk.Deck:
+    """Build GPU-accelerated 3D arc map using PyDeck / Deck.GL."""
+
+    risk_lookup = {}
+    if not risk_df.empty:
+        for _, row in risk_df.iterrows():
+            risk_lookup[row["node"]] = row["risk_score"]
+
+    cascade_nodes = set(cascade_result.keys())
+    seed_set      = set(seed_nodes)
+
+    # ── Node data ──────────────────────────────────────────────────────
+    node_rows = []
+    for node in G.nodes():
+        nd  = G.nodes[node]
+        lat = nd.get("lat", 0)
+        lon = nd.get("lon", 0)
+        if lat == 0 and lon == 0:
+            continue
+
+        rs    = risk_lookup.get(node, 0)
+        depth = cascade_result.get(node, -1)
+        tier  = int(nd.get("tier", 3))
+        city  = nd.get("city_name", node)
+        country = nd.get("country", "?")
+        product = nd.get("product_category", "?")
+
+        # Colour logic — same as Plotly version
+        if node in seed_set:
+            color = [239, 68, 68, 240]    # red
+            radius = 85000
+            status = "🔴 DISRUPTION SOURCE"
+        elif rs >= 0.65:
+            color = [249, 115, 22, 220]   # orange
+            radius = 65000
+            status = f"⚠️ Critical Risk ({rs:.0%})"
+        elif rs >= 0.40:
+            color = [234, 179, 8, 200]    # yellow
+            radius = 50000
+            status = f"🟡 High Risk ({rs:.0%})"
+        elif rs >= 0.10:
+            color = [59, 130, 246, 180]   # blue
+            radius = 40000
+            status = f"🔵 Monitoring ({rs:.0%})"
+        else:
+            color = [51, 65, 85, 100]     # dark grey
+            radius = 25000
+            status = "Unaffected"
+
+        node_rows.append({
+            "lat": lat, "lon": lon,
+            "color": color, "radius": radius,
+            "city": city, "country": country,
+            "product": product,
+            "tier": f"Tier-{tier}",
+            "status": status,
+            "depth": depth if depth >= 0 else "—",
+            "risk": f"{rs:.1%}",
+        })
+
+    node_df = pd.DataFrame(node_rows)
+
+    # ── Edge / Arc data ────────────────────────────────────────────────
+    MAX_ARCS = 300
+    cascade_edges = []
+    for src, dst in G.edges():
+        if src in cascade_nodes and dst in cascade_nodes:
+            d = cascade_result.get(src, 99) + cascade_result.get(dst, 99)
+            cascade_edges.append((d, src, dst))
+    cascade_edges.sort()
+    cascade_edges = cascade_edges[:MAX_ARCS]
+
+    arc_rows = []
+    for _, src, dst in cascade_edges:
+        s_lat = G.nodes[src].get("lat", 0)
+        s_lon = G.nodes[src].get("lon", 0)
+        d_lat = G.nodes[dst].get("lat", 0)
+        d_lon = G.nodes[dst].get("lon", 0)
+        if (s_lat == 0 and s_lon == 0) or (d_lat == 0 and d_lon == 0):
+            continue
+        arc_rows.append({
+            "src_lat": s_lat, "src_lon": s_lon,
+            "dst_lat": d_lat, "dst_lon": d_lon,
+            "src_color": [239, 68, 68, 50],
+            "dst_color": [239, 68, 68, 25],
+            "width": 1,
+            "type": "cascade",
+        })
+
+    # Blocked routes — bright red
+    blocked_rows = []
+    alt_rows = []
+    if reroute_suggestions:
+        for r in reroute_suggestions:
+            d_path = r.get("disrupted_path", [])
+            if len(d_path) >= 2:
+                for i in range(len(d_path) - 1):
+                    n1, n2 = d_path[i], d_path[i+1]
+                    if n1 in G.nodes and n2 in G.nodes:
+                        blocked_rows.append({
+                            "src_lat": G.nodes[n1].get("lat", 0),
+                            "src_lon": G.nodes[n1].get("lon", 0),
+                            "dst_lat": G.nodes[n2].get("lat", 0),
+                            "dst_lon": G.nodes[n2].get("lon", 0),
+                            "src_color": [239, 68, 68, 220],
+                            "dst_color": [239, 68, 68, 180],
+                            "width": 4,
+                            "type": "blocked",
+                        })
+
+            # Alternate routes — green
+            if r["status"] == "✅ Alternate Found" and r.get("alternate_path"):
+                a_path = r["alternate_path"]
+                for i in range(len(a_path) - 1):
+                    n1, n2 = a_path[i], a_path[i+1]
+                    if n1 in G.nodes and n2 in G.nodes:
+                        alt_rows.append({
+                            "src_lat": G.nodes[n1].get("lat", 0),
+                            "src_lon": G.nodes[n1].get("lon", 0),
+                            "dst_lat": G.nodes[n2].get("lat", 0),
+                            "dst_lon": G.nodes[n2].get("lon", 0),
+                            "src_color": [34, 197, 94, 220],
+                            "dst_color": [34, 197, 94, 160],
+                            "width": 4,
+                            "type": "alternate",
+                        })
+
+    arc_df     = pd.DataFrame(arc_rows)     if arc_rows     else pd.DataFrame()
+    blocked_df = pd.DataFrame(blocked_rows) if blocked_rows else pd.DataFrame()
+    alt_df     = pd.DataFrame(alt_rows)     if alt_rows     else pd.DataFrame()
+
+    # ── Layers ─────────────────────────────────────────────────────────
+    layers = []
+
+    # 1. Cascade impact arcs (subtle red, 3D)
+    if not arc_df.empty:
+        layers.append(pdk.Layer(
+            "ArcLayer",
+            data=arc_df,
+            get_source_position=["src_lon", "src_lat"],
+            get_target_position=["dst_lon", "dst_lat"],
+            get_source_color="src_color",
+            get_target_color="dst_color",
+            get_width="width",
+            get_height=0.3,
+            great_circle=True,
+            pickable=False,
+        ))
+
+    # 2. Blocked routes — bright red arcs
+    if not blocked_df.empty:
+        layers.append(pdk.Layer(
+            "ArcLayer",
+            data=blocked_df,
+            get_source_position=["src_lon", "src_lat"],
+            get_target_position=["dst_lon", "dst_lat"],
+            get_source_color="src_color",
+            get_target_color="dst_color",
+            get_width="width",
+            get_height=0.5,
+            great_circle=True,
+            pickable=False,
+        ))
+
+    # 3. Alternate routes — green arcs
+    if not alt_df.empty:
+        layers.append(pdk.Layer(
+            "ArcLayer",
+            data=alt_df,
+            get_source_position=["src_lon", "src_lat"],
+            get_target_position=["dst_lon", "dst_lat"],
+            get_source_color="src_color",
+            get_target_color="dst_color",
+            get_width="width",
+            get_height=0.5,
+            great_circle=True,
+            pickable=False,
+        ))
+
+    # 4. Supply chain nodes
+    if not node_df.empty:
+        layers.append(pdk.Layer(
+            "ScatterplotLayer",
+            data=node_df,
+            get_position=["lon", "lat"],
+            get_fill_color="color",
+            get_radius="radius",
+            pickable=True,
+            opacity=0.9,
+            stroked=True,
+            get_line_color=[255, 255, 255, 40],
+            line_width_min_pixels=1,
+            radius_min_pixels=4,
+            radius_max_pixels=25,
+        ))
+
+    # ── View State — auto-center on seed nodes ─────────────────────────
+    if seed_nodes:
+        seed_lats = [G.nodes[n].get("lat", 0) for n in seed_nodes if n in G.nodes]
+        seed_lons = [G.nodes[n].get("lon", 0) for n in seed_nodes if n in G.nodes]
+        center_lat = np.mean(seed_lats) if seed_lats else 20
+        center_lon = np.mean(seed_lons) if seed_lons else 30
+        zoom = 2.2
+    else:
+        center_lat, center_lon, zoom = 20, 30, 1.5
+
+    view_state = pdk.ViewState(
+        latitude=center_lat,
+        longitude=center_lon,
+        zoom=zoom,
+        pitch=45,
+        bearing=0,
+    )
+
+    # ── Tooltip ────────────────────────────────────────────────────────
+    tooltip = {
+        "html": (
+            "<div style='font-family:Inter,sans-serif;padding:6px 10px;'>"
+            "<b style='font-size:14px;color:#f8fafc;'>{city}</b><br/>"
+            "<span style='color:#94a3b8;'>{country} · {product}</span><br/>"
+            "<span style='color:#a5b4fc;'>{tier}</span> · "
+            "<span style='color:#fbbf24;'>Risk: {risk}</span><br/>"
+            "<b style='color:#e2e8f0;'>{status}</b>"
+            "</div>"
+        ),
+        "style": {
+            "backgroundColor": "#0f172a",
+            "color": "#e2e8f0",
+            "border": "1px solid rgba(66,133,244,0.3)",
+            "borderRadius": "10px",
+            "boxShadow": "0 4px 20px rgba(0,0,0,0.5)",
+        },
+    }
+
+    deck = pdk.Deck(
+        layers=layers,
+        initial_view_state=view_state,
+        tooltip=tooltip,
+        map_style="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
+    )
+
+    return deck
+
+
+# ---------------------------------------------------------------------------
+# PyDeck 3D — Tier Structure View
+# ---------------------------------------------------------------------------
+def build_pydeck_tier(
+    G:              nx.DiGraph,
+    cascade_result: dict,
+    seed_nodes:     list,
+    reroute_suggestions: list = None,
+) -> pdk.Deck:
+    """3D arc map colored by supply-chain tier."""
+
+    TIER_RGBA = {
+        1: [239, 68, 68, 230],   # red
+        2: [249, 115, 22, 210],  # orange
+        3: [234, 179, 8, 200],   # yellow
+        4: [34, 197, 94, 200],   # green
+        5: [59, 130, 246, 190],  # blue
+    }
+
+    cascade_nodes = set(cascade_result.keys())
+    seed_set      = set(seed_nodes)
+
+    node_rows = []
+    for node in G.nodes():
+        nd  = G.nodes[node]
+        lat, lon = nd.get("lat", 0), nd.get("lon", 0)
+        if lat == 0 and lon == 0:
+            continue
+
+        tier = int(nd.get("tier", 3))
+        city = nd.get("city_name", node)
+        country = nd.get("country", "?")
+        product = nd.get("product_category", "?")
+
+        if node not in cascade_nodes:
+            color = [30, 41, 59, 80]
+            radius = 20000
+            status = "Unaffected"
+        elif node in seed_set:
+            color = [239, 68, 68, 255]   # always red for disruption source
+            radius = 90000
+            status = "🔴 DISRUPTION SOURCE"
+        else:
+            color = TIER_RGBA.get(tier, [51, 65, 85, 150])
+            radius = max(30000, 70000 - tier * 10000)
+            status = f"Cascade depth {cascade_result.get(node, '?')}"
+
+        node_rows.append({
+            "lat": lat, "lon": lon,
+            "color": color, "radius": radius,
+            "city": city, "country": country,
+            "product": product,
+            "tier": f"Tier-{tier}",
+            "status": status,
+        })
+
+    node_df = pd.DataFrame(node_rows)
+
+    # Cascade arcs
+    arc_rows = []
+    for src, dst in G.edges():
+        if src in cascade_nodes and dst in cascade_nodes:
+            s_nd, d_nd = G.nodes[src], G.nodes[dst]
+            s_lat, s_lon = s_nd.get("lat", 0), s_nd.get("lon", 0)
+            d_lat, d_lon = d_nd.get("lat", 0), d_nd.get("lon", 0)
+            if (s_lat == 0 and s_lon == 0) or (d_lat == 0 and d_lon == 0):
+                continue
+            s_tier = int(s_nd.get("tier", 3))
+            d_tier = int(d_nd.get("tier", 3))
+            arc_rows.append({
+                "src_lat": s_lat, "src_lon": s_lon,
+                "dst_lat": d_lat, "dst_lon": d_lon,
+                "src_color": TIER_RGBA.get(s_tier, [100, 100, 100, 80]),
+                "dst_color": TIER_RGBA.get(d_tier, [100, 100, 100, 40]),
+                "width": 1,
+            })
+
+    if len(arc_rows) > 300:
+        arc_rows = arc_rows[:300]
+
+    arc_df = pd.DataFrame(arc_rows) if arc_rows else pd.DataFrame()
+
+    layers = []
+    if not arc_df.empty:
+        layers.append(pdk.Layer(
+            "ArcLayer", data=arc_df,
+            get_source_position=["src_lon", "src_lat"],
+            get_target_position=["dst_lon", "dst_lat"],
+            get_source_color="src_color",
+            get_target_color="dst_color",
+            get_width="width",
+            get_height=0.3,
+            great_circle=True, pickable=False,
+        ))
+
+    if not node_df.empty:
+        layers.append(pdk.Layer(
+            "ScatterplotLayer", data=node_df,
+            get_position=["lon", "lat"],
+            get_fill_color="color",
+            get_radius="radius",
+            pickable=True, opacity=0.9,
+            stroked=True, get_line_color=[255, 255, 255, 30],
+            radius_min_pixels=3, radius_max_pixels=22,
+        ))
+
+    seed_lats = [G.nodes[n].get("lat", 0) for n in seed_nodes if n in G.nodes]
+    seed_lons = [G.nodes[n].get("lon", 0) for n in seed_nodes if n in G.nodes]
+    view_state = pdk.ViewState(
+        latitude=np.mean(seed_lats) if seed_lats else 20,
+        longitude=np.mean(seed_lons) if seed_lons else 30,
+        zoom=2.2, pitch=45, bearing=0,
+    )
+
+    tooltip = {
+        "html": (
+            "<div style='font-family:Inter,sans-serif;padding:6px 10px;'>"
+            "<b style='font-size:14px;color:#f8fafc;'>{city}</b><br/>"
+            "<span style='color:#94a3b8;'>{country} · {product}</span><br/>"
+            "<span style='color:#a5b4fc;font-weight:700;'>{tier}</span><br/>"
+            "<b style='color:#e2e8f0;'>{status}</b>"
+            "</div>"
+        ),
+        "style": {
+            "backgroundColor": "#0f172a",
+            "color": "#e2e8f0",
+            "border": "1px solid rgba(66,133,244,0.3)",
+            "borderRadius": "10px",
+        },
+    }
+
+    return pdk.Deck(
+        layers=layers,
+        initial_view_state=view_state,
+        tooltip=tooltip,
+        map_style="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
+    )
+
+
+# ---------------------------------------------------------------------------
+# PyDeck 3D — Disruption Focus View
+# ---------------------------------------------------------------------------
+def build_pydeck_focus(
+    G:              nx.DiGraph,
+    cascade_result: dict,
+    risk_df:        pd.DataFrame,
+    reroute_suggestions: list,
+    seed_nodes:     set,
+) -> pdk.Deck:
+    """3D map showing ONLY disrupted nodes + blocked/alternate route arcs."""
+
+    depth_rgba = {
+        0: [239, 68, 68, 240],
+        1: [249, 115, 22, 220],
+        2: [234, 179, 8, 200],
+        3: [59, 130, 246, 190],
+        4: [34, 197, 94, 180],
+        5: [139, 92, 246, 170],
+    }
+
+    risk_lookup = {}
+    if not risk_df.empty and "node" in risk_df.columns:
+        risk_lookup = dict(zip(risk_df["node"], risk_df["risk_score"]))
+
+    # Collect focus nodes: cascade + reroute path nodes
+    focus_nodes = set(cascade_result.keys())
+    if reroute_suggestions:
+        for r in reroute_suggestions:
+            if r["status"] == "✅ Alternate Found" and r.get("alternate_path"):
+                focus_nodes.update(r["alternate_path"])
+
+    node_rows = []
+    for node in sorted(focus_nodes):
+        if node not in G.nodes:
+            continue
+        nd = G.nodes[node]
+        lat, lon = nd.get("lat", 0), nd.get("lon", 0)
+        depth = cascade_result.get(node, -1)
+        city = nd.get("city_name", node)
+        country = nd.get("country", "?")
+        product = nd.get("product_category", "?")
+        risk = risk_lookup.get(node, 0)
+
+        if node in seed_nodes:
+            color = [239, 68, 68, 255]
+            radius = 90000
+            status = "🔴 DISRUPTION ORIGIN"
+        elif depth >= 0:
+            color = depth_rgba.get(depth, [100, 116, 139, 160])
+            radius = max(35000, 75000 - depth * 10000)
+            status = f"⚡ Cascade depth {depth} · Risk {risk:.0%}"
+        else:
+            color = [34, 197, 94, 200]
+            radius = 50000
+            status = "🟢 Alternate Route Hop"
+
+        node_rows.append({
+            "lat": lat, "lon": lon,
+            "color": color, "radius": radius,
+            "city": city, "country": country,
+            "product": product,
+            "status": status,
+            "risk": f"{risk:.1%}",
+        })
+
+    node_df = pd.DataFrame(node_rows) if node_rows else pd.DataFrame()
+
+    layers = []
+
+    # Blocked route arcs (red)
+    if reroute_suggestions:
+        blocked_rows = []
+        alt_rows = []
+        for r in reroute_suggestions:
+            d_path = r.get("disrupted_path", [])
+            if len(d_path) >= 2:
+                for i in range(len(d_path) - 1):
+                    n1, n2 = d_path[i], d_path[i+1]
+                    if n1 in G.nodes and n2 in G.nodes:
+                        blocked_rows.append({
+                            "src_lat": G.nodes[n1].get("lat", 0),
+                            "src_lon": G.nodes[n1].get("lon", 0),
+                            "dst_lat": G.nodes[n2].get("lat", 0),
+                            "dst_lon": G.nodes[n2].get("lon", 0),
+                            "src_color": [239, 68, 68, 230],
+                            "dst_color": [239, 68, 68, 180],
+                            "width": 5,
+                        })
+
+            if r["status"] == "✅ Alternate Found" and r.get("alternate_path"):
+                a_path = r["alternate_path"]
+                for i in range(len(a_path) - 1):
+                    n1, n2 = a_path[i], a_path[i+1]
+                    if n1 in G.nodes and n2 in G.nodes:
+                        alt_rows.append({
+                            "src_lat": G.nodes[n1].get("lat", 0),
+                            "src_lon": G.nodes[n1].get("lon", 0),
+                            "dst_lat": G.nodes[n2].get("lat", 0),
+                            "dst_lon": G.nodes[n2].get("lon", 0),
+                            "src_color": [34, 197, 94, 230],
+                            "dst_color": [34, 197, 94, 170],
+                            "width": 5,
+                        })
+
+        if blocked_rows:
+            layers.append(pdk.Layer(
+                "ArcLayer", data=pd.DataFrame(blocked_rows),
+                get_source_position=["src_lon", "src_lat"],
+                get_target_position=["dst_lon", "dst_lat"],
+                get_source_color="src_color", get_target_color="dst_color",
+                get_width="width", get_height=0.5,
+                great_circle=True, pickable=False,
+            ))
+        if alt_rows:
+            layers.append(pdk.Layer(
+                "ArcLayer", data=pd.DataFrame(alt_rows),
+                get_source_position=["src_lon", "src_lat"],
+                get_target_position=["dst_lon", "dst_lat"],
+                get_source_color="src_color", get_target_color="dst_color",
+                get_width="width", get_height=0.5,
+                great_circle=True, pickable=False,
+            ))
+
+    if not node_df.empty:
+        layers.append(pdk.Layer(
+            "ScatterplotLayer", data=node_df,
+            get_position=["lon", "lat"],
+            get_fill_color="color",
+            get_radius="radius",
+            pickable=True, opacity=0.95,
+            stroked=True, get_line_color=[255, 255, 255, 50],
+            radius_min_pixels=5, radius_max_pixels=28,
+        ))
+
+    seed_lats = [G.nodes[n].get("lat", 0) for n in seed_nodes if n in G.nodes]
+    seed_lons = [G.nodes[n].get("lon", 0) for n in seed_nodes if n in G.nodes]
+    view_state = pdk.ViewState(
+        latitude=np.mean(seed_lats) if seed_lats else 20,
+        longitude=np.mean(seed_lons) if seed_lons else 30,
+        zoom=2.5, pitch=45, bearing=0,
+    )
+
+    tooltip = {
+        "html": (
+            "<div style='font-family:Inter,sans-serif;padding:6px 10px;'>"
+            "<b style='font-size:14px;color:#f8fafc;'>{city}</b><br/>"
+            "<span style='color:#94a3b8;'>{country} · {product}</span><br/>"
+            "<span style='color:#fbbf24;'>Risk: {risk}</span><br/>"
+            "<b style='color:#e2e8f0;'>{status}</b>"
+            "</div>"
+        ),
+        "style": {
+            "backgroundColor": "#0f172a",
+            "color": "#e2e8f0",
+            "border": "1px solid rgba(66,133,244,0.3)",
+            "borderRadius": "10px",
+        },
+    }
+
+    return pdk.Deck(
+        layers=layers,
+        initial_view_state=view_state,
+        tooltip=tooltip,
+        map_style="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -1847,44 +2414,54 @@ def main():
         elif view_mode == "🏭 Tier Structure Map":
             st.markdown(
                 "<span style='color:#64748b;font-size:0.85rem;'>"
-                "Nodes coloured by their supply-chain tier relative to your company — "
-                "<b style='color:#ef4444;'>Tier-1</b> are your direct suppliers, "
-                "<b style='color:#eab308;'>Tier-3/4</b> are deep upstream. "
-                "Over one-third of real disruptions start at Tier-3/4."
+                "GPU-accelerated 3D tier view — "
+                "<b style='color:#ef4444;'>Tier-1</b> direct suppliers, "
+                "<b style='color:#eab308;'>Tier-3/4</b> deep upstream. "
+                "Over one-third of real disruptions start at Tier-3/4. "
+                "Drag to rotate · Scroll to zoom."
                 "</span>",
                 unsafe_allow_html=True,
             )
-            fig = build_plotly_graph(
-                G, cascade_result, risk_df, supply_df,
+            tier_deck = build_pydeck_tier(
+                G, cascade_result,
                 seed_nodes=disruption_info["affected_nodes"],
-                color_by="tier",
                 reroute_suggestions=reroute_suggestions,
             )
-            st.plotly_chart(fig, width="stretch")
+            st.pydeck_chart(tier_deck, height=620, use_container_width=True)
 
         elif view_mode == "🎯 Disruption Focus":
             st.markdown(
                 "<span style='color:#64748b;font-size:0.85rem;'>"
-                "Shows <b style='color:#ef4444;'>only the affected nodes</b> and "
-                "<b style='color:#22c55e;'>alternate route paths</b> — everything else hidden. "
-                "Red stars = origin. Dashed red = blocked route. Solid green = safe alternate."
+                "3D focus view — shows <b style='color:#ef4444;'>only disrupted nodes</b> and "
+                "<b style='color:#22c55e;'>alternate route arcs</b>. "
+                "Red arcs = blocked · Green arcs = safe alternates. "
+                "Drag to rotate · Hover for details."
                 "</span>",
                 unsafe_allow_html=True,
             )
-            focus_fig = build_focus_map(
+            focus_deck = build_pydeck_focus(
                 G, cascade_result, risk_df, reroute_suggestions,
                 seed_nodes=set(disruption_info["affected_nodes"]),
             )
-            st.plotly_chart(focus_fig, width="stretch")
+            st.pydeck_chart(focus_deck, height=620, use_container_width=True)
 
         else:
-            fig = build_plotly_graph(
-                G, cascade_result, risk_df, supply_df,
+            # ---- 3D Hardware-Accelerated Map (PyDeck / Deck.GL) ----
+            st.markdown(
+                "<span style='color:#64748b;font-size:0.85rem;'>"
+                "GPU-accelerated 3D map powered by <b style='color:#a5b4fc;'>Deck.GL</b>. "
+                "Drag to rotate · Scroll to zoom · Hover nodes for details. "
+                "<b style='color:#ef4444;'>Red arcs</b> = blocked routes · "
+                "<b style='color:#22c55e;'>Green arcs</b> = safe alternates."
+                "</span>",
+                unsafe_allow_html=True,
+            )
+            deck = build_pydeck_graph(
+                G, cascade_result, risk_df,
                 seed_nodes=disruption_info["affected_nodes"],
-                color_by="risk",
                 reroute_suggestions=reroute_suggestions,
             )
-            st.plotly_chart(fig, width="stretch")
+            st.pydeck_chart(deck, height=620, use_container_width=True)
 
             # ---- Visual Legend Card ----
             n_blocked = len([r for r in reroute_suggestions if r["status"] != "✅ Alternate Found"]) if reroute_suggestions else 0
