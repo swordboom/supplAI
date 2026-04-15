@@ -155,8 +155,15 @@ def load_anomaly_model(
 ) -> Dict[str, Any]:
     """
     Load an already-trained anomaly artifact.
-    Raises FileNotFoundError when model is absent.
+    Downloads from GCS first when running on Cloud Run and the file is absent.
+    Raises FileNotFoundError when model is absent and GCS is not configured.
     """
+    try:
+        from gcs_utils import ensure_local
+        model_path = ensure_local(model_path)
+    except ImportError:
+        pass
+
     if not model_path.exists():
         raise FileNotFoundError(
             f"Anomaly model not found at {model_path}. "

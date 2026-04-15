@@ -1,0 +1,61 @@
+# ──────────────────────────────────────────────
+# .dockerignore — SupplAI Cloud Run build
+# Keeps the image lean by excluding files that
+# are only needed for training or local dev.
+# ──────────────────────────────────────────────
+
+# Secrets — NEVER bake into an image
+.env
+*.pem
+*.key
+
+# Training-only datasets (upload to GCS instead)
+datasets/Is_delayed_prediction_*
+datasets/Transportation_Tracking_Dataset.xlsx
+
+# Optimised model variants (>40 MB, served from GCS)
+models/delay_model_optimized.pkl
+models/anomaly_model_optimized.pkl
+models/model_sanity_report.json
+optimization_report.json
+
+# Training / utility scripts not needed at runtime
+train_models.py
+generate_dataset.py
+optimize_models.py
+generate_tariffs.py
+evaluation.md
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+condaVE/
+env/
+
+# Git history
+.git/
+.gitignore
+
+# IDE / OS metadata
+.vscode/
+.idea/
+*.code-workspace
+.DS_Store
+Thumbs.db
+
+# Jupyter notebooks
+*.ipynb
+.ipynb_checkpoints/
+
+# Streamlit local config (we write our own inside Dockerfile)
+.streamlit/

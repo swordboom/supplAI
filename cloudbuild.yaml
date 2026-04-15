@@ -1,0 +1,81 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# cloudbuild.yaml — SupplAI Google Cloud Build CI/CD Pipeline
+#
+# Trigger this from:
+#   gcloud builds submit --config cloudbuild.yaml .
+#   OR connect this repo to a Cloud Build trigger in the GCP Console.
+#
+# Substitution variables (override at trigger level or on submit):
+#   _REGION      : GCP region for Artifact Registry + Cloud Run (default us-central1)
+#   _REPO_NAME   : Artifact Registry repository name (default supplai)
+#   _SERVICE     : Cloud Run service name (default supplai)
+#   _GCS_BUCKET  : GCS bucket that holds runtime models/data (default supplai-assets)
+# ──────────────────────────────────────────────────────────────────────────────
+
+substitutions:
+  _REGION:     us-central1
+  _REPO_NAME:  supplai
+  _SERVICE:    supplai
+  _GCS_BUCKET: supplai-assets
+
+steps:
+  # ── Step 1: Build the Docker image ──────────────────────────────────────────
+  - id: build
+    name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - --tag
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE}:${COMMIT_SHA}
+      - --tag
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE}:latest
+      - --cache-from
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE}:latest
+      - .
+
+  # ── Step 2: Push both tags to Artifact Registry ──────────────────────────────
+  - id: push
+    name: gcr.io/cloud-builders/docker
+    waitFor: [build]
+    args:
+      - push
+      - --all-tags
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE}
+
+  # ── Step 3: Deploy to Cloud Run ──────────────────────────────────────────────
+  - id: deploy
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    waitFor: [push]
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - ${_SERVICE}
+      - --image=${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE}:${COMMIT_SHA}
+      - --region=${_REGION}
+      - --platform=managed
+      - --allow-unauthenticated
+      - --memory=2Gi
+      - --cpu=2
+      - --timeout=3600
+      - --concurrency=4
+      - --min-instances=0
+      - --max-instances=4
+      # GCP project & asset config (non-secret)
+      - --set-env-vars=GCP_PROJECT_ID=${PROJECT_ID}
+      - --set-env-vars=GCS_BUCKET_NAME=${_GCS_BUCKET}
+      - --set-env-vars=GCP_REGION=${_REGION}
+      - --set-env-vars=USE_VERTEX_AI=true
+      # Secrets pulled from Secret Manager at runtime
+      - --update-secrets=GEMINI_API_KEY=GEMINI_API_KEY:latest
+      - --update-secrets=GROQ_API_KEY=GROQ_API_KEY:latest
+      - --update-secrets=OPENWEATHER_API_KEY=OPENWEATHER_API_KEY:latest
+
+# Images pushed to Artifact Registry
+images:
+  - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE}:${COMMIT_SHA}
+  - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE}:latest
+
+# Build options
+options:
+  logging: CLOUD_LOGGING_ONLY
+  machineType: E2_HIGHCPU_8

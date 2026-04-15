@@ -778,11 +778,45 @@ For affected_industries use: electronics, semiconductors, automotive, pharmaceut
 Be comprehensive — list all plausible affected countries and industries, not just the most obvious ones."""
 
 
+def _use_vertex_ai() -> bool:
+    return os.getenv("USE_VERTEX_AI", "false").lower() in ("1", "true", "yes")
+
+
 def _llm_parse(text: str) -> dict | None:
     """
     Call Gemini to extract structured disruption data.
+    Uses Vertex AI when USE_VERTEX_AI=true (Cloud Run), otherwise uses API key.
     Returns None on any failure (missing key, rate limit, parse error).
     """
+    from google import genai
+    from google.genai import types as genai_types
+
+    prompt = _LLM_PROMPT.format(event=text.replace('"', "'"))
+    gen_cfg = genai_types.GenerateContentConfig(
+        temperature=0.1,
+        max_output_tokens=1024,
+    )
+
+    # ── Vertex AI path (Cloud Run / ADC) ────────────────────────────────────
+    if _use_vertex_ai():
+        project  = os.getenv("GCP_PROJECT_ID", "").strip()
+        location = os.getenv("GCP_REGION", "us-central1").strip()
+        if not project:
+            print("  [disruption_input] USE_VERTEX_AI=true but GCP_PROJECT_ID not set — trying API key")
+        else:
+            try:
+                client = genai.Client(vertexai=True, project=project, location=location)
+                print("  [disruption_input] Calling Gemini via Vertex AI for LLM classification …")
+                response = client.models.generate_content(
+                    model="gemini-2.5-flash",
+                    contents=prompt,
+                    config=gen_cfg,
+                )
+                return _parse_llm_response(response.text)
+            except Exception as exc:
+                print(f"  [disruption_input] Vertex AI parse failed: {exc} — trying API key")
+
+    # ── Developer API key path ───────────────────────────────────────────────
     api_key = ""
     for env_name in GEMINI_KEY_ENV_VARS:
         candidate = os.getenv(env_name, "").strip()
@@ -794,45 +828,40 @@ def _llm_parse(text: str) -> dict | None:
         return None
 
     try:
-        from google import genai
-        from google.genai import types as genai_types
-
-        client   = genai.Client(api_key=api_key)
-        prompt   = _LLM_PROMPT.format(event=text.replace('"', "'"))
-
+        client = genai.Client(api_key=api_key)
         print("  [disruption_input] Calling Gemini for LLM classification …")
         response = client.models.generate_content(
-            model    = "gemini-2.5-flash",
-            contents = prompt,
-            config   = genai_types.GenerateContentConfig(
-                temperature       = 0.1,
-                max_output_tokens = 1024,
-            ),
+            model="gemini-2.5-flash",
+            contents=prompt,
+            config=gen_cfg,
         )
-
-        raw_text = response.text.strip()
-        match    = re.search(r"\{.*\}", raw_text, re.DOTALL)
-        if not match:
-            print("  [disruption_input] LLM returned no JSON — falling back")
-            return None
-
-        data = json.loads(match.group(0))
-
-        # Validate required fields
-        if not all(k in data for k in ("severity", "category", "affected_countries", "affected_industries")):
-            return None
-
-        print(
-            f"  [disruption_input] LLM classification: severity={data['severity']}, "
-            f"category={data['category']}, "
-            f"countries={data['affected_countries']}, "
-            f"industries={data['affected_industries']}"
-        )
-        return data
+        return _parse_llm_response(response.text)
 
     except Exception as exc:
         print(f"  [disruption_input] LLM parse failed: {exc} — falling back to keywords")
         return None
+
+
+def _parse_llm_response(raw_text: str) -> dict | None:
+    """Parse and validate the JSON block from a Gemini response."""
+    raw_text = raw_text.strip()
+    match = re.search(r"\{.*\}", raw_text, re.DOTALL)
+    if not match:
+        print("  [disruption_input] LLM returned no JSON — falling back")
+        return None
+
+    data = json.loads(match.group(0))
+
+    if not all(k in data for k in ("severity", "category", "affected_countries", "affected_industries")):
+        return None
+
+    print(
+        f"  [disruption_input] LLM classification: severity={data['severity']}, "
+        f"category={data['category']}, "
+        f"countries={data['affected_countries']}, "
+        f"industries={data['affected_industries']}"
+    )
+    return data
 
 
 def _nodes_from_llm(data: dict) -> tuple[list[str], list[str], list[str]]:

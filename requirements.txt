@@ -17,3 +17,14 @@ streamlit-autorefresh>=0.1.1
 groq>=0.18
 lightgbm>=4.0
 imbalanced-learn>=0.14
+pydeck>=0.8
+
+# ── Google Cloud Platform ────────────────────────────────────────────────────
+# Vertex AI SDK — access Gemini via Vertex AI endpoint (uses ADC / service account)
+google-cloud-aiplatform>=1.60
+# Cloud Storage — download models & datasets from GCS at runtime
+google-cloud-storage>=2.14
+# Secret Manager — retrieve API keys stored as GCP secrets
+google-cloud-secret-manager>=2.18
+# Cloud Logging — structured logging to Cloud Logging
+google-cloud-logging>=3.9

@@ -256,20 +256,27 @@ class SupplyChainAgent:
     # ------------------------------------------------------------------
 
     def run(self, max_turns: int = 12) -> dict:
-        gemini_key = _resolve_env_key(GEMINI_KEY_ENV_VARS)
-        groq_key = self.api_key
+        gemini_key  = _resolve_env_key(GEMINI_KEY_ENV_VARS)
+        groq_key    = self.api_key
+        use_vertex  = os.getenv("USE_VERTEX_AI", "false").lower() in ("1", "true", "yes")
+        gcp_project = os.getenv("GCP_PROJECT_ID", "").strip()
 
-        # Try Groq tool-calling agent first
+        # ── Try Groq tool-calling agent first ──────────────────────────────
         if groq_key and groq_key.strip() not in ("", "your_groq_api_key_here"):
             try:
                 return self._run_groq(max_turns)
             except Exception as exc:
                 print(f"  [agent] Groq agent error: {exc} — trying deterministic fallback")
 
-        # Run deterministic tools + optionally enrich with a single Gemini reasoning call.
-        source_tag = "gemini-enhanced" if (gemini_key and gemini_key.strip()) else "groq-unavailable"
+        # ── Deterministic fallback + optional Gemini enrichment ────────────
+        has_gemini = (use_vertex and gcp_project) or (gemini_key and gemini_key.strip())
+        source_tag = "gemini-enhanced" if has_gemini else "groq-unavailable"
         result = self._run_fallback(source_tag=source_tag)
-        if gemini_key and gemini_key.strip():
+
+        if use_vertex and gcp_project:
+            self._enrich_with_gemini_vertex(result, gcp_project,
+                                            os.getenv("GCP_REGION", "us-central1"))
+        elif gemini_key and gemini_key.strip():
             self._enrich_with_gemini(result, gemini_key)
         return result
 
@@ -324,6 +331,52 @@ class SupplyChainAgent:
                 print(f"  [agent] Gemini reasoning enrichment applied ({len(thoughts)} thoughts)")
         except Exception as e:
             print(f"  [agent] Gemini enrichment failed: {e} — keeping deterministic thoughts")
+
+    def _enrich_with_gemini_vertex(self, result: dict, project: str, location: str = "us-central1") -> None:
+        """
+        Same as _enrich_with_gemini but calls Gemini via Vertex AI (ADC).
+        Used on Cloud Run where no API key is needed.
+        """
+        try:
+            from google import genai
+            client = genai.Client(vertexai=True, project=project, location=location)
+
+            event    = self.disruption_info.get("event_text", "Unknown disruption")
+            severity = self.disruption_info.get("severity", "medium")
+
+            tool_summary = "\n".join([
+                f"Step {e['step']}: {e['tool']}() → {str(e['result'])[:200]}"
+                for e in result["action_log"] if e.get("tool")
+            ])
+
+            prompt = (
+                f"You are an autonomous supply chain AI agent that just completed an analysis.\n"
+                f"Disruption: {event} (Severity: {severity.upper()})\n\n"
+                f"Tools executed and results:\n{tool_summary}\n\n"
+                f"For each tool call step, write ONE sentence of reasoning that a CSCO "
+                f"(Chief Supply Chain Officer) would say BEFORE calling that tool — "
+                f"explaining WHY they are calling it and what they expect to learn.\n"
+                f"Return a JSON array of strings, one per step (in order):\n"
+                f'["<reasoning for step 1>", "<reasoning for step 2>", ...]'
+            )
+
+            response = client.models.generate_content(
+                model="gemini-2.5-flash",
+                contents=prompt,
+            )
+            import json, re
+            raw   = response.text.strip()
+            match = re.search(r"\[.*\]", raw, re.DOTALL)
+            if match:
+                thoughts   = json.loads(match.group(0))
+                tool_steps = [e for e in result["action_log"] if e.get("tool")]
+                for i, step_entry in enumerate(tool_steps):
+                    if i < len(thoughts):
+                        step_entry["thought"] = thoughts[i]
+                result["source"] = "gemini-vertex-enhanced"
+                print(f"  [agent] Vertex AI Gemini reasoning enrichment applied ({len(thoughts)} thoughts)")
+        except Exception as e:
+            print(f"  [agent] Vertex AI Gemini enrichment failed: {e} — keeping deterministic thoughts")
 
     # ------------------------------------------------------------------
     # Groq tool-calling loop

@@ -36,7 +36,7 @@ def load_supply_metadata(supply_path: Path = SUPPLY_PATH) -> pd.DataFrame:
     Load the city → country/product metadata table.
     Returns a DataFrame indexed by city_id.
     """
-    df = pd.read_csv(supply_path)
+    df = pd.read_csv(_ensure(supply_path))
     df.set_index("city_id", inplace=True)
     return df
 
@@ -46,13 +46,24 @@ def load_tariffs_data(tariffs_path: Path = TARIFFS_PATH) -> dict:
     Load pairwise tariff data.
     Returns a map {(Source_Country, Destination_Country): Tariff_Rate_Pct}.
     """
+    tariffs_path = _ensure(tariffs_path)
     if not tariffs_path.exists():
         return {}
     df = pd.read_csv(tariffs_path)
     return df.set_index(["Source_Country", "Destination_Country"])["Tariff_Rate_Pct"].to_dict()
 
+def _ensure(path: Path) -> Path:
+    """Download from GCS if the file is missing locally (Cloud Run support)."""
+    try:
+        from gcs_utils import ensure_local
+        return ensure_local(path)
+    except ImportError:
+        return path
+
+
 def load_ofac_data(ofac_path: Path = OFAC_PATH) -> dict:
     """Load the OFAC blocked lists. Returns a dict mapping to the json array."""
+    ofac_path = _ensure(ofac_path)
     if not ofac_path.exists():
         return {"sanctioned_countries": [], "sanctioned_cities": []}
     with open(ofac_path, "r", encoding="utf-8") as f:
@@ -64,7 +75,7 @@ def load_distance_data(distance_path: Path = DISTANCE_PATH) -> pd.DataFrame:
     Load the pairwise distance data.
     Columns: Source, Destination, Distance(M)
     """
-    df = pd.read_csv(distance_path)
+    df = pd.read_csv(_ensure(distance_path))
     # Rename columns for consistency
     df.columns = ["source", "destination", "distance_m"]
     return df
@@ -76,7 +87,7 @@ def load_orders_data(orders_path: Path = ORDERS_PATH) -> pd.DataFrame:
     Columns: Order_ID, Material_ID, Item_ID, Source, Destination,
              Available_Time, Deadline, Danger_Type, Area, Weight
     """
-    df = pd.read_csv(orders_path, parse_dates=["Available_Time", "Deadline"])
+    df = pd.read_csv(_ensure(orders_path), parse_dates=["Available_Time", "Deadline"])
     return df
 
 

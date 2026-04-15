@@ -31,11 +31,60 @@ except ImportError:
 GEMINI_KEY_ENV_VARS = ("GEMINI_API_KEY", "GOOGLE_API_KEY", "GOOGLE_GENAI_API_KEY")
 GROQ_KEY_ENV_VARS = ("GROQ_API_KEY",)
 
+# ---------------------------------------------------------------------------
+# Vertex AI helpers
+# ---------------------------------------------------------------------------
+
+def _use_vertex_ai() -> bool:
+    """Return True when the app is configured to use Vertex AI for Gemini."""
+    return os.getenv("USE_VERTEX_AI", "false").lower() in ("1", "true", "yes")
+
+
+def _vertex_project() -> str:
+    return os.getenv("GCP_PROJECT_ID", "").strip()
+
+
+def _vertex_location() -> str:
+    return os.getenv("GCP_REGION", "us-central1").strip()
+
+
+def _gemini_generate_vertex(prompt: str, temperature: float = 0.3, max_tokens: int = 8192) -> str:
+    """
+    Call Gemini via Vertex AI using Application Default Credentials.
+    Used on Cloud Run where the service account has the Vertex AI User role.
+    """
+    from google import genai
+    from google.genai import types as genai_types
+
+    project  = _vertex_project()
+    location = _vertex_location()
+    if not project:
+        raise ValueError("GCP_PROJECT_ID must be set to use Vertex AI.")
+
+    client = genai.Client(vertexai=True, project=project, location=location)
+    cfg = dict(
+        temperature=temperature,
+        max_output_tokens=max_tokens,
+        response_mime_type="application/json",
+    )
+    try:
+        cfg["thinking_config"] = genai_types.ThinkingConfig(thinking_budget=0)
+    except AttributeError:
+        pass
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=prompt,
+        config=genai_types.GenerateContentConfig(**cfg),
+    )
+    return response.text.strip()
+
 
 def _gemini_generate(api_key: str, prompt: str, temperature: float = 0.3, max_tokens: int = 8192) -> str:
     """
-    Call Gemini, trying the new google-genai SDK first, then falling back to
-    the legacy google-generativeai SDK so the app works in any environment.
+    Call Gemini via the Developer API key (non-Vertex path).
+
+    Tries the new google-genai SDK first, then falls back to the legacy
+    google-generativeai SDK so the app works in any environment.
 
     Uses response_mime_type="application/json" to force pure JSON output and
     a higher token budget because gemini-2.5-flash is a thinking model that
@@ -281,7 +330,31 @@ def generate_brief(
     # Retrieve RAG Context
     rag_match = retrieve_historical_context(disruption_info.get("event_text", ""))
 
-    # Try Gemini (single call — reliable even on free tier)
+    # ── Try Vertex AI Gemini (Cloud Run path) ──────────────────────────────
+    if _use_vertex_ai() and _vertex_project():
+        try:
+            import json
+            import re
+
+            prompt = _build_prompt(disruption_info, risk_df, reroute_suggestions, shap_context=shap_context, rag_context=rag_match)
+            print("  [llm_brief] Calling Gemini 2.5 Flash via Vertex AI …")
+            raw_text = _gemini_generate_vertex(prompt, temperature=0.3)
+            json_match = re.search(r"\{.*\}", raw_text, re.DOTALL)
+            if json_match:
+                brief = json.loads(json_match.group(0))
+                brief["source"] = "gemini-2.5-flash-vertex"
+                if shap_context:
+                    brief["shap_explanation"] = shap_context
+                if rag_match:
+                    brief["rag_match"] = rag_match
+                print("  [llm_brief] Vertex AI brief generated successfully")
+                return brief
+            else:
+                raise ValueError("No JSON in Vertex AI Gemini response")
+        except Exception as e:
+            print(f"  [llm_brief] Vertex AI error: {e} — trying API key path")
+
+    # ── Try Gemini via Developer API key ───────────────────────────────────
     if gemini_key:
         try:
             import json
