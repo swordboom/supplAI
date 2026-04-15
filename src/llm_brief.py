@@ -19,6 +19,7 @@ import os
 from typing import Dict, List, Any, Optional, Tuple
 from pathlib import Path
 import pandas as pd
+from historical_rag import retrieve_historical_context
 
 # Load environment variables from .env file
 try:
@@ -176,6 +177,7 @@ def _build_prompt(
     risk_df:             pd.DataFrame,
     reroute_suggestions: List[Dict[str, Any]],
     shap_context:        Optional[str] = None,
+    rag_context:         Optional[Dict[str, Any]] = None,
 ) -> str:
     """Build the prompt string sent to Gemini."""
     event        = disruption_info.get("event_text", "Unknown")
@@ -194,6 +196,19 @@ ML EXPLAINABILITY — SHAP FEATURE ANALYSIS (why the top node is at risk):
 Use these specific feature drivers when explaining risks in your brief.
 """
 
+    rag_section = ""
+    if rag_context:
+        rag_section = f"""
+
+HISTORICAL CORPORATE MEMORY (RAG CONTEXT):
+The system has retrieved a highly similar past disruption from the vector database:
+- Event: {rag_context.get('title')}
+- Description: {rag_context.get('description')}
+- Lessons Learned: {rag_context.get('lessons_learned')}
+
+Reference this past event in your executive summary to provide deeper, experience-based intelligence.
+"""
+
     prompt = f"""You are a senior supply chain risk analyst. Generate a structured operations brief.
 
 DISRUPTION EVENT:
@@ -206,6 +221,7 @@ DISRUPTION EVENT:
 TOP 5 HIGHEST-RISK NODES:
 {top5}
 {shap_section}
+{rag_section}
 Generate a JSON operations brief with EXACTLY these fields:
 {{
   "executive_summary": "<2-3 sentences summarising the situation and urgency. If SHAP data is provided, reference the specific feature drivers.>",
@@ -262,13 +278,16 @@ def generate_brief(
     gemini_key = _resolve_api_key(api_key, GEMINI_KEY_ENV_VARS)
     groq_key = _resolve_api_key(None, GROQ_KEY_ENV_VARS)
 
+    # Retrieve RAG Context
+    rag_match = retrieve_historical_context(disruption_info.get("event_text", ""))
+
     # Try Gemini (single call — reliable even on free tier)
     if gemini_key:
         try:
             import json
             import re
 
-            prompt = _build_prompt(disruption_info, risk_df, reroute_suggestions, shap_context=shap_context)
+            prompt = _build_prompt(disruption_info, risk_df, reroute_suggestions, shap_context=shap_context, rag_context=rag_match)
             print("  [llm_brief] Calling Gemini 2.5 Flash …")
             raw_text = _gemini_generate(gemini_key, prompt, temperature=0.3)
             json_match = re.search(r"\{.*\}", raw_text, re.DOTALL)
@@ -277,6 +296,8 @@ def generate_brief(
                 brief["source"] = "gemini-2.5-flash"
                 if shap_context:
                     brief["shap_explanation"] = shap_context
+                if rag_match:
+                    brief["rag_match"] = rag_match
                 print("  [llm_brief] Gemini brief generated successfully")
                 return brief
             else:
@@ -292,7 +313,7 @@ def generate_brief(
             import re
 
             client = Groq(api_key=groq_key)
-            prompt = _build_prompt(disruption_info, risk_df, reroute_suggestions, shap_context=shap_context)
+            prompt = _build_prompt(disruption_info, risk_df, reroute_suggestions, shap_context=shap_context, rag_context=rag_match)
 
             print("  [llm_brief] Calling Groq GPT-OSS 120B …")
             req = {
@@ -321,6 +342,8 @@ def generate_brief(
                 brief["source"] = "groq-openai-gpt-oss-120b"
                 if shap_context:
                     brief["shap_explanation"] = shap_context
+                if rag_match:
+                    brief["rag_match"] = rag_match
                 print("  [llm_brief] Groq brief generated successfully")
                 return brief
             raise ValueError("No JSON in Groq response")
@@ -331,6 +354,8 @@ def generate_brief(
     brief = template_brief(disruption_info, risk_df, reroute_suggestions)
     if shap_context:
         brief["shap_explanation"] = shap_context
+    if rag_match:
+        brief["rag_match"] = rag_match
     return brief
 
 
@@ -354,15 +379,16 @@ def generate_execution_payloads(
     prompt = f"""You are an Autonomous Logistics Execution Agent.
 An alternate supply route has been approved to bypass a disruption.
 Route details:
-- Original Origin: Disrupted
-- New Origin: {source_city}
-- Destination: {dest_city}
+- Origin Supplier Location: {source_city}
+- Final Destination: {dest_city}
 - Estimated Cost: ${cost:,.0f}
 - Units required: 500
 
+CRITICAL INSTRUCTION: You MUST address the email to a supplier in {source_city}. The delivery destination MUST be exactly {dest_city}. DO NOT hallucinate or invent other city or country names.
+
 Generate EXACTLY the following JSON:
 {{
-  "email_draft": "<A professional email to a generic supplier in {source_city} requesting 500 units of capacity urgently.>",
+  "email_draft": "<A professional email to a generic supplier in {source_city} requesting 500 units of capacity urgently to be shipped to {dest_city}.>",
   "erp_json_payload": {{
      "transaction_type": "PURCHASE_ORDER_UPDATE",
      "po_number": "PO-99482-EMG",

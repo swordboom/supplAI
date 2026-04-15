@@ -3234,6 +3234,22 @@ def main():
         </div>
         """, unsafe_allow_html=True)
 
+        # RAG Corporate Memory Banner
+        rag_match = brief.get("rag_match")
+        if rag_match:
+            st.markdown(f'''
+            <div style="background:rgba(168, 85, 247, 0.1); border:1px solid rgba(168, 85, 247, 0.4); border-radius:10px; padding:1.2rem; margin-bottom:1.5rem; box-shadow: 0 4px 12px rgba(168, 85, 247, 0.05);">
+                <div style="color:#a855f7; font-weight:800; margin-bottom:0.6rem; font-size:1.05rem; display:flex; align-items:center; gap:0.5rem;">
+                    <span>📚</span> HISTORICAL RAG CONTEXT
+                </div>
+                <div style="color:#e2e8f0; font-size:0.9rem;">
+                    <b>Similarity Match:</b> {rag_match.get('title', 'Historical Event')} (Score: {rag_match.get('similarity_score', 0):.2f})<br>
+                    <div style="margin-top:0.4rem; color:#cbd5e1;"><b>Lessons Learned:</b> {rag_match.get('lessons_learned', 'No lessons found.')}</div>
+                    <div style="margin-top:0.6rem; color:#94a3b8; font-size:0.8rem; font-style:italic;">This prior corporate memory has been successfully injected into the AI Executive Summary below.</div>
+                </div>
+            </div>
+            ''', unsafe_allow_html=True)
+
         # Executive Summary
         st.markdown(f"""
         <div class="brief-section">
