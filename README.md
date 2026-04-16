@@ -1,106 +1,179 @@
 # SupplAI - AI Supply Chain Disruption Monitor
 
-Hackathon project for disruption simulation, risk scoring, reroute planning, anomaly detection, and ops briefing.
+SupplAI is an AI-assisted supply chain intelligence dashboard that turns disruption signals into operational decisions:
 
-## Quick Start
+- parse disruption events (manual, news, weather, earthquakes)
+- simulate downstream cascade impact on a supply network graph
+- score node-level risk with ML + graph analytics
+- recommend alternate routes with exposure validation
+- explain ML risk drivers with SHAP
+- detect anomalous shipment patterns
+- generate executive briefs and autonomous agent action plans
+
+## What The App Shows
+
+The Streamlit dashboard currently exposes 7 tabs:
+
+1. Network Graph
+2. Risk Analysis
+3. Rerouting
+4. AI Brief
+5. ML Explainability
+6. Anomaly Detection
+7. AI Agent
+
+Core pipeline in code (`app.py`):
+
+1. `parse_disruption(...)`
+2. `run_cascade(...)`
+3. `score_nodes(...)`
+4. `find_alternates(...)`
+5. `compute_shap(...)`
+6. `generate_brief(...)`
+7. `score_anomalies(...)`
+8. `run_agent(...)`
+
+## Quick Start (Local)
 
 ```bash
-# 1) Activate environment
+# 1) (Optional) activate your environment
 conda activate condaVE
 
 # 2) Install dependencies
 pip install -r requirements.txt
 
-# 3) Configure environment variables (optional)
+# 3) Configure env vars (optional)
+# Linux/macOS:
 cp .env.example .env
+# Windows PowerShell:
+Copy-Item .env.example .env
 
-# 4) Train local models + generate sanity report
+# 4) Train/load local model artifacts + generate sanity report
 python train_models.py
 
-# 5) Run dashboard (inference only)
+# 5) Run dashboard (inference app)
 streamlit run app.py
 ```
 
 Notes:
-- `.env` is already gitignored.
-- You can run the app without any API keys.
-- `app.py` now loads pretrained artifacts from `models/` and does not train models.
-- `train_models.py` writes a sanity report to `models/model_sanity_report.json`.
-- `train_models.py` also writes a human-readable snapshot to `evaluation.md`.
+
+- `app.py` is inference-focused and loads artifacts from `models/`.
+- `train_models.py` writes:
+  - `models/model_sanity_report.json`
+  - `evaluation.md`
+- To force retraining:
+  - `python train_models.py --force-retrain`
 
 ## Models Used
 
-1. Delay prediction model:
-- Preferred: `XGBoost Classifier` (`xgboost_cuda`) when CUDA is available.
-- Fallback: `RandomForestClassifier` (`random_forest_cpu`) when XGBoost/CUDA is unavailable.
-- Saved artifact: `models/delay_model.pkl`
-- Used by:
-  - risk scoring delay-probability component
+### 1) Delay prediction model (`models/delay_model.pkl`)
+
+- Preferred runtime: `XGBoost` with CUDA when available
+- Fallback runtime: `RandomForestClassifier` on CPU
+- Used in:
+  - composite risk scoring (`delay_prob` component)
   - SHAP explainability tab
 
-2. Anomaly detection model:
-- `IsolationForest` on city-level shipment features.
-- Saved artifact: `models/anomaly_model.pkl`
-- Used by:
+### 2) Anomaly model (`models/anomaly_model.pkl`)
+
+- Model: `IsolationForest` on city-level shipment features
+- Used in:
   - anomaly detection tab
-  - agent anomaly alerts
+  - agent anomaly overlap checks
 
-3. LLM models (API-driven, not trained locally):
-- `gemini-2.5-flash` (news extraction, event parsing, brief generation, agent reasoning enrichment)
-- `llama-3.3-70b-versatile` via Groq (brief + agent tool-calling fallback path when `GROQ_API_KEY` is present)
+### 3) LLM providers (API-driven, not locally trained)
 
-## Inference-Only App Behavior
+- Gemini (`gemini-2.5-flash`) for:
+  - disruption parsing
+  - live news event extraction
+  - ops brief generation
+  - optional agent reasoning enrichment
+- Groq (`openai/gpt-oss-120b`) for:
+  - brief fallback path
+  - tool-calling autonomous agent path
 
-- `app.py` only loads model artifacts.
-- If `models/delay_model.pkl` is missing, the app falls back to rule-based delay proxies and shows a warning.
-- If `models/anomaly_model.pkl` is missing, anomaly outputs are skipped and the app shows a warning.
-- To retrain artifacts, run:
-  - `python train_models.py`
-  - `python train_models.py --force-retrain` (forces full retrain)
+## Works Without API Keys
 
-## What Works Without API Keys
+SupplAI is designed to remain usable offline or key-less:
 
-These features work fully or with built-in fallback logic even when `.env` is empty:
+1. Disruption parsing falls back to deterministic keyword mapping.
+2. News headlines still load from RSS; extraction falls back to keyword logic.
+3. Earthquakes always come from USGS feed.
+4. Weather falls back to Open-Meteo when OpenWeather key is absent.
+5. AI brief falls back to template output.
+6. AI agent falls back to deterministic decision flow.
 
-1. Disruption parsing and cascade/risk/reroute pipeline:
-- Uses deterministic keyword parser fallback (`src/disruption_input.py`) when Gemini is unavailable.
+## Optional Environment Variables
 
-2. Live news ingestion:
-- Headlines are still fetched from public RSS feeds (`src/news_fetcher.py`).
-- If Gemini key is missing, events are extracted by keyword-based fallback from headlines.
+See `.env.example` for baseline keys:
 
-3. Live weather + earthquake monitoring:
-- Earthquakes always come from USGS public feed.
-- If OpenWeather key is missing, weather checks automatically use Open-Meteo public API fallback.
-
-4. AI operations brief:
-- If no AI provider key works, app generates a structured template brief (`src/llm_brief.py`).
-
-5. Autonomous AI agent tab:
-- If no Groq key is available, deterministic agent flow runs and still produces an action plan.
-- If Gemini exists, deterministic results can be enriched with Gemini reasoning.
-
-## Optional API Keys
-
-You only need keys for enhanced LLM/weather behavior.
-
-- Gemini / Google GenAI (any one):
+- Gemini:
   - `GEMINI_API_KEY`
   - `GOOGLE_API_KEY`
   - `GOOGLE_GENAI_API_KEY`
 - Groq:
   - `GROQ_API_KEY`
-- OpenWeather (any one):
+- OpenWeather:
   - `OPENWEATHER_API_KEY`
   - `OPENWEATHERMAP_API_KEY`
   - `OWM_API_KEY`
 
-See `.env.example` for the full template.
+Cloud/Vertex-related vars used in code and deployment:
 
-## Security Note
+- `USE_VERTEX_AI`
+- `GCP_PROJECT_ID`
+- `GCP_REGION`
+- `GCS_BUCKET_NAME`
 
-- Never commit real credentials to source control.
-- If a key was ever exposed in docs/history, rotate it immediately in the provider console.
+## Training, Evaluation, And Optimization
+
+### Baseline training + sanity checks
+
+```bash
+python train_models.py
+python train_models.py --force-retrain
+python train_models.py --skip-delay
+python train_models.py --skip-anomaly
+```
+
+### Optional model optimization experiment
+
+```bash
+python optimize_models.py
+```
+
+Produces optimized artifacts/report in `models/` (for experimentation):
+
+- `delay_model_optimized.pkl`
+- `anomaly_model_optimized.pkl`
+- `optimization_report.json`
+
+## Data Generation Utilities
+
+Regenerate synthetic/global dataset:
+
+```bash
+python generate_dataset.py
+```
+
+Regenerate pairwise tariff table:
+
+```bash
+python generate_tariffs.py
+```
+
+## Deployment
+
+This repo includes:
+
+- `Dockerfile` for containerized Streamlit serving
+- `cloudbuild.yaml` for Google Cloud Build -> Artifact Registry -> Cloud Run
+
+Cloud Build config also supports:
+
+- Secret Manager injection for API keys
+- Vertex AI mode (`USE_VERTEX_AI=true`)
+- GCS-backed asset retrieval for models/data
 
 ## Project Structure
 
@@ -108,10 +181,21 @@ See `.env.example` for the full template.
 supplAI/
 |- app.py
 |- train_models.py
+|- optimize_models.py
+|- generate_dataset.py
+|- generate_tariffs.py
 |- requirements.txt
 |- .env.example
+|- evaluation.md
+|- Dockerfile
+|- cloudbuild.yaml
 |- data/
 |- datasets/
 |- models/
 `- src/
 ```
+
+## Security Note
+
+- Never commit real credentials to source control.
+- If any key is exposed, rotate it immediately at the provider console.
